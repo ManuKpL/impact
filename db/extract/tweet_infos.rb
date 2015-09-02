@@ -42,7 +42,7 @@ def hashtags_in_tweets
 
 
   @tweets.each do |tweet|
-    entities << tweet["entities"]
+    entities << tweet["entities"] if tweet["retweeted_status"].nil? #mettre unless à la place de if pour récupérer les retweets parmis ses tweets
   end
 
   entities.each do |entity|
@@ -65,9 +65,14 @@ def hashtags_in_tweets
       hash_words[word] = 1
     end
   end
+
+  sorted_hash = hash_words.sort_by do |word, frequency|
+    frequency
+  end
+  sorted_hash
 end
 
-p hash_words
+p hashtags_in_tweets
 
 
 
