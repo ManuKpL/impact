@@ -3,13 +3,11 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.string :name
       t.string :screen_name
-      t.string :location
       t.string :description
       t.integer :followers_count
       t.integer :following_count
       t.integer :listed
       t.integer :tweets_count
-      t.integer :favorites_count
       t.date :account_creation
       t.string :picture
 
