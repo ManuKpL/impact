@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(version: 20150902103632) do
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
     t.string   "screen_name"
+    t.string   "location"
     t.string   "description"
     t.integer  "followers_count"
     t.integer  "following_count"
     t.integer  "listed"
     t.integer  "tweets_count"
+    t.integer  "favorites_count"
     t.date     "account_creation"
     t.string   "picture"
     t.datetime "created_at",       null: false
