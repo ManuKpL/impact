@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150902133538) do
 
   create_table "interactions", force: :cascade do |t|
     t.integer  "candidate_id"
-    t.string   "type"
+    t.string   "data_type"
     t.integer  "average"
     t.integer  "percentage"
     t.datetime "created_at",   null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150902133538) do
 
   create_table "topwords", force: :cascade do |t|
     t.integer  "candidate_id"
-    t.string   "type"
+    t.string   "data_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
