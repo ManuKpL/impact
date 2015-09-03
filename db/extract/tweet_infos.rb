@@ -1,6 +1,6 @@
 require 'json'
 
-json_filepath = '../tweets.json'
+json_filepath = '../json/tweets.json'
 
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
@@ -21,34 +21,35 @@ def average_number_of(key_name) # mettre un nom plus générique
 end
 
 
-def hashtags_in_tweets
-  entities = []
-  array_of_hashtags = []
-  array_of_hashtags_texts = []
+def sorted_by_occurence(mention_name, mentions_key)
+  array_of_entities = []
+  array_of_mentions = []
+  array_of_mentions_key = []
 
 
   @tweets.each do |tweet|
-    entities << tweet["entities"] if tweet["retweeted_status"].nil? #mettre unless à la place de if pour récupérer les retweets parmis ses tweets
+    array_of_entities << tweet["entities"] if tweet["retweeted_status"].nil? #mettre unless à la place de if pour récupérer les retweets parmis ses tweets
   end
 
-  entities.each do |entity|
-    array_of_hashtags << entity["hashtags"]
+  array_of_entities.each do |entity|
+    array_of_mentions << entity[mention_name]
   end
 
-  array_of_hashtags.each do |hashtag_array|
-    unless hashtag_array.empty?
-      hashtag_array.each do |hashtag|
-        array_of_hashtags_texts << hashtag["text"]
+  array_of_mentions.each do |mentions|
+    unless mentions.empty?
+      mentions.each do |mention|
+        array_of_mentions_key << mention[mentions_key]
       end
     end
   end
 
   hash_words = {}
-  array_of_hashtags_texts.each do |word|
-    if hash_words.key? (word)
-      hash_words[word] += 1
+  array_of_mentions_key.each do |word|
+    w = word.downcase
+    if hash_words.key? (w)
+      hash_words[w] += 1
     else
-      hash_words[word] = 1
+      hash_words[w] = 1
     end
   end
 
@@ -58,32 +59,7 @@ def hashtags_in_tweets
   sorted_hash
 end
 
-p hashtags_in_tweets
-
-
-
-def screen_names_in_tweets
-  entities = []
-  user_mentions = []
-  screen_names = []
-
-
-  tweets.each do |tweet|
-    entities << tweet["entities"]
-  end
-
-  entities.each do |entity|
-    user_mentions << entity["user_mentions"]
-  end
-
-  user_mentions.each do |user_mentions_array|
-    unless user_mentions_array.empty?
-      user_mentions_array.each do |user_mention|
-        screen_names << user_mention["screen_name"]
-      end
-    end
-  end
-end
+p sorted_by_occurence("user_mentions", "screen_name")
 
 
 
