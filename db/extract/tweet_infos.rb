@@ -65,5 +65,18 @@ end
 # p sorted_by_occurence("user_mentions", "screen_name")
 # p sorted_by_occurence("hashtags", "text")
 
+def part_of_retweet_tweets_over_11
+  array_of_retweets = []
+
+  @tweets.each do |tweet|
+    array_of_retweets << tweet["retweet_count"]
+  end
+
+  numerator = array_of_retweets.select { |x| x > 11 }
+  denominator = array_of_retweets.size
+
+
+
+end
 
 
