@@ -1,20 +1,26 @@
 require 'json'
+require_relative '../../config/environment'
 
 # filepaths
-stopwords_filepath = "db/extract/stopwords.txt"
-json_filepath = "db/json/followers.json"
+STOPWORDS_FILEPATH = "db/extract/stopwords.txt"
+JSON_FILEPATH = "db/json/followers.json"
 # get array of followers
-def get_followers_descriptions(filepath)
-  followers = JSON.parse(File.open(filepath).read).first.last
+def open_json(filepath)
+  elements_array = JSON.parse(File.open(filepath).read).first.last
   # get array of descriptions
-  descriptions = []
-  followers.each do |follower|
-    descriptions << follower['description']
+  results = []
+  elements_array.each do |element|
+    if element['description']
+      results << element['description']
+    else
+      results << element['text']
+    end
   end
-  return descriptions
+  return results
 end
 
-def format_array(array)
+def format_array
+  array = open_json(JSON_FILEPATH)
   # join the array
   joined = array.join(' ').downcase
   # replace acronyms
@@ -28,30 +34,33 @@ def format_array(array)
   return formatted
 end
 
-def remove_stopwords(words, stopwords_filepath)
-  # remove stopwords
-  stopwords = File.open(stopwords_filepath).read.split(' ')
+def remove_stopwords
+  words = format_array
+  stopwords = File.open(STOPWORDS_FILEPATH).read.split(' ')
   words = words - stopwords
   return words
 end
 
-def get_top_words(words)
-  # count frequency
+def get_top_words
+  words = remove_stopwords
   frequency = Hash.new(0)
   words.each { |word| frequency[word.downcase] += 1 }
   sorted = frequency.sort_by { |word, count| count }.reverse.to_h
   top_words = sorted.select {|k,v| v > 200}
   return top_words
 end
-
-descriptions = get_followers_descriptions(json_filepath)
-formatted = format_array(descriptions)
-words = remove_stopwords(formatted, stopwords_filepath)
-top_words = get_top_words(words)
-p top_words
-
-
 # create topwords instance type string 'followers bios'
+def create_model_instances
+  top_words = get_top_words
+  barto = Candidate.find_by_screen_name("claudebartolone")
+  top_barto = Topword.new(candidate_id: barto.id, data_type: "followers bios")
+  top_barto.save
+  # create words instances for each word
+  top_words.each do |word, count|
+    Word.create(topword_id: top_barto.id, content: word, count: top_words[word])
+  end
+end
 
-# top_words = Topword.new
-# create words instances for each word
+p create_model_instances
+
+
