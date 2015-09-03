@@ -1,4 +1,5 @@
 require 'json'
+require_relative '../../config/environment.rb'
 
 CANDIDATE_SCREEN_NAME = 'claudebartolone'
 JSON_FILEPATH = "db/json/#{CANDIDATE_SCREEN_NAME}_retweeters.json"
@@ -27,13 +28,27 @@ def count_occurences
 end
 
 def sorted_and_trunkated
-  sorted_count = count_occurences.sort_by { |key, value| value }.reverse.to_h
+  sorted_count = count_occurences.sort_by { |word, frequency| frequency }.reverse.to_h
   top_result = {}
   x = 0
-  until x == 19
+  until x == 20
    top_result[sorted_count.keys[x]] = sorted_count.values[x]
    x += 1
   end
   return top_result
 end
 
+def create_topword_instance
+  candidate = Candidate.find_by_screen_name(CANDIDATE_SCREEN_NAME)
+  Topword.create(candidate_id: candidate.id, data_type: 'retweeters_screen_name')
+end
+
+def create_words_instances
+  create_topword_instance
+  topword = Topword.find_by_data_type('retweeters_screen_name')
+  sorted_and_trunkated.each do |word, frequency|
+    Word.create(topword_id: topword.id, content: word, count: frequency)
+  end
+end
+
+create_words_instances
