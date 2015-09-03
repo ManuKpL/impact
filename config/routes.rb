@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :candidates, only: [:show]
   root to: 'pages#home'
 
 

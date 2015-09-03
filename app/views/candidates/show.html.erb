@@ -1,0 +1,21 @@
+<div class="container navigation">
+  <li class="list-unstyled list-inline">
+    <ul><%=link_to "Previous", candidate_path %></ul>
+    <ul> <%=link_to "Next", candidate_path%></ul>
+  </li>
+</div>
+<div class="profile text-center">
+  <%= image_tag @candidate.picture, :size => "large" %>
+  <h1><%= @candidate.name.upcase %></h1>
+  <h2><%= @candidate.party %></h2>
+  <h2>Sur Twitter en tant que @<%=@candidate.screen_name %></h2>
+  <p>Bio: <%= @candidate.description %></p>
+</div>
+
+<div class="padded"></div>
+
+<div class="tweets text-center">
+  <p><%= @candidate.name %> a tweeté <%= @candidate.tweets_count%> fois.</p>
+  <p>Son compte Twitter a été créé le <%= @candidate.account_creation%>.</p>
+
+</div>

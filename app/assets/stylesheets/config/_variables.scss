@@ -17,7 +17,7 @@ $header-font: "Roboto", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 // Font-size and line-height
-$base-size: 16px;
+$base-size: 18px;
 $base-height: 1.4;
 
 /* -------------------------------------
@@ -25,12 +25,11 @@ $base-height: 1.4;
  * ------------------------------------- */
 // Scheme
 $brand-color: #D23333;
-
-$red: #EE5F5B;
-$blue: #469AE0;
+$red: #DB504A;
+$blue: #084C61;
 $yellow: #FDB631;
 $orange: #E67E22;
-$green: #32B796;
+$green: #56A3A6;
 
 // Gray scale
 $gray-darker:  lighten(#000, 13.5%); // #222
@@ -38,3 +37,6 @@ $gray-dark:    lighten(#000, 20%);   // #333
 $gray:         lighten(#000, 33.5%); // #555
 $gray-light:   lighten(#000, 46.7%); // #777
 $gray-lighter: lighten(#000, 93.5%); // #eee
+
+
+// color scheme
