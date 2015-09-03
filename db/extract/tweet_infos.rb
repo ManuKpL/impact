@@ -1,11 +1,11 @@
 require 'json'
 
-json_filepath = '../json/tweets.json'
+json_filepath = '../json/bartolone_tweets.json'
 
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
 
-def average_number_of(key_name) # mettre un nom plus générique
+def average_number_of(key_name)
   array_of_keys = []
 
   @tweets.each do |tweet|
@@ -19,6 +19,9 @@ def average_number_of(key_name) # mettre un nom plus générique
 
   keys_average = sum / array_of_keys.size
 end
+
+# p average_number_of("retweet_count")
+# p average_number_of("favorite_count")
 
 
 def sorted_by_occurence(mention_name, mentions_key)
@@ -56,10 +59,24 @@ def sorted_by_occurence(mention_name, mentions_key)
   sorted_hash = hash_words.sort_by do |word, frequency|
     frequency
   end
-  sorted_hash
+  sorted_hash.last(20)
 end
 
-p sorted_by_occurence("user_mentions", "screen_name")
+# p sorted_by_occurence("user_mentions", "screen_name")
+# p sorted_by_occurence("hashtags", "text")
 
+def part_of_retweet_tweets_over_11
+  array_of_retweets = []
+
+  @tweets.each do |tweet|
+    array_of_retweets << tweet["retweet_count"]
+  end
+
+  numerator = array_of_retweets.select { |x| x > 11 }
+  denominator = array_of_retweets.size
+
+
+
+end
 
 
