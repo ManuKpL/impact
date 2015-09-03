@@ -1,6 +1,6 @@
 require 'json'
 
-json_filepath = 'app/data/json/bartolone_tweets.json'
+json_filepath = 'app/data/json/claudebartolone_tweets.json'
 
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
