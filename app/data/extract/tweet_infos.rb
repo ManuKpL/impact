@@ -1,6 +1,8 @@
 require 'json'
+require_relative '../../../config/environment.rb'
 
-json_filepath = 'app/data/json/claudebartolone_tweets.json'
+CANDIDATE_SCREEN_NAME = 'claudebartolone'
+json_filepath = '../json/#{CANDIDATE_SCREEN_NAME}_tweets.json'
 
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
@@ -19,10 +21,8 @@ def average_number_of(key_name)
 
   keys_average = sum / array_of_keys.size
 end
-
 # p average_number_of("retweet_count")
 # p average_number_of("favorite_count")
-
 
 def sorted_by_occurence(mention_name, mentions_key)
   array_of_entities = []
@@ -61,22 +61,32 @@ def sorted_by_occurence(mention_name, mentions_key)
   end
   sorted_hash.last(20)
 end
-
 # p sorted_by_occurence("user_mentions", "screen_name")
 # p sorted_by_occurence("hashtags", "text")
 
-def part_of_retweet_tweets_over_11
-  array_of_retweets = []
+def part_of_tweets(key_name, number)
+  array_of_keys = []
 
   @tweets.each do |tweet|
-    array_of_retweets << tweet["retweet_count"]
+    array_of_keys << tweet[key_name]
   end
 
-  numerator = array_of_retweets.select { |x| x > 11 }
-  denominator = array_of_retweets.size
+  array_of_tweets_keyed_over_number = array_of_keys.select { |x| x > number }
 
+  ((array_of_tweets_keyed_over_number.size.to_f / array_of_keys.size.to_f) * 100).round
+end
+# p part_of_tweets("retweet_count", 10)
+# p part_of_tweets("favorite_count", 5)
 
-
+def create_topword_instance
+  candidate = Candidate.find_by_screen_name(CANDIDATE_SCREEN_NAME)
+  Topword.create(candidate_id: candidate.id, data_type: 'retweeters_screen_name')
 end
 
-
+def create_words_instances
+  create_topword_instance
+  topword = Topword.find_by_data_type('retweeters_screen_name')
+  sorted_and_trunkated.each do |word, frequency|
+    Word.create(topword_id: topword.id, content: word, count: frequency)
+  end
+end
