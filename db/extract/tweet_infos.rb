@@ -5,35 +5,21 @@ json_filepath = '../tweets.json'
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
 
-# def nombre_moyen_retweets
-#   retweets = []
+def average_number_of(key_name) # mettre un nom plus générique
+  array_of_keys = []
 
-#   tweets.each do |tweet|
-#     retweets << tweet["retweet_count"]
-#   end
+  @tweets.each do |tweet|
+    array_of_keys << tweet[key_name]
+  end
 
-#   sum = 0
-#   retweets.each do |x|
-#     sum += x.to_i
-#   end
+  sum = 0
+  array_of_keys.each do |x|
+    sum += x.to_i
+  end
 
-#   moy_retweets = sum / retweets.size
-# end
+  keys_average = sum / array_of_keys.size
+end
 
-# def nombre_moyen_favoris
-#   favorites = []
-
-#   tweets.each do |tweet|
-#     favorites << tweet["favorite_count"]
-#   end
-
-#   sum = 0
-#   favorites.each do |x|
-#     sum += x.to_i
-#   end
-
-#   moy_favorites = sum / favorites.size
-# end
 
 def hashtags_in_tweets
   entities = []
@@ -76,28 +62,28 @@ p hashtags_in_tweets
 
 
 
-# def screen_names_in_tweets
-#   entities = []
-#   user_mentions = []
-#   screen_names = []
+def screen_names_in_tweets
+  entities = []
+  user_mentions = []
+  screen_names = []
 
 
-#   tweets.each do |tweet|
-#     entities << tweet["entities"]
-#   end
+  tweets.each do |tweet|
+    entities << tweet["entities"]
+  end
 
-#   entities.each do |entity|
-#     user_mentions << entity["user_mentions"]
-#   end
+  entities.each do |entity|
+    user_mentions << entity["user_mentions"]
+  end
 
-#   user_mentions.each do |user_mentions_array|
-#     unless user_mentions_array.empty?
-#       user_mentions_array.each do |user_mention|
-#         screen_names << user_mention["screen_name"]
-#       end
-#     end
-#   end
-# end
+  user_mentions.each do |user_mentions_array|
+    unless user_mentions_array.empty?
+      user_mentions_array.each do |user_mention|
+        screen_names << user_mention["screen_name"]
+      end
+    end
+  end
+end
 
 
 
