@@ -1,9 +1,9 @@
 require 'json'
-require_relative '../../config/environment'
+require_relative '../../../config/environment'
 
 # filepaths
-STOPWORDS_FILEPATH = "db/extract/stopwords.txt"
-JSON_FILEPATH = "db/json/followers.json"
+STOPWORDS_FILEPATH = "app/data/extract/stopwords.txt"
+JSON_FILEPATH = "app/data/json/claudebartolone_followers.json"
 # get array of followers
 def open_json(filepath)
   elements_array = JSON.parse(File.open(filepath).read).first.last

@@ -1,7 +1,7 @@
 require 'json'
 
 # filepaths
-json_filepath = "db/json/bartolone_followers.json"
+json_filepath = "app/data/json/bartolone_followers.json"
 
 # get array of followers(hash)
 followers = JSON.parse(File.open(json_filepath).read).first.last

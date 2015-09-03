@@ -1,8 +1,8 @@
 require 'json'
-require_relative '../../config/environment.rb'
+require_relative '../../../config/environment.rb'
 
 CANDIDATE_SCREEN_NAME = 'claudebartolone'
-JSON_FILEPATH = "db/json/#{CANDIDATE_SCREEN_NAME}_retweeters.json"
+JSON_FILEPATH = "app/data/json/#{CANDIDATE_SCREEN_NAME}_retweeters.json"
 
 def open_file(filepath)
   JSON.parse(File.open(filepath).read).first.last

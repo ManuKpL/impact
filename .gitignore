@@ -16,4 +16,4 @@
 /config/application.yml
 
 # Ignore big JSON files
-/db/json/*
+/app/data/json/*
