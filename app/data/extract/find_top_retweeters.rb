@@ -36,14 +36,7 @@ class FindTopRetweeters
   end
 
   def sorted_and_selected
-    sorted_count = count_occurences.sort_by { |word, frequency| frequency }.reverse.to_h
-    top_result = {}
-    x = 0
-    until x == @top_size
-     top_result[sorted_count.keys[x]] = sorted_count.values[x]
-     x += 1
-    end
-    return top_result
+    return count_occurences.sort_by { |word, frequency| frequency }.reverse.first(@top_size).to_h
   end
 
   def store_in_database
