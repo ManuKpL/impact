@@ -1,50 +1,57 @@
 require 'json'
 
 # filepaths
-stopwords_filepath = "stopwords.txt"
-json_filepath = "../followers.json"
-
+stopwords_filepath = "db/extract/stopwords.txt"
+json_filepath = "db/json/followers.json"
 # get array of followers
-followers = JSON.parse(File.open(json_filepath).read).first.last
-
-# get array of descriptions
-descriptions = []
-followers.each do |follower|
-  descriptions << follower['description']
+def get_followers_descriptions(filepath)
+  followers = JSON.parse(File.open(filepath).read).first.last
+  # get array of descriptions
+  descriptions = []
+  followers.each do |follower|
+    descriptions << follower['description']
+  end
+  return descriptions
 end
 
-# clean the descriptions
+def format_array(array)
+  # join the array
+  joined = array.join(' ').downcase
+  # replace acronyms
+  joined = joined.gsub("p.s", "ps")
+  # replace accents
+  joined = joined.gsub(/[éèêëàâäûüù]/, 'é' => 'e','è' => 'e', 'ê' => 'e', 'ë' => 'e', 'à' => 'a', 'â' => 'a', 'ä' => 'a','û' => 'u','ü' => 'u', 'ù' => 'u')
+  # replace other special characters by a simple space
+  joined = joined.gsub(/['"-,.]/,  "'" => ' ', '"' => ' ', '-' => ' ', ',' => ' ', '.' => ' ')
+  # get the words which length > 3
+  formatted = joined.split(' ').delete_if {|word| word.length < 2 }
+  return formatted
+end
 
-# join the array
-joined_descriptions = descriptions.join(' ').downcase
-# replace accents
-joined_descriptions = joined_descriptions.gsub(/[éèêëàâäûüù]/, 'é' => 'e','è' => 'e', 'ê' => 'e', 'ë' => 'e', 'à' => 'a', 'â' => 'a', 'ä' => 'a','û' => 'u','ü' => 'u', 'ù' => 'u')
-# replace other special characters by a simple space
-joined_descriptions = joined_descriptions.gsub(/['"-,.]/,  "'" => ' ', '"' => ' ', '-' => ' ', ',' => ' ', '.' => ' ')
+def remove_stopwords(words, stopwords_filepath)
+  # remove stopwords
+  stopwords = File.open(stopwords_filepath).read.split(' ')
+  words = words - stopwords
+  return words
+end
+
+def get_top_words(words)
+  # count frequency
+  frequency = Hash.new(0)
+  words.each { |word| frequency[word.downcase] += 1 }
+  sorted = frequency.sort_by { |word, count| count }.reverse.to_h
+  top_words = sorted.select {|k,v| v > 200}
+  return top_words
+end
+
+descriptions = get_followers_descriptions(json_filepath)
+formatted = format_array(descriptions)
+words = remove_stopwords(formatted, stopwords_filepath)
+top_words = get_top_words(words)
+p top_words
 
 
-# get the words which length > 3
-words = joined_descriptions.split(' ').delete_if {|word| word.length <= 3 }
+# create topwords instance type string 'followers bios'
 
-# remove stopwords
-stopwords = File.open(stopwords_filepath).read.split(' ')
-words = words - stopwords
-
-
-# count frequency
-frequency = Hash.new(0)
-words.each { |word| frequency[word.downcase] += 1 }
-sorted = frequency.sort_by { |word, count| count }.reverse.to_h
-
-# select words that appear more than 200 times
-p sorted.select {|k,v| v > 200}  #=> {"a" => 100}
-
-
-
-
-
-
-
-
-
-
+# top_words = Topword.new
+# create words instances for each word
