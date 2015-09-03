@@ -1,10 +1,12 @@
-
+# récupère les infos du candidat sur Twitter
 def get_candidate(screen_name)
   candidate = $twitter.get("https://api.twitter.com/1.1/users/show.json?screen_name=#{screen_name}")
 end
 
+# array de candidats
 candidates = []
 
+# candidats à récupérer
 candidates << get_candidate('vpecresse')
 candidates << get_candidate('claudebartolone')
 candidates << get_candidate('emmacosse')
@@ -14,6 +16,7 @@ candidates << get_candidate('dupontaignan')
 
 Candidate.destroy_all
 
+# partis auxquels les candidats appartiennent, respecter l'ordre
 parties = ['Les Républicains', 'Parti socialiste', 'EELV', 'Front national', 'Mouvement démocrate', 'Debout la France']
 
 candidates.each_with_index do |candidate, index|
