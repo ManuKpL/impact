@@ -1,0 +1,12 @@
+.profile{
+  body{
+    font: $base-font;
+  }
+  h1{
+    font: $header-font;
+    color: $blue;
+  }
+  li {
+    display: inline-block;
+  }
+}
