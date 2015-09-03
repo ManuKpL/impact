@@ -2,7 +2,7 @@ require 'json'
 require_relative '../../../config/environment.rb'
 
 CANDIDATE_SCREEN_NAME = 'claudebartolone'
-json_filepath = '../json/#{CANDIDATE_SCREEN_NAME}_tweets.json'
+json_filepath = "app/data/json/#{CANDIDATE_SCREEN_NAME}_tweets.json"
 
 @tweets = JSON.parse(File.open(json_filepath).read).first.last
 
@@ -78,15 +78,28 @@ end
 # p part_of_tweets("retweet_count", 10)
 # p part_of_tweets("favorite_count", 5)
 
-def create_topword_instance
+def create_topword_instance(data_type)
   candidate = Candidate.find_by_screen_name(CANDIDATE_SCREEN_NAME)
-  Topword.create(candidate_id: candidate.id, data_type: 'retweeters_screen_name')
+  Topword.create(candidate_id: candidate.id, data_type: data_type)
 end
 
-def create_words_instances
-  create_topword_instance
-  topword = Topword.find_by_data_type('retweeters_screen_name')
-  sorted_and_trunkated.each do |word, frequency|
+def create_words_instances(mention_name, mentions_key, data_type)
+  create_topword_instance(data_type)
+  topword = Topword.find_by_data_type(data_type)
+  sorted_by_occurence(mention_name, mentions_key).each do |word, frequency|
     Word.create(topword_id: topword.id, content: word, count: frequency)
   end
 end
+
+def create_interaction_instances(key_name, number, data_type)
+  candidate = Candidate.find_by_screen_name(CANDIDATE_SCREEN_NAME)
+  Interaction.create(candidate_id: candidate.id, data_type: data_type, average: average_number_of(key_name), percentage: part_of_tweets(key_name, number))
+end
+
+create_words_instances("hashtags", "text", "hashtags")
+create_words_instances("user_mentions", "screen_name", "mentions")
+
+create_interaction_instances("retweet_count", 10, "retweets")
+create_interaction_instances("favorite_count", 5, "favorites")
+
+
