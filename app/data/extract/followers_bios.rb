@@ -20,18 +20,16 @@ def open_json(filepath)
 end
 
 def format_array
-  array = open_json(JSON_FILEPATH)
-  # join the array
-  joined = array.join(' ').downcase
+  joined = open_json(JSON_FILEPATH).join(' ').downcase
   # replace acronyms
   joined = joined.gsub("p.s", "ps")
   # replace accents
   joined = joined.gsub(/[éèêëàâäûüù]/, 'é' => 'e','è' => 'e', 'ê' => 'e', 'ë' => 'e', 'à' => 'a', 'â' => 'a', 'ä' => 'a','û' => 'u','ü' => 'u', 'ù' => 'u')
   # replace other special characters by a simple space
   joined = joined.gsub(/['"-,.]/,  "'" => ' ', '"' => ' ', '-' => ' ', ',' => ' ', '.' => ' ')
-  # get the words which length > 3
-  formatted = joined.split(' ').delete_if {|word| word.length < 2 }
-  return formatted
+  # get the words which length > 2
+  formatted_array = joined.split(' ').delete_if {|word| word.length < 2 }
+  return formatted_array
 end
 
 def remove_stopwords
@@ -49,6 +47,7 @@ def get_top_words
   top_words = sorted.select {|k,v| v > 200}
   return top_words
 end
+
 # create topwords instance type string 'followers bios'
 def create_model_instances
   top_words = get_top_words
@@ -60,7 +59,5 @@ def create_model_instances
     Word.create(topword_id: top_barto.id, content: word, count: top_words[word])
   end
 end
-
-p create_model_instances
 
 
