@@ -1,25 +1,25 @@
 <div class="banner text-center">
   <div class="banner-shadow"></div>
   <div class="banner-content">
-    <p>EN UN CLIC, TOUT CE QU'IL FAUT SAVOIR SUR LA CAMPAGNE TWITTER DES CANDIDATS AUX REGIONALES 2015</p>
+    <h1>EN UN CLIC, TOUT CE QU'IL FAUT SAVOIR SUR LA CAMPAGNE TWITTER DES CANDIDATS AUX REGIONALES 2015</h1>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-12 col-md-4">
         <div class="banner-data">
-          <%= image_tag 'pie.png', class:"icon" %>
+          <%= image_tag 'blue_pie.png', class:"icon" %>
           <p class="text">Qui prend la plus grosse part du gâteau</p>
         </div>
       </div>
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-12 col-md-4">
         <div class="banner-data">
-          <%= image_tag 'network.png', class:"icon" %>
+          <%= image_tag 'blue_network.png', class:"icon" %>
           <p class="text" style="line-height: 50px">Qui a le meilleur réseau</p>
         </div>
       </div>
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-12 col-md-4">
         <div class="banner-data">
-          <%= image_tag 'bird.png', class:"icon"%>
+          <%= image_tag 'blue_bird.png', class:"icon"%>
           <p class="text" style="line-height: 48px">Qui masterise Twitter</p>
         </div>
       </div>
@@ -30,19 +30,20 @@
 <div class="container">
   <div class="row">
     <% @candidates.each do |candidate| %>
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-md-4">
+        <%= link_to candidate_path(candidate.id) do %>
         <div class="card">
-          <%= image_tag candidate.picture, class:"card-user" %>
+          <%= image_tag candidate.picture, class: "card-user" %>
           <div class="card-text">
             <h2><%= candidate.name %></h2>
             <p>@<%= candidate.screen_name %></p>
-            <p><%= candidate.tweets_count %> tweets</p>
-            <p><%= candidate.followers_count %> followers</p>
+            <p><%= candidate.tweets_count %> <b>tweets</b></p>
+            <p><%= candidate.followers_count %> <b>followers</b></p>
             <p>Sur Twitter depuis <%= candidate.account_creation.strftime("%m") %>/<%= candidate.account_creation.strftime("%Y") %></p>
           </div>
         </div>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
-
