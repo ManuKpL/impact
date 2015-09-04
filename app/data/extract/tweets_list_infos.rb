@@ -5,7 +5,7 @@ class ExtractTweetsListInfos
     # name of the data_type attribute in the db table
     @data_type = attributes[:data_type]
     # check if extracting an Interaction instance or a Topword instance
-    @check = attributes[:minimum_count]
+    @check = attributes[:at_least]
     # number of hashtags or mentions in the top
     # default value : 20
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
@@ -26,19 +26,19 @@ class ExtractTweetsListInfos
       when 'retweets'
         @content_type = 'candidate tweets'
         @key_name = 'retweet_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 10
       when 'RT retweets'
         @content_type = 'candidate retweets'
         @key_name = 'retweet_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 10
       when 'favorites'
         @content_type = 'candidate tweets'
         @key_name = 'favorite_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 5
       when 'RT favorites'
         @content_type = 'candidate retweets'
         @key_name = 'favorite_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 5
       when 'hashtags'
         @content_type = 'candidate tweets'
         @mention_name = @data_type
@@ -94,9 +94,9 @@ class ExtractTweetsListInfos
   end
 
   def part_of_tweets
-    # select all tweets that have at least the @minimum_count of retweets or favorites
+    # select all tweets that have at least the @at_least of retweets or favorites
     result = open_json.select do |tweet|
-      tweet[@key_name] >= @minimum_count
+      tweet[@key_name] >= @at_least
     end
 
     # calculate the percentage

@@ -16,16 +16,16 @@ class ExtractFollowersListInfo
     case @data_type
       when 'followers tweets'
         @content_type = 'statuses_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 2000
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 2000
       when 'followers listed'
         @content_type = 'listed_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 20
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 20
       when 'followers followings'
         @content_type = 'friends_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 1000
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 1000
       when 'followers followers'
         @content_type = 'followers_count'
-        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 1000
+        @at_least = attributes[:at_least] ? attributes[:at_least] : 1000
     end
   end
 
@@ -47,9 +47,9 @@ class ExtractFollowersListInfo
     return extract_items_counts.inject(:+) / extract_items_counts.length
   end
 
-  # get percentage of followers_count >= @minimum_count
+  # get percentage of followers_count >= @at_least
   def percent_count
-    top_items = extract_items_counts.select { |c| c >= @minimum_count }
+    top_items = extract_items_counts.select { |c| c >= @at_least }
     return ((top_items.length.to_f / open_json.length) * 100).round
   end
 
