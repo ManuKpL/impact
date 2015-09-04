@@ -1,9 +1,10 @@
 .card {
   position: relative;
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  color: white;
+  height: 457px;
+  width: 266px;
   margin: 20px auto;
+  box-shadow: 1px 1px 1px #888888;
+  background-color: white;
   &-bg{
     background-size: cover;
     border-radius: 3px;
@@ -29,10 +30,13 @@
   }
   &-text {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 15px;
+    left: 27px;
+    color: $gray;
     h2 {
-      font-size: 24px;
+      font-size: 20px;
+      text-align: center;
+      font-family: montserrat;
     }
     p {
       font-size: 13px;
@@ -40,9 +44,9 @@
   }
   &-user {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 130px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
     border-radius: 3px;
   }
   &-link {

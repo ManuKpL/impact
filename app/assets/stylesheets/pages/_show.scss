@@ -1,12 +1,54 @@
 .profile{
   body{
     font: $base-font;
+    font-weight: 200;
   }
-  h1{
-    font: $header-font;
-    color: $blue;
+
+  &-name {
+    padding-bottom: 50px;
+
+    h2{
+      font-family: $header-font;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: $gray-dark;
+    }
+    h3{
+      font-family: Roboto;
+      font-weight: 300;
+    }
   }
+
+  &-info{
+    margin-left: 150px;
+    .lead{
+      padding: 5px;
+    }
+
+    .profile-picture{
+      margin-left: 0px;
+      height: 200px;
+      width: 200px;
+      border-radius: 2%;
+      padding: 10px;
+    }
+  }
+
+  &-metrics {
+    margin-right: 0px;
+    font-size: 20px;
+    padding: 90px 90px 0px 80px;
+    border-left: solid 1px $green;
+    height: 500px;
+    letter-spacing: 1px;
+
+    .metric-number{
+      font-family: Montserrat;
+      color: $blue;
+    }
+  }
+
   li {
-    display: inline-block;
+    padding: 10px;
   }
 }

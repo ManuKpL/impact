@@ -2,11 +2,11 @@ require 'json'
 
 class FindTopWords
   def initialize(attributes)
-    @screen_name = attributes[:screen_name]
     @content_type = attributes[:content_type]
     @data_type = attributes[:data_type]
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
-    @file_path = "app/data/json/#{@screen_name}_#{@content_type}.json"
+    @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
+    @file_path = "app/data/json/#{attributes[:screen_name]}_#{@content_type}.json"
   end
 
   def run
@@ -19,9 +19,8 @@ class FindTopWords
 
   def get_array_of_content
     # user descriptions or tweets text
-    elements_array = open_json
     results = []
-    elements_array.each do |element|
+    open_json.each do |element|
       results << element['description'] ? element['description'] : element['text'] # either tweets or users
     end
     return results
@@ -45,23 +44,20 @@ class FindTopWords
   end
 
   def count_occurences
-    words = remove_stopwords
     frequency = Hash.new(0)
-    words.each do |word|
+    remove_stopwords.each do |word|
       frequency[word.downcase] += 1
     end
     return frequency
   end
 
   def sorted_and_selected
-    return = count_occurences.sort_by { |word, frequency| frequency }.reverse.first(@top_size).to_h
+    return count_occurences.sort_by { |word, frequency| frequency }.reverse.first(@top_size).to_h
   end
 
   def store_in_database
-    # Find candidate instance
-    candidate = Candidate.find_by_screen_name(@screen_name)
     # create toword instance to store words
-    top_word = Topword.new(candidate_id: candidate.id, data_type: @data_type)
+    top_word = Topword.new(candidate_id: @candidate.id, data_type: @data_type)
     top_word.save
     # create words instances for each word
     sorted_and_selected.each do |word, frequency|
