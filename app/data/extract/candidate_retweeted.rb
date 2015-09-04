@@ -4,7 +4,6 @@ class ExtractCandidateRetweeted
   def initialize(attributes)
     @data_type = attributes[:data_type]
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
-    @at_least = attributes[:at_least] ? attributes[:at_least] : 10
     @content_type = attributes[:content_type] ? attributes[:content_type] : 'screen_name'
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
     @file_path = "app/data/json/#{attributes[:screen_name]}_tweets.json"
