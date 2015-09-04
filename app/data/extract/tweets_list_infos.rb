@@ -4,9 +4,8 @@ class ExtractTweetsListInfos
   def initialize(attributes)
     # name of the data_type attribute in the db table
     @data_type = attributes[:data_type]
-    # in case of retweets of favorites, the minimum value from which calculate the part of tweets that received at least as many retweets
-    # default values : favorites = 5 ; retweets = 10
-    @minimum_count = attributes[:minimum_count]
+    # check if extracting an Interaction instance or a Topword instance
+    @check = attributes[:minimum_count]
     # number of hashtags or mentions in the top
     # default value : 20
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
@@ -18,7 +17,7 @@ class ExtractTweetsListInfos
   end
 
   def run
-    @minimum_count ? create_interaction_instances : create_words_instances
+    @check ? create_interaction_instances : create_words_instances
   end
 
   # returns an attributes hash to call methods in run
