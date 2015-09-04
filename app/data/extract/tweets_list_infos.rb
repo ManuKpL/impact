@@ -16,7 +16,7 @@ class ExtractTweetsListInfos
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
     @file_path = "app/data/json/#{attributes[:screen_name]}_tweets.json"
     # runs the method attributing instance values for each case of analysis
-    attributes_selector
+    attributes_selector(attributes)
   end
 
   def run
@@ -24,18 +24,18 @@ class ExtractTweetsListInfos
   end
 
   # returns an attributes hash to call methods in run
-  def attributes_selector
+  def attributes_selector(attributes)
     case @data_type
-      when 'retweets'
+      when 'retweets' || 'RT retweets'
         @key_name = 'retweet_count'
-        @minimum_count = 10 if @minimum_count.nil?
-      when 'favorites'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
+      when 'favorites' || 'RT favorites'
         @key_name = 'favorite_count'
-        @minimum_count = 5 if @minimum_count.nil?
-      when 'hashtags'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
+      when 'hashtags' || 'RT hashtags'
         @mention_name = @data_type
         @mention_key = 'text'
-      when 'mentions'
+      when 'mentions' || 'RT mentions'
         @mention_name = 'user_mentions'
         @mention_key = 'screen_name'
       else
