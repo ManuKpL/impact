@@ -11,7 +11,7 @@
   <div class="row">
     <div class="class profile">
       <div class="profile profile-name text-center">
-        <h2><%= @candidate.name %> // @<%=@candidate.screen_name %>
+        <h2><%= @candidate.name %> // @<%=@candidate.screen_name %></h2>
         <h3><%= @candidate.party %></h3>
       </div>
 
@@ -21,7 +21,7 @@
         <div class="profile profile-info text-left">
           <p><%= image_tag @candidate.picture, class: "profile-info profile-picture" %></p>
 
-          <p class="lead"><%= @candidate.description %></p>
+          <p><%= @candidate.description %></p>
         </div>
       </div>
 

@@ -1,1 +1,37 @@
+.footer {
+  height: 45px;
+  background-color: $blue;
+  color: $gray-lighter;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid rgba(220,220,220,0.4);
+  i {
+    font-size: 25px;
+    color: $red;
+  }
+  li {
+    margin-right: 3%;
+  }
+  a {
+    color: rgb(220,220,220);
+    &:hover {
+      color: $yellow;
+    }
+  }
+  p {
+    margin: 0px;
+    color: $gray-light;
+    font-family: $base-font;
+    font-weight: thinner;
+    font-size: $base-height;
+  }
+  .list-inline {
+    margin-bottom: 0px;
+    z-index: 6;
+  }
+}
 // Your footer style
