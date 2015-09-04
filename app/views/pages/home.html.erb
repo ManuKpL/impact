@@ -2,11 +2,28 @@
   <div class="banner-shadow"></div>
   <div class="banner-content">
     <p>EN UN CLIC, TOUT CE QU'IL FAUT SAVOIR SUR LA CAMPAGNE TWITTER DES CANDIDATS AUX REGIONALES 2015</p>
-    div.banner-
-    <%= image_tag 'pie.png', class:"banner-icon" %>
-    <%= image_tag 'network.png', class:"banner-icon" %>
-    <%= image_tag 'bird.png', class:"banner-icon" %>
-    <p>55% des candidats</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <div class="banner-data">
+          <%= image_tag 'pie.png', class:"icon" %>
+          <p class="text">Qui prend la plus grosse part du gâteau</p>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <div class="banner-data">
+          <%= image_tag 'network.png', class:"icon" %>
+          <p class="text" style="line-height: 50px">Qui a le meilleur réseau</p>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-4">
+        <div class="banner-data">
+          <%= image_tag 'bird.png', class:"icon"%>
+          <p class="text" style="line-height: 48px">Qui masterise Twitter</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -16,7 +33,13 @@
       <div class="col-xs-12 col-sm-4">
         <div class="card">
           <%= image_tag candidate.picture, class:"card-user" %>
-          <h1 class="card-text"><%= candidate.name %></h1>
+          <div class="card-text">
+            <h2><%= candidate.name %></h2>
+            <p>@<%= candidate.screen_name %></p>
+            <p><%= candidate.tweets_count %> tweets</p>
+            <p><%= candidate.followers_count %> followers</p>
+            <p>Sur Twitter depuis <%= candidate.account_creation.strftime("%m") %>/<%= candidate.account_creation.strftime("%Y") %></p>
+          </div>
         </div>
       </div>
     <% end %>
