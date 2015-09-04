@@ -2,11 +2,11 @@ require 'json'
 
 class FindTopRetweeters
   def initialize(attributes)
-    @screen_name = attributes[:screen_name]
     @content_type = attributes[:content_type] ? attributes[:content_type] : 'screen_name'
-    @data_type = attributes[:data_type] ? attributes[:data_type] : 'retweeters screen name'
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
-    @file_path = "app/data/json/#{@screen_name}_retweeters.json"
+    @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
+    @data_type = 'retweeters screen name'
+    @file_path = "app/data/json/#{attributes[:screen_name]}_retweeters.json"
   end
 
   def run
@@ -40,10 +40,8 @@ class FindTopRetweeters
   end
 
   def store_in_database
-    # Find candidate instance
-    candidate = Candidate.find_by_screen_name(@screen_name)
     # Create topword instance
-    topword = Topword.new(candidate_id: candidate.id, data_type: @data_type)
+    topword = Topword.new(candidate_id: @candidate.id, data_type: @data_type)
     topword.save
     # Create words instances
     sorted_and_selected.each do |word, frequency|
