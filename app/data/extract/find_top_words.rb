@@ -2,11 +2,11 @@ require 'json'
 
 class FindTopWords
   def initialize(attributes)
-    @screen_name = attributes[:screen_name]
     @content_type = attributes[:content_type]
     @data_type = attributes[:data_type]
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
-    @file_path = "app/data/json/#{@screen_name}_#{@content_type}.json"
+    @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
+    @file_path = "app/data/json/#{attributes[:screen_name]}_#{@content_type}.json"
   end
 
   def run
@@ -54,14 +54,12 @@ class FindTopWords
   end
 
   def sorted_and_selected
-    return = count_occurences.sort_by { |word, frequency| frequency }.reverse.first(@top_size).to_h
+    return count_occurences.sort_by { |word, frequency| frequency }.reverse.first(@top_size).to_h
   end
 
   def store_in_database
-    # Find candidate instance
-    candidate = Candidate.find_by_screen_name(@screen_name)
     # create toword instance to store words
-    top_word = Topword.new(candidate_id: candidate.id, data_type: @data_type)
+    top_word = Topword.new(candidate_id: @candidate.id, data_type: @data_type)
     top_word.save
     # create words instances for each word
     sorted_and_selected.each do |word, frequency|
