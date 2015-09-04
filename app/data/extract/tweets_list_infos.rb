@@ -55,11 +55,6 @@ class ExtractTweetsListInfos
         @content_type = 'candidate retweets'
         @mention_name = 'user_mentions'
         @mention_key = 'screen_name'
-      else
-        @content_type = nil
-        @key_name = nil
-        @mention_name = nil
-        @mention_key = nil
     end
   end
 

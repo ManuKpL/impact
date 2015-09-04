@@ -23,7 +23,7 @@ class ExtractFollowersListInfo
       when 'followers followings'
         @content_type = 'friends_count'
         @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 1000
-      else
+      when 'followers followers'
         @content_type = 'followers_count'
         @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 1000
     end
