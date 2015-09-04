@@ -7,13 +7,12 @@
   &-name {
     padding-bottom: 50px;
 
-    h2{
+    h3{
       font-family: $header-font;
       font-weight: 400;
-      letter-spacing: 2px;
-      color: $gray-dark;
+      letter-spacing: 1px;
     }
-    h3{
+    h4{
       font-family: Roboto;
       font-weight: 300;
     }
@@ -29,7 +28,7 @@
       margin-left: 0px;
       height: 200px;
       width: 200px;
-      border-radius: 2%;
+      border-radius: 8%;
       padding: 10px;
     }
   }
@@ -39,16 +38,12 @@
     font-size: 20px;
     padding: 90px 90px 0px 80px;
     border-left: solid 1px $green;
-    height: 500px;
+    height: 300px;
     letter-spacing: 1px;
 
     .metric-number{
       font-family: Montserrat;
       color: $blue;
     }
-  }
-
-  li {
-    padding: 10px;
   }
 }
