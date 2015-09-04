@@ -18,18 +18,16 @@ class FindTopRetweeters
   end
 
   def extract_content
-    retweeters = open_json
     content = []
-    retweeters.each do |user|
+    open_json.each do |user|
       content << user[@content_type]
     end
     return content
   end
 
   def count_occurences
-    content = extract_content
     content_count = Hash.new(0)
-    content.each do |word|
+    extract_content.each do |word|
       content_count[word] += 1
     end
     return content_count
