@@ -4,11 +4,8 @@ class ExtractTweetsListInfos
   def initialize(attributes)
     # name of the data_type attribute in the db table
     @data_type = attributes[:data_type]
-    # tweets or retweets (performed by the candidate)
-    @content_type = attributes[:content_type]
-    # in case of retweets of favorites, the minimum value from which calculate the part of tweets that received at least as many retweets
-    # default values : favorites = 5 ; retweets = 10
-    @minimum_count = attributes[:minimum_count]
+    # check if extracting an Interaction instance or a Topword instance
+    @check = attributes[:minimum_count]
     # number of hashtags or mentions in the top
     # default value : 20
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
@@ -16,32 +13,48 @@ class ExtractTweetsListInfos
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
     @file_path = "app/data/json/#{attributes[:screen_name]}_tweets.json"
     # runs the method attributing instance values for each case of analysis
-    attributes_selector
+    attributes_selector(attributes)
   end
 
   def run
-    @minimum_count ? create_interaction_instances : create_words_instances
+    @check ? create_interaction_instances : create_words_instances
   end
 
   # returns an attributes hash to call methods in run
-  def attributes_selector
+  def attributes_selector(attributes)
     case @data_type
       when 'retweets'
+        @content_type = 'candidate tweets'
         @key_name = 'retweet_count'
-        @minimum_count = 10 if @minimum_count.nil?
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
+      when 'RT retweets'
+        @content_type = 'candidate retweets'
+        @key_name = 'retweet_count'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
       when 'favorites'
+        @content_type = 'candidate tweets'
         @key_name = 'favorite_count'
-        @minimum_count = 5 if @minimum_count.nil?
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
+      when 'RT favorites'
+        @content_type = 'candidate retweets'
+        @key_name = 'favorite_count'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
       when 'hashtags'
+        @content_type = 'candidate tweets'
+        @mention_name = @data_type
+        @mention_key = 'text'
+      when 'RT hashtags'
+        @content_type = 'candidate retweets'
         @mention_name = @data_type
         @mention_key = 'text'
       when 'mentions'
+        @content_type = 'candidate tweets'
         @mention_name = 'user_mentions'
         @mention_key = 'screen_name'
-      else
-        @key_name = nil
-        @mention_name = nil
-        @mention_key = nil
+      when 'RT mentions'
+        @content_type = 'candidate retweets'
+        @mention_name = 'user_mentions'
+        @mention_key = 'screen_name'
     end
   end
 
