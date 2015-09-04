@@ -5,7 +5,7 @@ class FindTopRetweeters
     @content_type = attributes[:content_type] ? attributes[:content_type] : 'screen_name'
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
-    @data_type = 'retweeters screen name'
+    @data_type = "retweeters #{@content_type.gsub('_', ' ')}"
     @file_path = "app/data/json/#{attributes[:screen_name]}_retweeters.json"
   end
 
