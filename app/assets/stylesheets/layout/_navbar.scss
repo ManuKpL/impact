@@ -28,7 +28,7 @@
     position: relative;
     &-btn {
       line-height: 40px;
-      color: #56A3A6;
+      color: #A5A5A5;
       border: none;
       background: transparent;
       position: absolute;
@@ -53,7 +53,7 @@
     }
   }
   &-link {
-    color: #56A3A6;
+    color: $gray;
     font-size: 14px;
     &:hover {
       color: #da552f;
