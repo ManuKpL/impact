@@ -2,18 +2,33 @@
   <div class="container navbar-wagon-container">
 
     <%= link_to root_path do %>
-      <%= image_tag "logo2.jpg", class:"navbar-wagon-logo" %>
+      <%= image_tag "logo.jpg", class:"navbar-wagon-logo" %>
     <% end %>
 
     <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search for featured stuff">
+      <input type="text" class="navbar-wagon-search-input" placeholder="ex: Claude Bartolone...">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
       </button>
     </form>
     <hr>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Contacts</a>
+    <a href="" class="navbar-wagon-item navbar-wagon-link">A propos</a>
+    <div class="navbar-wagon-item navbar-wagon-link">
+      <div class="dropdown">
+        <a href="" class="navbar-wagon-item navbar-wagon-link dropdown-toggle" data-toggle="dropdown">Contacts</a>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="" class="navbar-wagon-item navbar-wagon-link">Analysez</a>
+          </li>
+          <li><a href="" class="navbar-wagon-item navbar-wagon-link">Comparez</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
 
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
   </div>
 </nav>
+
+<!--  -->
