@@ -19,9 +19,8 @@ class FindTopWords
 
   def get_array_of_content
     # user descriptions or tweets text
-    elements_array = open_json
     results = []
-    elements_array.each do |element|
+    open_json.each do |element|
       results << element['description'] ? element['description'] : element['text'] # either tweets or users
     end
     return results
@@ -45,9 +44,8 @@ class FindTopWords
   end
 
   def count_occurences
-    words = remove_stopwords
     frequency = Hash.new(0)
-    words.each do |word|
+    remove_stopwords.each do |word|
       frequency[word.downcase] += 1
     end
     return frequency
