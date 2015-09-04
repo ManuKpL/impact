@@ -4,8 +4,6 @@ class ExtractTweetsListInfos
   def initialize(attributes)
     # name of the data_type attribute in the db table
     @data_type = attributes[:data_type]
-    # tweets or retweets (performed by the candidate)
-    @content_type = attributes[:content_type]
     # in case of retweets of favorites, the minimum value from which calculate the part of tweets that received at least as many retweets
     # default values : favorites = 5 ; retweets = 10
     @minimum_count = attributes[:minimum_count]
@@ -26,19 +24,40 @@ class ExtractTweetsListInfos
   # returns an attributes hash to call methods in run
   def attributes_selector(attributes)
     case @data_type
-      when 'retweets' || 'RT retweets'
+      when 'retweets'
+        @content_type = 'candidate tweets'
         @key_name = 'retweet_count'
         @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
-      when 'favorites' || 'RT favorites'
+      when 'RT retweets'
+        @content_type = 'candidate retweets'
+        @key_name = 'retweet_count'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 10
+      when 'favorites'
+        @content_type = 'candidate tweets'
         @key_name = 'favorite_count'
         @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
-      when 'hashtags' || 'RT hashtags'
+      when 'RT favorites'
+        @content_type = 'candidate retweets'
+        @key_name = 'favorite_count'
+        @minimum_count = attributes[:minimum_count] ? attributes[:minimum_count] : 5
+      when 'hashtags'
+        @content_type = 'candidate tweets'
         @mention_name = @data_type
         @mention_key = 'text'
-      when 'mentions' || 'RT mentions'
+      when 'RT hashtags'
+        @content_type = 'candidate retweets'
+        @mention_name = @data_type
+        @mention_key = 'text'
+      when 'mentions'
+        @content_type = 'candidate tweets'
+        @mention_name = 'user_mentions'
+        @mention_key = 'screen_name'
+      when 'RT mentions'
+        @content_type = 'candidate retweets'
         @mention_name = 'user_mentions'
         @mention_key = 'screen_name'
       else
+        @content_type = nil
         @key_name = nil
         @mention_name = nil
         @mention_key = nil
