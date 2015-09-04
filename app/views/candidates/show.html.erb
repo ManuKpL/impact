@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <div class="navigation">
     <ul class="list-unstyled list-inline">
-      <li><%=link_to "Previous", candidate_path%></li>
-      <li> <%=link_to "Next", candidate_path%></li>
+    <!-- put flexbox large as page, use space_between -->
+      <li><%=link_to "Previous", candidate_path(@previous_id)%></li>
+      <li> <%=link_to "Next", candidate_path(@next_id)%></li>
     </ul>
   </div>
 </div>

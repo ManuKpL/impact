@@ -1,13 +1,15 @@
 class CandidatesController < ApplicationController
   def show
     @candidate = Candidate.find(params[:id])
-    ary = []
+    results = []
+
     Candidate.all.each do |candidate|
-      ary << candidate.id
-      # find id index for each candidate in array
-      # this index is previous or next ary[index+1]
+      results << candidate.id
     end
-    @next_id = params[:id] + 1
-    @previous_id = params[:id] - 1
+    index = results.find_index(params[:id].to_i)
+    results[index + 1].nil? ? @next_id = results.first : @next_id = results[index + 1]
+    @previous_id = results[index - 1]
   end
 end
+
+
