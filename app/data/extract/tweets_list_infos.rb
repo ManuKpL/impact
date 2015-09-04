@@ -76,10 +76,12 @@ class ExtractTweetsListInfos
     open_json.each do |tweet|
       datas = tweet['entities'][@mention_name]
       # discriminate between tweets or retweets (performed by the candidate)
-      if @content_type == 'candidate tweets'
-        datas.each { |element| result << element } if tweet['retweeted_status'].nil? && datas.length > 0
-      else
-        datas.each { |element| result << element } if tweet['retweeted_status'] && datas.length > 0
+      if datas
+        if @content_type == 'candidate tweets'
+          datas.each { |element| result << element } if tweet['retweeted_status'].nil? && datas.length > 0
+        else
+          datas.each { |element| result << element } if tweet['retweeted_status'] && datas.length > 0
+        end
       end
     end
 
