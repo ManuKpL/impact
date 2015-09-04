@@ -28,7 +28,7 @@
     position: relative;
     &-btn {
       line-height: 40px;
-      color: #E6E6E6;
+      color: #56A3A6;
       border: none;
       background: transparent;
       position: absolute;
@@ -41,19 +41,19 @@
       transition: all 0.15s ease;
       line-height: 40px;
       font-weight: lighter;
-      color: #666666;
-      border: 1px solid #E6E6E6;
+      color: #56A3A6;
+      border: 1px solid #DB504A;
       border-radius: 5px;
       padding: 0 10px;
       font-size: 14px;
       outline: none;
     }
     &-input:focus  {
-      border: 1px solid #CCCCCC;
+      border: 1px solid #56A3A6;
     }
   }
   &-link {
-    color: #616668;
+    color: #56A3A6;
     font-size: 14px;
     &:hover {
       color: #da552f;
