@@ -1,9 +1,10 @@
-
-<div class="container navigation">
-  <ul class="list-unstyled list-inline">
-    <li><%=link_to "Previous", candidate_path %></li>
-    <li> <%=link_to "Next", candidate_path%></li>
-  </ul>
+<div class="container-fluid">
+  <div class="navigation">
+    <ul class="list-unstyled list-inline">
+      <li><%=link_to "Previous", candidate_path%></li>
+      <li> <%=link_to "Next", candidate_path%></li>
+    </ul>
+  </div>
 </div>
 
 <div class="container-fluid">
@@ -11,8 +12,8 @@
   <div class="row">
     <div class="class profile">
       <div class="profile profile-name text-center">
-        <h2><%= @candidate.name %> // @<%=@candidate.screen_name %></h2>
-        <h3><%= @candidate.party %></h3>
+        <h3><%= @candidate.name %> // @<%=@candidate.screen_name %></h3>
+        <h4><%= @candidate.party %></h4>
       </div>
 
 <!-- display profile info on the left -->
@@ -35,6 +36,8 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div class="padded"></div>
     </div>
   </div>
 </div>
