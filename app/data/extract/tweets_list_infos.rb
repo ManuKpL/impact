@@ -81,7 +81,6 @@ class ExtractTweetsListInfos
           datas.each { |element| result << element } if tweet['retweeted_status'].nil? && datas.length > 0
         elsif @content_type == 'candidate retweets'
           datas.each { |element| result << element } if tweet['retweeted_status'] && datas.length > 0
-          end
         end
       end
     end
