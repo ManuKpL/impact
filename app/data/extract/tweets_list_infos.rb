@@ -45,7 +45,7 @@ class ExtractTweetsListInfos
         @mention_key = 'text'
       when 'RT hashtags'
         @content_type = 'candidate retweets'
-        @mention_name = @data_type
+        @mention_name = 'hashtags'
         @mention_key = 'text'
       when 'mentions'
         @content_type = 'candidate tweets'
@@ -79,8 +79,9 @@ class ExtractTweetsListInfos
       if datas
         if @content_type == 'candidate tweets'
           datas.each { |element| result << element } if tweet['retweeted_status'].nil? && datas.length > 0
-        else
+        elsif @content_type == 'candidate retweets'
           datas.each { |element| result << element } if tweet['retweeted_status'] && datas.length > 0
+          end
         end
       end
     end
