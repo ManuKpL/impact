@@ -1,39 +1,49 @@
-<div class="container-fluid">
-  <div class="navigation">
-    <ul class="list-unstyled list-inline">
-    <!-- put flexbox large as page, use space_between -->
-      <li><%=link_to "Previous", candidate_path(@previous_id)%></li>
-      <li> <%=link_to "Next", candidate_path(@next_id)%></li>
-    </ul>
-  </div>
-</div>
 
 <div class="container-fluid">
-<!-- display name on a separate row -->
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="candidate-nav text-center">
+        <%=link_to "Previous", candidate_path(@previous_id)%>
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4 col-md-offset-4">
+      <div class="candidate-nav text-center">
+        <%=link_to "Next", candidate_path(@next_id)%>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="class profile">
       <div class="profile profile-name text-center">
-        <h3><%= @candidate.name %> // @<%=@candidate.screen_name %></h3>
+        <h3><%= @candidate.name %></h3>
         <h4><%= @candidate.party %></h4>
       </div>
 
 <!-- display profile info on the left -->
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="profile profile-info text-left">
-          <p><%= image_tag @candidate.picture, class: "profile-info profile-picture" %></p>
 
+<!-- PROFILE PICTURE -->
+      <div class="col-xs-12 col-sm-4">
+        <div class="profile profile-picture">
+          <p><%= image_tag @candidate.picture, class: "profile-picture" %></p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4">
+        <div class="profile profile-info">
+          <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
           <p><%= @candidate.description %></p>
         </div>
       </div>
 
-
 <!-- display metrics on the right -->
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-4">
         <div class="profile profile-metrics">
           <ul class="list-unstyled text-left">
-            <li><i class="fa fa-twitter"></i><span class="metric-number"> <%= @candidate.tweets_count%> </span>Tweets</li>
-            <li><i class="fa fa-clock-o"></i> créé le <span class="metric-number"><%= @candidate.account_creation%></span></li>
+            <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
+            <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
           </ul>
         </div>
       </div>
