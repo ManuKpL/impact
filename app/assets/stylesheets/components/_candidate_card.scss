@@ -5,15 +5,17 @@
   height: 30vh;
   width: 30vh;
   border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 1px 1px 1px rgb(220,220,220);
   h4 {
     padding-top: 1em;
   }
   &-shadow{
     position: absolute;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    left: 0;
+    bottom: -2px;
+    top: -2px;
+    right: -2px;
+    left: -2px;
     color: transparent;
     display: flex;
     flex-direction: column;
