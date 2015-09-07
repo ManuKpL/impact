@@ -1,32 +1,36 @@
 .home-preview {
+  background-color: rgba(40,60,70,0.3);
   position: absolute;
-  background-color: rgba(40,60,70,0.6);
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 15%;
+  height: 10vh;
   z-index: 3;
-  &-candidate {
-    position: relative;
-    width: 5%;
-    height: 70%;
-    border-radius: 5%;
-    background-size: cover;
-    background-position: center;
-    &-shadow {
-      position: absolute;
-      background-color: rgba(40,60,70,0.4);
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      &:hover {
-        background-color: transparent;
-      }
+  p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-shadow: 1px 1px 1px rgb(60,60,60);
+    line-height: 1.5em;
+    font-weight: bolder;
+  }
+  &-link {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    z-index: 4;
+    &:hover {
+      background: -webkit-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* FF3.6+ */
+      background:     -ms-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* IE10 */
+      background:      -o-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* Opera 11.10+ */
+      background:         linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* W3C */
     }
   }
 }

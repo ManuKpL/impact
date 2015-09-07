@@ -9,7 +9,7 @@
     font-family: Raleway;
     font-weight: 700;
     font-size: 60px;
-    margin: 0;
+    margin-bottom: 5vh;
     z-index: 2;
   }
   h2 {
@@ -37,7 +37,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(40,60,70,0.7);
+    background-color: rgba(40,60,100,0.6);
     z-index: 1;
   }
   &-content {
