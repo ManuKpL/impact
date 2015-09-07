@@ -1,23 +1,24 @@
 <div id="home-body"></div>
 <%= render 'shared/banner' %>
-
-<div class="container">
-  <div class="row">
-    <% @candidates.each do |candidate| %>
-      <div class="col-md-4">
-        <%= link_to candidate_path(candidate.id) do %>
-        <div class="card">
-          <%= image_tag candidate.picture, class: "card-user" %>
-         <div class="card-text">
-            <h2><%= candidate.name %></h2>
-            <p>@<%= candidate.screen_name %></p>
-            <p><%= candidate.tweets_count %> <b>tweets</b></p>
-            <p><%= candidate.followers_count %> <b>followers</b></p>
-            <p>Sur Twitter depuis <%= candidate.account_creation.strftime("%m") %>/<%= candidate.account_creation.strftime("%Y") %></p>
+<div id="home-content">
+  <div class="container">
+    <div class="row">
+      <% @candidates.each do |candidate| %>
+        <div class="col-md-4">
+          <%= link_to candidate_path(candidate.id) do %>
+          <div class="card">
+            <%= image_tag candidate.picture, class: "card-user" %>
+           <div class="card-text">
+              <h2><%= candidate.name %></h2>
+              <p>@<%= candidate.screen_name %></p>
+              <p><%= candidate.tweets_count %> <b>tweets</b></p>
+              <p><%= candidate.followers_count %> <b>followers</b></p>
+              <p>Sur Twitter depuis <%= candidate.account_creation.strftime("%m") %>/<%= candidate.account_creation.strftime("%Y") %></p>
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

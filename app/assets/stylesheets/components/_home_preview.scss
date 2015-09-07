@@ -1,0 +1,17 @@
+.home-preview {
+  position: absolute;
+  background-color: rgba(40,60,70,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
+  z-index: 3;
+  &-candidate {
+    width: 5%;
+    border-radius: 5%;
+  }
+}

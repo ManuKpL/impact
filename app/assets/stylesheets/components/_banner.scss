@@ -1,14 +1,11 @@
 .banner {
   position: relative;
-  background-image: url('home_banner.jpg');
-  background-position: center;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   z-index: 0;
-  height: 80vh;
+  height: 100vh;
   h1 {
     position: relative;
     color: white;
@@ -24,7 +21,7 @@
     color: white;
     letter-spacing: 1px;
     font-family: Raleway;
-    font-weight: 100;
+    font-weight: 200;
     font-size: 35px;
     padding-top: 20px;
     margin: 0;
@@ -34,7 +31,8 @@
     font-size: 23px;
     line-height: 2;
     position: relative;
-    top: -27px;
+    padding-bottom: 20px;
+    margin: 0;
     letter-spacing: 1px;
   }
   &-shadow {
@@ -44,11 +42,6 @@
     left: 0;
     right: 0;
     background-color: rgba(40,60,70,0.7);
-    // background: -webkit-linear-gradient(-240deg, rgba(150,150,200,0.4) 20%, rgba(40,60,70,0.8) 80%); /* Chrome 10+, Saf5.1+ */
-    // background:    -moz-linear-gradient(-240deg, rgba(150,150,200,0.4) 20%, rgba(40,60,70,0.8) 80%); /* FF3.6+ */
-    // background:     -ms-linear-gradient(-240deg, rgba(150,150,200,0.4) 20%, rgba(40,60,70,0.8) 80%); /* IE10 */
-    // background:      -o-linear-gradient(-240deg, rgba(150,150,200,0.4) 20%, rgba(40,60,70,0.8) 80%); /* Opera 11.10+ */
-    // background:         linear-gradient(-240deg, rgba(150,150,200,0.4) 20%, rgba(40,60,70,0.8) 80%); /* W3C */
     z-index: 1;
   }
   &-content {
@@ -56,7 +49,8 @@
     left: 0;
     right: 0;
     margin: auto;
-    bottom: 10px;
+    padding-bottom: 20vh;
+    bottom: 0px;
     z-index: 2;
   }
   &-data {
@@ -68,7 +62,7 @@
     }
   }
   &-icon {
-    margin: 50px 0px;
+    margin-bottom: 30px;
   }
   .btn {
     padding: 12px 30px;

@@ -26,4 +26,9 @@
       </div>
     </div>
   </div>
+  <div class="home-preview">
+  <% @candidates.each do |candidate| %>
+    <%= image_tag candidate.picture, class: "home-preview-candidate" %>
+  <% end %>
+</div>
 </div>
