@@ -11,7 +11,22 @@
   height: 15%;
   z-index: 3;
   &-candidate {
+    position: relative;
     width: 5%;
+    height: 70%;
     border-radius: 5%;
+    background-size: cover;
+    background-position: center;
+    &-shadow {
+      position: absolute;
+      background-color: rgba(40,60,70,0.4);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
 }

@@ -27,8 +27,10 @@
     </div>
   </div>
   <div class="home-preview">
-  <% @candidates.each do |candidate| %>
-    <%= image_tag candidate.picture, class: "home-preview-candidate" %>
-  <% end %>
-</div>
+    <% @candidates.each do |candidate| %>
+      <div class="home-preview-candidate" style="background-image: url(<%= candidate.picture %>)">
+        <%= link_to "", "#", class: "home-preview-candidate-shadow" %>
+      </div>
+    <% end %>
+  </div>
 </div>
