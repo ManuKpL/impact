@@ -1,52 +1,64 @@
 .banner {
-  background-size: cover;
-/*  background-image: url('bg.png');*/
-  color: $blue;
-  padding-top: 5em;
   position: relative;
   z-index: 0;
-  font-family: Montserrat;
+  height: 100vh;
   h1 {
-    font-size: 23px;
-    line-height: 2;
     position: relative;
-    top: -27px;
+    color: white;
     letter-spacing: 1px;
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 60px;
+    margin-bottom: 5vh;
+    z-index: 2;
+  }
+  h2 {
+    position: relative;
+    color: white;
+    letter-spacing: 1px;
+    font-family: Raleway;
+    font-weight: 200;
+    font-size: 35px;
+    padding-top: 20px;
+    margin-bottom: 5vh;
+    z-index: 2;
   }
   p {
     font-size: 23px;
     line-height: 2;
     position: relative;
-    top: -27px;
+    padding-bottom: 20px;
+    margin: 0;
     letter-spacing: 1px;
   }
   &-shadow {
-
-  background: -webkit-linear-gradient(90deg, #ffb347 10%, #ffcc33 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #ffb347 10%, #ffcc33 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #ffb347 10%, #ffcc33 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #ffb347 10%, #ffcc33 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #ffb347 10%, #ffcc33 90%); /* W3C */
-
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: rgba(40,60,100,0.6);
     z-index: 1;
   }
   &-content {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-bottom: 20vh;
+    bottom: 0px;
     z-index: 2;
-    margin-bottom: 3em;
   }
   &-data {
-    position: relative;
+    color: white;
     z-index: 2;
     .text {
-      margin-top: 50px;
+      line-height: 20px;
       font-size: 19px;
     }
+  }
+  &-icon {
+    margin-bottom: 30px;
   }
   .btn {
     padding: 12px 30px;

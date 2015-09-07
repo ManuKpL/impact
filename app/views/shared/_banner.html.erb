@@ -1,28 +1,36 @@
 <div class="banner text-center">
   <div class="banner-shadow"></div>
   <div class="banner-content">
-    <h1>COMPRENDRE LA CAMPAGNE TWITTER DES CANDIDATS AUX REGIONALES 2015</h1>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-4">
-        <div class="banner-data">
-          <%= image_tag 'blue_pie.png', class:"icon" %>
-          <p class="text">Comprendre leur message</p>
+    <h1>DECOUVRIR ET COMPRENDRE<br>VOS CANDIDATS SUR TWITTER</h1>
+    <h2>REGIONALES 2015 - Île de France</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="banner-data">
+            <%= image_tag 'white_pie.png', height:"100", class:"banner-icon" %>
+            <p class="text hidden-xs">Comprendre leur message</p>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="banner-data">
-          <%= image_tag 'blue_network.png', class:"icon" %>
-          <p class="text" style="line-height: 50px">Comprendre leur communauté</p>
+        <div class="col-xs-4">
+          <div class="banner-data">
+            <%= image_tag 'white_network.png', height:"100", class:"banner-icon" %>
+            <p class="text hidden-xs">Comprendre leur communauté</p>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="banner-data">
-          <%= image_tag 'blue_bird.png', class:"icon"%>
-          <p class="text" style="line-height: 48px">Comprendre leur piou piou!</p>
+        <div class="col-xs-4">
+          <div class="banner-data">
+            <%= image_tag 'white_bird.png', height:"100", class:"banner-icon"%>
+            <p class="text hidden-xs">Comprendre leur piou piou</p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="home-preview">
+    <div class="floating">
+      <p>Voir tous les candidats</p>
+      <p><i class="fa fa-angle-down"></i></p>
+    </div>
+    <%= link_to "", "#candidates-list", class: "home-preview-link" %>
   </div>
 </div>

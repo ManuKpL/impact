@@ -1,0 +1,36 @@
+.home-preview {
+  background-color: rgba(40,60,70,0.3);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10vh;
+  z-index: 3;
+  p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-shadow: 1px 1px 1px rgb(60,60,60);
+    line-height: 1.5em;
+    font-weight: bolder;
+  }
+  &-link {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    z-index: 4;
+    &:hover {
+      background: -webkit-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* FF3.6+ */
+      background:     -ms-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* IE10 */
+      background:      -o-linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* Opera 11.10+ */
+      background:         linear-gradient(180deg, rgba(255,255,255,0.15) 5%, rgba(255,255,255,0.05) 95%); /* W3C */
+    }
+  }
+}
