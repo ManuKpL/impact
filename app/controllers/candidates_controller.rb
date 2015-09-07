@@ -11,21 +11,23 @@ class CandidatesController < ApplicationController
     results[index + 1].nil? ? @next_id = results.first : @next_id = results[index + 1]
     @previous_id = results[index - 1]
 
-    # most frequent words in candidates bios
+    # top words in candidates bios
     @topwords_bio = @candidate.topwords.where(data_type: "followers bios").first.words
 
-    # most frequent words in candidate tweets
-    @topwords_candidate_tweets = @candidate.topwords.where(data_type: "words").first.words
-    raise
+    # top mentions in candidate tweets
+    @top_candidate_mentions = @candidate.topwords.where(data_type: "mentions").first.words
 
-    # users most retweeted by candidate
+    # top mentions in candidate retweets
+    @top_rt_mentions = @candidate.topwords.where(data_type: "RT mentions").first.words
+
+    # top users retweeted by candidate
     @users_retweeted_by_candidate = @candidate.topwords.where(data_type: "candidate retweeted").first.words
 
-    # Hashtags in candidate tweets
+    # top hashtags in candidate tweets
     @hashtags_in_tweets = @candidate.topwords.where(data_type: "hashtags").first.words
 
     # Hashtags in candidate retweets
-    # @hashtags_in_retweets = @candidate.topwords.where(data_type: "RT hashtags").first.words
+    @hashtags_in_retweets = @candidate.topwords.where(data_type: "RT hashtags").first.words
 
 
 
