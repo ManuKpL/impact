@@ -48,20 +48,37 @@
           <ul class="list-unstyled text-left">
             <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
             <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
-
-            <!-- topwords -->
           </ul>
-
         </div>
       </div>
     </div>
 
-<!-- Metrics: Topwords, top users retweeted and top hashtags -->
-    <div class="row">
+<!-- INTERACTIONS -->
+<div class="row">
+  <h3>INTERACTIONS ROW</h3>
+  <!-- retweets reçus par les tweets du candidats -->
+  <div class="col-xs-12 col-md-2">
+    <p>Retweets reçus par les tweets du candidat</p>
+    <p>Ses tweets sont retweetés <%= @retweets.average %> fois en moyenne. </p>
+    <p><%= @retweets.percentage %>% de ses tweets sont retweetés.</p>
+  </div>
+
+  <!-- favoris reçus par les tweets du candidat -->
+  <div class="col-xs-12 col-md-2">
+    <p>Favoris reçus par les tweets du candidat</p>
+    <p>Ses tweets sont favs <%= @favoris.average %> fois en moyenne. </p>
+    <p><%= @favoris.percentage %>% de ses tweets sont favs.</p>
+  </div>
+
+</div>
+
+<!-- TOPWORDS -->
+  <div class="row">
+    <h3>Topwords ROW</h3>
 <!-- Topwords -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Topwords</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <%@topwords_bio.each do |topword| %>
             <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
           <% end %>
@@ -69,9 +86,9 @@
       </div>
 
 <!-- Top Users retweeted -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Top users retweeted</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <% @users_retweeted_by_candidate.each do |user| %>
             <li> @<%=user.content%> : <%=user.count%> fois</li>
           <% end%>
@@ -79,9 +96,9 @@
       </div>
 
 <!-- top hashtags in tweets -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Les hashtages les plus tweetés par le candidat:</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <% @hashtags_in_tweets.each do |hashtag| %>
             <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
           <% end%>
@@ -89,9 +106,9 @@
       </div>
 
 <!-- Top hashtags in retweets -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Les hashtags les plus retweetés par le candidat :</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <% @hashtags_in_retweets.each do |hashtag| %>
             <li> #<%=hashtag.content%>, <%=hashtag.count%> fois</li>
           <% end%>
@@ -100,9 +117,9 @@
 
 
 <!-- Top mentions by candidate -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Les comptes que le candidat mentionne dans ses tweets</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <%@top_candidate_mentions.each do |word| %>
             <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
           <% end %>
@@ -110,9 +127,9 @@
       </div>
 
 <!-- top mentions in candidate retweets -->
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-md-2">
         <p>Les comptes mentionnés dans les RT du candidat</p>
-        <ul class="list-unstyled metrics_list">
+        <ul class="list-unstyled metrics metrics-list">
           <%@top_rt_mentions.each do |word| %>
             <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
           <% end %>
