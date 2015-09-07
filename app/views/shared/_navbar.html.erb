@@ -5,17 +5,13 @@
       <h3>IMPACT</h3>
     <% end %>
 
-    <form action="" class="navbar-wagon-search">
+    <!-- <form action="" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="ex: Claude Bartolone...">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
       </button>
-    </form>
-
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contacts</a>
-    <hr>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">A propos</a>
-                  <hr>
+    </form> -->
+  <div class= "middle-links">
     <div class="navbar-wagon-item navbar-wagon-link">
       <div class="dropdown">
         <a href="" class="navbar-wagon-item navbar-wagon-link dropdown-toggle" data-toggle="dropdown">Candidats</a>
@@ -27,10 +23,22 @@
         </ul>
       </div>
     </div>
+    <hr>
+
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Contacts</a>
+    <hr>
+    <a href="" class="navbar-wagon-item navbar-wagon-link">A propos</a>
 
     <hr>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
+    <hr>
   </div>
+
+  <div class="social-link">
+    <%= link_to "https://www.facebook.com/", target: "_blank" do %><i class="navbar-wagon-item navbar-wagon-link fa fa-facebook"></i><% end %>
+    <%= link_to "https://twitter.com/", target: "_blank" do %><i class="navbar-wagon-item navbar-wagon-link fa fa-twitter"></i><% end %>
+  </div>
+
 </nav>
 
 <!--  -->
