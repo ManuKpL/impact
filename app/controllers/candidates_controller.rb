@@ -1,6 +1,15 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show]
 
+  def index
+    candidate = Candidate.find_by_name(candidate_search_params[:name])
+    if candidate.nil?
+      redirect_to root_path
+    else
+      redirect_to candidate_path(candidate.id)
+    end
+  end
+
   def show
     # navigation arrows
     results = []
@@ -47,6 +56,10 @@ class CandidatesController < ApplicationController
   # find candidate ID before each method
   def set_candidate
     @candidate = Candidate.find(params[:id])
+  end
+
+  def candidate_search_params
+    params.require(:search).permit(:name)
   end
 end
 
