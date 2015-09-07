@@ -113,4 +113,15 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+  .social-link{
+    float: right;
+  }
+  .middle-links{
+    display: flex;
+    margin: auto;
+
+    .navbar-wagon-item{
+      padding: 23px 10px 0;
+    }
+  }
 }
