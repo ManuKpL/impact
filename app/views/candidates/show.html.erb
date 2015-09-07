@@ -59,15 +59,43 @@
   <!-- retweets reçus par les tweets du candidats -->
   <div class="col-xs-12 col-md-2">
     <p>Retweets reçus par les tweets du candidat</p>
-    <p>Ses tweets sont retweetés <%= @retweets.average %> fois en moyenne. </p>
-    <p><%= @retweets.percentage %>% de ses tweets sont retweetés.</p>
+    <p>Ses tweets sont retweetés <%= @retweets_on_candidate.average %> fois en moyenne.</p>
+    <p><%= @retweets_on_candidate.percentage %>% de ses tweets sont retweetés.</p>
   </div>
 
   <!-- favoris reçus par les tweets du candidat -->
   <div class="col-xs-12 col-md-2">
     <p>Favoris reçus par les tweets du candidat</p>
-    <p>Ses tweets sont favs <%= @favoris.average %> fois en moyenne. </p>
-    <p><%= @favoris.percentage %>% de ses tweets sont favs.</p>
+    <p>Ses tweets sont favs <%= @favorites_on_candidate.average %> fois en moyenne.</p>
+    <p><%= @favorites_on_candidate.percentage %>% de ses tweets sont favs.</p>
+  </div>
+
+  <!-- candidate retweets -->
+  <div class="col-xs-12 col-md-2">
+    <p>Retweets publié par le candidat</p>
+    <p>Il a retweeté <%= @candidate_retweets.average %> fois.</p>
+    <p>Soit   <%= @candidate_retweets.percentage %>% de ses tweets.</p>
+  </div>
+
+  <!-- followers followers -->
+  <div class="col-xs-12 col-md-2">
+    <p>Followers des followers du candidat</p>
+    <p>En moyenne ses followers ont <%= @followers_followers.average %></p>
+    <p>percentage<%= @followers_followers.percentage %>%</p>
+  </div>
+
+  <!-- lists containing candidates followers -->
+  <div class="col-xs-12 col-md-2">
+    <p>Listes axuquelles les followers du candidat appartiennent</p>
+    <p>En moyenne ses followers appartiennent a <%= @lists_containing_followers.average %> listes.</p>
+    <p><%= @lists_containing_followers.percentage %>% de ses followers appartiennent a des listes.</p>
+  </div>
+
+  <!-- followers tweets -->
+  <div class="col-xs-12 col-md-2">
+    <p>Tweets des followers du candidat</p>
+    <p>En moyenne ses followers ont tweeté <%= @followers_tweets.average %> fois.</p>
+    <p>Soit <%= @followers_tweets.percentage %>% des tweets de <%= @candidate.name %></p>
   </div>
 
 </div>

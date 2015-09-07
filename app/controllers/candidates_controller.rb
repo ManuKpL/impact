@@ -27,9 +27,19 @@ class CandidatesController < ApplicationController
 
     # INTERACTIONS
     # retweets on candidate tweets
-    @retweets = @candidate.interactions.where(data_type: "retweets").first
+    @retweets_on_candidate = @candidate.interactions.where(data_type: "retweets").first
+    # favs on candidate tweets
+    @favorites_on_candidate = @candidate.interactions.where(data_type: "favorites").first
+    # candidate retweets
+    @candidate_retweets = @candidate.interactions.where(data_type: "candidate retweets").first
+    # followers of candidate's followers
+    @followers_followers = @candidate.interactions.where(data_type: "followers followers").first
+    # lists that contain the candidate followers
+    @lists_containing_followers = @candidate.interactions.where(data_type: "followers listed").first
+    # followers tweets
+    @followers_tweets = @candidate.interactions.where(data_type: "followers tweets").first
 
-    @favoris = @candidate.interactions.where(data_type: "favorites").first
+
 
   end
 
