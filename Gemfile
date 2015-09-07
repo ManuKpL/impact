@@ -14,6 +14,13 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# Form autocomplete
+gem 'rails3-jquery-autocomplete'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jqueryui'
+  gem 'rails-assets-ui-autocomplete'
+end
+
 gem 'twitter'
 
 group :development, :test do

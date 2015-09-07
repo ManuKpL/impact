@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :candidates, only: [:show]
+  resources :candidates, only: [:show, :index]
+  resources :pages, only: [] do
+    get :autocomplete_candidate_name, :on => :collection
+  end
   root to: 'pages#home'
 
 

@@ -5,6 +5,18 @@
     <h2>REGIONALES 2015 - Île de France</h2>
     <div class="container">
       <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
+          <div class="banner-form">
+              <%= f.autocomplete_field :name, autocomplete_candidate_name_pages_path, label: false, placeholder: "Cherchez un nom de candidat", class: "form-control" %>
+              <%= f.button :submit, "Chercher!", class: "btn btn-info" %>
+          </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
         <div class="col-xs-4">
           <div class="banner-data">
             <%= image_tag 'white_pie.png', height:"100", class:"banner-icon" %>
