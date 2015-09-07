@@ -1,11 +1,23 @@
+.candidate-nav{
+  font-size: 1em;
+}
+
 .profile{
   body{
     font: $base-font;
     font-weight: 200;
   }
 
+  .profile-picture{
+      margin-left: 50px;
+      height: 200px;
+      width: 200px;
+      border-radius: 8%;
+      padding: 10px;
+    }
+
   &-name {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 
     h3{
       font-family: $header-font;
@@ -19,29 +31,30 @@
   }
 
   &-info{
-    margin-left: 150px;
-    .lead{
-      padding: 5px;
-    }
+    padding: 10px 20px 0px 10px;
+    height: 22  0px;
+    text-align: left;
 
-    .profile-picture{
-      margin-left: 0px;
-      height: 200px;
-      width: 200px;
-      border-radius: 8%;
-      padding: 10px;
+    #screen-name{
+      font-family: $header-font;
+      // font-style: italic;
+
     }
   }
 
   &-metrics {
     margin-right: 0px;
     font-size: 20px;
-    padding: 90px 90px 0px 80px;
+    padding: 10px 90px 0px 80px;
     border-left: solid 1px $green;
-    height: 300px;
+    height: 220px;
     letter-spacing: 1px;
 
-    .metric-number{
+    .metric-odd{
+      font-family: Montserrat;
+      color: $red;
+    }
+    .metric-even{
       font-family: Montserrat;
       color: $blue;
     }
