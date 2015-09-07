@@ -1,9 +1,5 @@
 .banner {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   z-index: 0;
   height: 100vh;
   h1 {
@@ -24,7 +20,7 @@
     font-weight: 200;
     font-size: 35px;
     padding-top: 20px;
-    margin: 0;
+    margin-bottom: 5vh;
     z-index: 2;
   }
   p {
