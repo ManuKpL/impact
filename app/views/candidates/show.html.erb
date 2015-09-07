@@ -168,4 +168,66 @@
     <div class="padded"></div>
     </div>
   </div>
+  <svg class="chart">
+
+  <svg>
+
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<style>
+.chart rect {
+}
+
+.chart text {
+  fill: white;
+  font: 17px sans-serif;
+  text-anchor: end;
+  text-transform: capitalize;
+}
+</style>
+<script>
+
+
+var data = <%= @topwords_bio.to_json %>;
+var max = <%= @topwords_bio.map {|word| word[:count] }.max %>;
+var count = <%= @topwords_bio.count %>;
+
+var width = 500,
+    barHeight = 25;
+
+var x = d3.scale.linear().domain([0, max]).range([0, 500]);
+var colors = d3.scale.linear().domain([0, max]).range(["blue", "red"]);
+
+var chart = d3.select(".chart")
+    .attr("width", width)
+    .attr("height", count * (barHeight + 10));
+
+var bar = chart.selectAll("g")
+    .data(data)
+    .enter().append("g")
+    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+bar.append("rect")
+    .attr("height", barHeight)
+    .attr("y", function(d,i) {
+      return i * 10;
+    })
+    .attr("x", 0)
+    .attr("width", function(d) {
+      return x(d["count"]);
+    })
+    .attr("fill", function(d){ return colors(d["count"]); });
+
+bar.append("text")
+    .attr("x", function(d) { return x(d["count"]) - 5; })
+    .attr("y", function(d,i) {
+      return (i*10) + barHeight * 0.5;
+    })
+    .attr("text-anchor", "end")
+    .attr("dy", ".35em")
+    .text(function(d) { return d["content"]; });
+
+
+</script>
