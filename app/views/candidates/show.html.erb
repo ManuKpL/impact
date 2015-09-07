@@ -55,24 +55,40 @@
     </div>
 
     <div class="row">
+<!-- The metric -->
       <div class="col-xs-12 col-sm-4">
-        <!-- What is this metric? -->
-         <h5>Mots récurrents dans la bio de sa communauté: </h5>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <!-- The metric -->
-
-        <ul class="list-unstyled topwords_bio">
-
+        <p>Topwords</p>
+        <ul class="list-unstyled metrics_list">
+          <% if @candidate.screen_name == "claudebartolone" %>
             <%@topwords_bio.each do |topword| %>
               <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
             <% end %>
-          </ul>
+          <% end %>
+        </ul>
       </div>
+
+<!-- Top Users retweeted -->
       <div class="col-xs-12 col-sm-4">
-        <!-- what it could mean? -->
+        <p>Top users retweeted</p>
+        <ul class="list-unstyled metrics_list">
+          <% @users_retweeted_by_candidate.each do |user| %>
+            <li> @<%=user.content%> : <%=user.count%> fois</li>
+          <% end%>
+        </ul>
       </div>
+
+      <div class="col-xs-12 col-sm-4">
+        <p>Top hashtags</p>
+        <ul class="list-unstyled metrics_list">
+          <% @hashtags_in_candidate_tweets.each do |hashtag| %>
+            <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
+          <% end%>
+        </ul>
+      </div>
+
+
     </div>
+
     <div class="padded"></div>
     </div>
   </div>
