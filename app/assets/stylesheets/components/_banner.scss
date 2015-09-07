@@ -75,4 +75,35 @@
     letter-spacing: 1px;
     font-size: 16px;
   }
+  &-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 2em;
+    input {
+      height: 40px;
+      flex: 1 0 auto;
+      margin: 0 5px;
+    }
+    button {
+      height: 40px;
+    }
+  }
+}
+.ui-menu {
+  width: 20px;
+  li {
+    margin-left: -40px;
+    display: block;
+    width: 325px;
+    border-radius: 3px;
+    background-color: white;
+    border: 1px solid $blue;
+    margin-bottom: -1px;
+    padding: 10px;
+    &:hover {
+      background-color: rgb(200,200,200);
+    }
+  }
 }
