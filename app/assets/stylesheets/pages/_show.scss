@@ -6,6 +6,7 @@
   body{
     font: $base-font;
     font-weight: 200;
+    height: 300px;
   }
 
   .profile-picture{
@@ -32,7 +33,6 @@
 
   &-info{
     padding: 10px 20px 0px 10px;
-    height: 22  0px;
     text-align: left;
 
     #screen-name{
@@ -47,7 +47,6 @@
     font-size: 20px;
     padding: 10px 90px 0px 80px;
     border-left: solid 1px $green;
-    height: 220px;
     letter-spacing: 1px;
 
     .metric-odd{

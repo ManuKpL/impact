@@ -25,6 +25,7 @@
     <div class="row">
 
 <!-- PROFILE PICTURE -->
+
       <div class="col-xs-12 col-sm-4">
         <div class="profile profile-picture">
           <p><%= image_tag @candidate.picture, class: "profile-picture" %></p>
@@ -38,14 +39,38 @@
         </div>
       </div>
 
+
 <!-- display metrics on the right -->
       <div class="col-xs-12 col-sm-4">
         <div class="profile profile-metrics">
           <ul class="list-unstyled text-left">
             <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
             <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
+
+            <!-- topwords -->
           </ul>
+
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <!-- What is this metric? -->
+         <h5>Mots récurrents dans la bio de sa communauté: </h5>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- The metric -->
+
+        <ul class="list-unstyled topwords_bio">
+
+            <%@topwords_bio.each do |topword| %>
+              <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
+            <% end %>
+          </ul>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <!-- what it could mean? -->
       </div>
     </div>
     <div class="padded"></div>
