@@ -16,7 +16,7 @@ candidates_h = {
   emmacosse: 'EELV',
   wdesaintjust: 'Front national',
   yannwehrling: 'Mouvement démocrate',
-  dupontaignan: 'Debout la France'
+  dupontaignan: 'Debout la France',
   chantal_jouanno: 'UDI',
   n_arthaud: "Lutte Ouvrière",
   delaruejc: "Liste des Usagers",
