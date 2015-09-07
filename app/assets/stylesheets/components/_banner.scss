@@ -11,6 +11,11 @@
     font-size: 60px;
     margin-bottom: 5vh;
     z-index: 2;
+    text-shadow: 1px 1px 1px rgb(60,60,60);
+    span {
+      // color: rgb(242, 38, 19);
+      color: $yellow;
+    }
   }
   h2 {
     position: relative;
@@ -22,6 +27,7 @@
     padding-top: 20px;
     margin-bottom: 5vh;
     z-index: 2;
+    text-shadow: 0.5px 0.5px 0.5px rgb(60,60,60);
   }
   p {
     font-size: 23px;
@@ -30,6 +36,7 @@
     padding-bottom: 20px;
     margin: 0;
     letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgb(60,60,60);
   }
   &-shadow {
     position: absolute;
