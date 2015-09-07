@@ -1,5 +1,4 @@
 require './app/data/extract/candidate_retweeted'
-require './app/data/extract/find_top_retweeters'
 require './app/data/extract/find_top_words'
 require './app/data/extract/followers_list_infos'
 require './app/data/extract/tweets_list_infos'
