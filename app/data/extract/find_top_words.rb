@@ -21,7 +21,11 @@ class FindTopWords
     # user descriptions or tweets text
     results = []
     open_json.each do |element|
-      results << element['description'] ? element['description'] : element['text'] # either tweets or users
+      if element['description'].nil?
+        results << element['text']
+      else
+        results << element['description']
+      end
     end
     return results
   end

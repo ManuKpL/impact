@@ -1,4 +1,6 @@
+<!-- THIS IS THE CANDIDATE SHOW VIEW -->
 
+<!-- navigation arrows -->
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-6 col-md-4">
@@ -14,6 +16,7 @@
     </div>
   </div>
 
+<!-- name and party -->
   <div class="row">
     <div class="class profile">
       <div class="profile profile-name text-center">
@@ -21,17 +24,16 @@
         <h4><%= @candidate.party %></h4>
       </div>
 
-<!-- display profile info on the left -->
     <div class="row">
 
-<!-- PROFILE PICTURE -->
-
+<!-- profile picture-->
       <div class="col-xs-12 col-sm-4">
         <div class="profile profile-picture">
           <p><%= image_tag @candidate.picture, class: "profile-picture" %></p>
         </div>
       </div>
 
+<!-- profile infos -->
       <div class="col-xs-12 col-sm-4">
         <div class="profile profile-info">
           <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
@@ -40,7 +42,7 @@
       </div>
 
 
-<!-- display metrics on the right -->
+<!-- info metrics -->
       <div class="col-xs-12 col-sm-4">
         <div class="profile profile-metrics">
           <ul class="list-unstyled text-left">
@@ -54,15 +56,14 @@
       </div>
     </div>
 
+<!-- Metrics: Topwords, top users retweeted and top hashtags -->
     <div class="row">
-<!-- The metric -->
+<!-- Topwords -->
       <div class="col-xs-12 col-sm-4">
         <p>Topwords</p>
         <ul class="list-unstyled metrics_list">
-          <% if @candidate.screen_name == "claudebartolone" %>
-            <%@topwords_bio.each do |topword| %>
-              <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
-            <% end %>
+          <%@topwords_bio.each do |topword| %>
+            <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
           <% end %>
         </ul>
       </div>
@@ -77,6 +78,43 @@
         </ul>
       </div>
 
+<!-- top hashtags in tweets -->
+      <div class="col-xs-12 col-sm-4">
+        <p>Les hashtages les plus tweetés par le candidat:</p>
+        <ul class="list-unstyled metrics_list">
+          <% @hashtags_in_tweets.each do |hashtag| %>
+            <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
+          <% end%>
+        </ul>
+      </div>
+    </div>
+
+<!-- OTHER METRICS -->
+    <div class="row">
+
+<!-- Top hashtags in retweets -->
+    <% if false %>
+      <div class="col-xs-12 col-sm-4">
+        <p>Les hashtags les plus retweetés par le candidat :</p>
+        <ul class="list-unstyled metrics_list">
+          <% @hashtags_in_retweets.each do |hashtag| %>
+            <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
+          <% end%>
+        </ul>
+      </div>
+    <% end %>
+<!-- Top words in candidate tweets -->
+      <div class="col-xs-12 col-sm-4">
+        <p>Les mots que le candidat tweete le plus :</p>
+
+        <ul class="list-unstyled metrics_list">
+          <%@topwords_candidate_tweets.each do |word| %>
+            <li><%=word.content%> <span class="metric-even"><%=word.count%></span> </li>
+          <% end %>
+        </ul>
+      </div>
+
+<% if false %>
       <div class="col-xs-12 col-sm-4">
         <p>Top hashtags</p>
         <ul class="list-unstyled metrics_list">
@@ -85,9 +123,8 @@
           <% end%>
         </ul>
       </div>
-
-
     </div>
+  <% end %>
 
     <div class="padded"></div>
     </div>
