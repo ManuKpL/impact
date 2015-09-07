@@ -1,23 +1,21 @@
 <div id="home-body"></div>
 <%= render 'shared/banner' %>
 <div id="home-content">
-  <div class="container">
+  <div class="container text-center">
     <div class="padded" id="candidates-list"></div>
     <div class="row">
       <% @candidates.each do |candidate| %>
-        <div class="col-md-4">
-          <%= link_to candidate_path(candidate.id) do %>
-          <div class="card">
-            <%= image_tag candidate.picture, class: "card-user" %>
-           <div class="card-text">
-              <h2><%= candidate.name %></h2>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="candidate-card" style="background-image: url(<%= candidate.picture %>)">
+            <%= link_to candidate_path(candidate.id), class: "candidate-card-shadow" do %>
+              <h4><%= candidate.name %></h4>
               <p>@<%= candidate.screen_name %></p>
               <p><%= candidate.tweets_count %> <b>tweets</b></p>
               <p><%= candidate.followers_count %> <b>followers</b></p>
-              <p>Sur Twitter depuis <%= candidate.account_creation.strftime("%m") %>/<%= candidate.account_creation.strftime("%Y") %></p>
-            </div>
+              <p>Depuis <%= candidate.account_creation.strftime("%m/%Y") %></p>
+            <% end %>
+            <!-- <%= image_tag candidate.picture, class: "candidate-card-image" %> -->
           </div>
-          <% end %>
         </div>
       <% end %>
     </div>

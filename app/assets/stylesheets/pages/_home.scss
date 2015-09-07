@@ -4,13 +4,13 @@
  * ------------------------------------- */
 #home-body {
   background-image: url('home_banner.jpg');
-  background-position: center;
+  background-position: left;
   background-size: cover;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: -200px;
   z-index: -1;
 }
 
