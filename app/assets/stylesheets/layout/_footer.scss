@@ -11,12 +11,16 @@
 
   .title{
     font-family: $header-font;
-    font-size: 20px;
+    font-size: 25px;
     color: $red
   }
 
   .info{
-    font-size: $small-height;
+    font-size: 18px;
+  }
+
+  .fa-heart{
+    color: $red;
   }
 
 
