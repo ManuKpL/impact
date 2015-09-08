@@ -1,39 +1,26 @@
 .footer {
   position: relative;
-  left:0px;
-  bottom:0px;
-  height: 200px;
+  bottom:0;
   width: 100%;
-  padding: 30px;
-  background-color: $blue;
-  color: $gray-lighter;
-  display: flex;
-  align-items: center;
-  z-index: 5;
-  border-top: 1px solid rgba(220,220,220,0.4);
-  i {
-    font-size: 25px;
-    color: $red;
+  padding: 90px 15px;
+  background-color: #35454E;
+  color: $white;
+  z-index: 2;
+  font: $base-font;
+  font-weight: thinner;
+
+  .title{
+    font-family: $header-font;
+    font-size: 20px;
+    color: $red
   }
-  li {
-    margin-right: 3%;
+
+  .info{
+    font-size: $small-height;
   }
-  a {
-    color: rgb(220,220,220);
-    &:hover {
-      color: $yellow;
-    }
-  }
-  p {
-    margin: 0px;
-    color: $gray-lighter;
-    font-family: $base-font;
-    font-weight: thinner;
-    font-size: $base-height;
-  }
-  .list-inline {
-    margin-bottom: 0px;
-    z-index: 6;
-  }
+
+
 }
+
+
 
