@@ -1,5 +1,6 @@
 class Twitterdatum < ActiveRecord::Base
   belongs_to :candidate
+  validates_uniqueness_of :id_twitter
 
   def decode_data
     ActiveSupport::JSON.decode(ActiveSupport::Gzip.decompress(self.data))

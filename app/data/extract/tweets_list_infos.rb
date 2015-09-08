@@ -1,5 +1,3 @@
-require 'json'
-
 class ExtractTweetsListInfos
   def initialize(attributes)
     # name of the data_type attribute in the db table
@@ -11,7 +9,6 @@ class ExtractTweetsListInfos
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
     # find the candidate whose tweets will be analyzed and the tweets file
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
-    @file_path = "app/data/json/#{attributes[:screen_name]}_tweets.json"
     # runs the method attributing instance values for each case of analysis
     attributes_selector(attributes)
   end
@@ -58,22 +55,25 @@ class ExtractTweetsListInfos
     end
   end
 
-  def open_json
-    JSON.parse(File.open(@file_path).read).first.last
+  def extract_data
+    result = []
+    Twitterdatum.where(data_type: 'tweet').where(candidate_id: @candidate.id).each do |tweet|
+      result << tweet.decode_data
+    end
   end
 
   def average_number
     sum = 0
-    open_json.each do |tweet|
+    extract_data.each do |tweet|
       sum += tweet[@key_name] if tweet[@key_name]
     end
-    return sum / open_json.length
+    return sum / extract_data.length
   end
 
   def sorted_by_occurence
     # puts each hashtag or mention in an array
     result = []
-    open_json.each do |tweet|
+    extract_data.each do |tweet|
       datas = tweet['entities'][@mention_name]
       # discriminate between tweets or retweets (performed by the candidate)
       if datas
@@ -97,12 +97,12 @@ class ExtractTweetsListInfos
 
   def part_of_tweets
     # select all tweets that have at least the @at_least of retweets or favorites
-    result = open_json.select do |tweet|
+    result = extract_data.select do |tweet|
       tweet[@key_name] >= @at_least
     end
 
     # calculate the percentage
-    return ((result.length.to_f / open_json.length) * 100).round
+    return ((result.length.to_f / extract_data.length) * 100).round
   end
 
   def create_words_instances

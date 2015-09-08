@@ -1,12 +1,9 @@
-require 'json'
-
 class ExtractCandidateRetweeted
   def initialize(attributes)
     @data_type = attributes[:data_type]
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
     @content_type = attributes[:content_type] ? attributes[:content_type] : 'screen_name'
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
-    @file_path = "app/data/json/#{attributes[:screen_name]}_tweets.json"
   end
 
   def run
@@ -18,20 +15,23 @@ class ExtractCandidateRetweeted
     end
   end
 
-  def open_json
-    JSON.parse(File.open(@file_path).read).first.last
+  def extract_data
+    result = []
+    Twitterdatum.where(data_type: 'tweet').where(candidate_id: @candidate.id).each do |tweet|
+      result << tweet.decode_data
+    end
   end
 
   def select_candidate_retweeted
     result = []
-    open_json.each do |tweet|
+    extract_data.each do |tweet|
       result << tweet['retweeted_status']['user'] if tweet['retweeted_status']
     end
     return result
   end
 
   def calculate_percentage
-    return ((select_candidate_retweeted.length.to_f / open_json.length) * 100).round
+    return ((select_candidate_retweeted.length.to_f / extract_data.length) * 100).round
   end
 
   def calculate_top

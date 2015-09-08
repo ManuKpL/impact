@@ -1,7 +1,7 @@
 namespace :candidates do
 
   desc 'requests Twitter API for candidates infos & seeds DB'
-  task :seed do
+  task :seed => :environment do
 
     Candidate.destroy_all
 
@@ -46,7 +46,7 @@ namespace :candidates do
   end
 
   desc 'requests Twitter API for candidates infos & updates DB'
-  task :update do
+  task :update => :environment do
 
     candidates_h = {
       vpecresse: 'Les Républicains',
