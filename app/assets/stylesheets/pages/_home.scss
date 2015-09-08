@@ -15,6 +15,7 @@
 }
 
 .home-content{
+  position: relative;
   padding: 6em 0;
   &-white {
     background-color: rgb(250, 250, 250);
@@ -27,6 +28,35 @@
       font-weight: 100;
       color: white;
       margin-bottom: 2em;
+    }
+  }
+}
+
+.link-back {
+  position: absolute;
+  top: 10vh;
+  right: 5vh;
+  z-index: 4;
+  font-size: 40px;
+  p {
+    font-size: 14px;
+  }
+  &-white {
+    a {
+      color: white;
+      &:hover {
+        text-decoration: none;
+        color: rgb(60,60,60);
+      }
+    }
+  }
+  &-dark {
+    a {
+      color: rgb(60,60,60);
+      &:hover {
+        text-decoration: none;
+        color: lighten($blue, 30%);
+      }
     }
   }
 }

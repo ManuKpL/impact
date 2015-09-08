@@ -1,6 +1,12 @@
 <div id="home-body"></div>
 <%= render 'shared/banner' %>
 <div class="home-content home-content-white" id="liste-candidats">
+  <div class="link-back link-back-dark text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
+    <% end %>
+  </div>
   <div class="container text-center">
     <!-- <div class="padded" id="candidates-list"></div> -->
     <div class="row">
@@ -23,6 +29,12 @@
   </div>
 </div>
 <div class="home-content home-content-blue" id="a-propos">
+  <div class="link-back link-back-white text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
+    <% end %>
+  </div>
   <div class="container text-center">
     <h1>Nos engagements</h1>
     <div class="row">
