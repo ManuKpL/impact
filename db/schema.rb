@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902133538) do
+ActiveRecord::Schema.define(version: 20150908094014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20150902133538) do
 
   add_index "topwords", ["candidate_id"], name: "index_topwords_on_candidate_id", using: :btree
 
+  create_table "twitterdata", force: :cascade do |t|
+    t.integer  "candidate_id"
+    t.string   "id_twitter"
+    t.string   "data_type"
+    t.binary   "data"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "twitterdata", ["candidate_id"], name: "index_twitterdata_on_candidate_id", using: :btree
+
   create_table "words", force: :cascade do |t|
     t.integer  "topword_id"
     t.string   "content"
@@ -63,5 +74,6 @@ ActiveRecord::Schema.define(version: 20150902133538) do
 
   add_foreign_key "interactions", "candidates"
   add_foreign_key "topwords", "candidates"
+  add_foreign_key "twitterdata", "candidates"
   add_foreign_key "words", "topwords"
 end
