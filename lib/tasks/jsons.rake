@@ -3,7 +3,7 @@ namespace :jsons do
   desc 'create JSON with followers instances'
   task :create => :environment do
 
-    candidates = %w(vpecresse dupontaignan)
+    candidates = %w(dupontaignan)
     candidates.each_with_index do |screen_name, index|
       start = Time.now
       @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
@@ -11,12 +11,12 @@ namespace :jsons do
       ids = []
       until cursor == 0
         extract = $twitter.get("https://api.twitter.com/1.1/followers/ids.json?cursor=#{cursor}&screen_name=#{screen_name}&count=5000")
-        extract.attrs[:ids].each do |id|
+        extract[:ids].each do |id|
           ids << id
         end
+        cursor = extract[:next_cursor]
+        puts "done"
       end
-      cursor = extract.attrs[:next_cursor]
-      puts "done"
 
       start = 0
       stop = start + 99
