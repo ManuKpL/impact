@@ -1,6 +1,7 @@
 .candidate-card{
   position: relative;
   background-size: cover;
+  background-color: rgba(20,20,20,0.5);
   margin: 0 auto 3em auto;
   height: 30vh;
   width: 30vh;
@@ -9,6 +10,10 @@
   box-shadow: 1px 1px 1px rgb(220,220,220);
   h4 {
     padding-top: 1em;
+  }
+  &-bg{
+    background-color: rgba(20,20,20,0.5);
+    z-index: 1;
   }
   &-shadow{
     position: absolute;

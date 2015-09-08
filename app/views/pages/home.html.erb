@@ -1,4 +1,4 @@
-<div id="home-body"></div>
+<!-- <div id="home-body"></div> -->
 <%= render 'shared/banner' %>
 <div class="home-content home-content-white" id="liste-candidats">
   <div class="link-back link-back-dark text-center">
@@ -12,7 +12,7 @@
     <div class="row">
       <% @candidates.each do |candidate| %>
         <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="candidate-card" style="background-image: url(<%= candidate.picture %>)">
+          <div class="candidate-card candidate-card-bg pulsed" style="background-image: url(<%= candidate.picture %>)">
             <%= link_to candidate_path(candidate.id), class: "candidate-card-shadow" do %>
               <h4><%= candidate.name %></h4>
               <h5>@<%= candidate.screen_name %></h5>
