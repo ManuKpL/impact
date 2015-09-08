@@ -127,7 +127,7 @@ screen_names.each do |candidate_screen_name|
   FindTopWords.new({
     screen_name: candidate_screen_name,
     data_type: 'words',
-    content_type: 'tweets',
+    content_type: 'tweet',
     top_size: 20
   }).run
 
@@ -153,7 +153,7 @@ screen_names.each do |candidate_screen_name|
   FindTopWords.new({
     screen_name: candidate_screen_name,
     data_type: 'followers bios',
-    content_type: 'followers',
+    content_type: 'follower',
     top_size: 20
   }).run
 
