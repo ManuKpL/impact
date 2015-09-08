@@ -1,7 +1,7 @@
 namespace :followers do
 
   desc 'open JSON and create followers instances'
-  task :seed do
+  task :seed => :environment do
 
     def open_json
       JSON.parse(File.open(@file_path).read).first.last

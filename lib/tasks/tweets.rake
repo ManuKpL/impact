@@ -1,7 +1,7 @@
 namespace :tweets do
 
-  desc 'open JSON and create followers instances'
-  task :seed do
+  desc 'open JSON and create tweets instances'
+  task :seed => :environment do
 
     def open_json
       JSON.parse(File.open(@file_path).read).first.last
