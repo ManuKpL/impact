@@ -1,7 +1,7 @@
 <!-- THIS IS THE CANDIDATE SHOW VIEW -->
 
 <!-- navigation arrows -->
-<div class="container-fluid">
+<div class="container-fluid profile">
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="candidate-nav text-center">
@@ -16,218 +16,179 @@
     </div>
   </div>
 
-<!-- name and party -->
+  <!-- name and party -->
   <div class="row">
     <div class="class profile">
       <div class="profile profile-name text-center">
         <h3><%= @candidate.name %></h3>
         <h4><%= @candidate.party %></h4>
       </div>
+    </div>
+  </div>
 
-    <div class="row">
+  <div class="row">
+    <!-- profile picture-->
+    <div class="col-xs-12 col-sm-2 col-sm-offset-1">
+      <%= image_tag @candidate.picture, class: "img-responsive img-rounded" %>
+    </div>
 
-<!-- profile picture-->
-      <div class="col-xs-12 col-sm-4">
-        <div class="profile profile-picture">
-          <p><%= image_tag @candidate.picture, class: "profile-picture" %></p>
-        </div>
-      </div>
-
-<!-- profile infos -->
-      <div class="col-xs-12 col-sm-4">
-        <div class="profile profile-info">
-          <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
-          <p><%= @candidate.description %></p>
-        </div>
-      </div>
-
-
-<!-- info metrics -->
-      <div class="col-xs-12 col-sm-4">
-        <div class="profile profile-metrics">
-          <ul class="list-unstyled text-left">
-            <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
-            <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
-          </ul>
-        </div>
+    <!-- profile infos -->
+    <div class="col-xs-12 col-sm-5">
+      <div class="profile profile-info">
+        <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
+        <p><%= @candidate.description %></p>
       </div>
     </div>
 
-<!-- INTERACTIONS -->
-<div class="row">
-  <h3>INTERACTIONS ROW</h3>
-  <!-- retweets reçus par les tweets du candidats -->
-  <div class="col-xs-12 col-md-2">
-    <p>Retweets reçus par les tweets du candidat</p>
-    <p>Ses tweets sont retweetés <%= @retweets_on_candidate.average %> fois en moyenne.</p>
-    <p><%= @retweets_on_candidate.percentage %>% de ses tweets sont retweetés.</p>
+    <!-- info metrics -->
+    <div class="col-xs-12 col-sm-3">
+      <div class="profile profile-metrics">
+        <ul class="list-unstyled text-left">
+          <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
+          <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
-  <!-- favoris reçus par les tweets du candidat -->
-  <div class="col-xs-12 col-md-2">
-    <p>Favoris reçus par les tweets du candidat</p>
-    <p>Ses tweets sont favs <%= @favorites_on_candidate.average %> fois en moyenne.</p>
-    <p><%= @favorites_on_candidate.percentage %>% de ses tweets sont favs.</p>
-  </div>
+  <!-- INTERACTIONS -->
+  <div class="row">
+    <div class="cols-xs-12 col-sm-5 col-sm-offset-1">
+      <h2>Tweets du candidat</h2>
+      <ul>
+        <li><%= @retweets_on_candidate.average %> retweets en moyenne <span class="label label-default"><strong><%= @retweets_on_candidate.percentage %>%</strong> des tweets</span></li>
+        <li><%= @favorites_on_candidate.average %> favoris en moyenne <span class="label label-default"><%= @favorites_on_candidate.percentage %>% des tweets</span></li>
+        <li><%= @candidate_retweets.average %> retweets <span class="label label-default"><%= @candidate_retweets.percentage %>%  des tweets</span></li>
+      </ul>
 
-  <!-- candidate retweets -->
-  <div class="col-xs-12 col-md-2">
-    <p>Retweets publié par le candidat</p>
-    <p>Il a retweeté <%= @candidate_retweets.average %> fois.</p>
-    <p>Soit   <%= @candidate_retweets.percentage %>% de ses tweets.</p>
-  </div>
+      <h2>Followers du candidat</h2>
+      <ul>
+        <li><%= @followers_followers.average %> followers en moyenne</li>
+        <li><%= @followers_followers.percentage %>% des followers ayant plus de X followers</li>
+        <li><%= @lists_containing_followers.average %> listes</li>
+        <li><%= @lists_containing_followers.percentage %>% des followers sont dans des listes</li>
+        <li><%= @followers_tweets.average %> tweets par follower.</li>
+        <li><%= @followers_tweets.percentage %>% ont tweeté plus de 2000 fois.</li>
+      </ul>
+    </div>
 
-  <!-- followers followers -->
-  <div class="col-xs-12 col-md-2">
-    <p>Followers des followers du candidat</p>
-    <p>En moyenne ses followers ont <%= @followers_followers.average %></p>
-    <p>percentage<%= @followers_followers.percentage %>%</p>
-  </div>
+    <div class="col-sm-5">
 
-  <!-- lists containing candidates followers -->
-  <div class="col-xs-12 col-md-2">
-    <p>Listes axuquelles les followers du candidat appartiennent</p>
-    <p>En moyenne ses followers appartiennent a <%= @lists_containing_followers.average %> listes.</p>
-    <p><%= @lists_containing_followers.percentage %>% de ses followers appartiennent a des listes.</p>
+    </div>
   </div>
-
-  <!-- followers tweets -->
-  <div class="col-xs-12 col-md-2">
-    <p>Tweets des followers du candidat</p>
-    <p>En moyenne ses followers ont tweeté <%= @followers_tweets.average %> fois.</p>
-    <p><%= @followers_tweets.percentage %>% ont tweeté plus de 2000 fois.</p>
-  </div>
-
-</div>
 
 <!-- TOPWORDS -->
   <div class="row">
     <h3>Topwords ROW</h3>
-<!-- Topwords -->
-      <div class="col-xs-12 col-md-2">
-        <p>Topwords</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <%@topwords_bio.each do |topword| %>
-            <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
-          <% end %>
-        </ul>
-      </div>
+    <!-- Topwords -->
+    <div class="col-xs-12 col-md-2">
+      <p>Topwords</p>
+      <ul class="list-unstyled metrics metrics-list">
+        <%@topwords_bio.each do |topword| %>
+          <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
+        <% end %>
+      </ul>
+    </div>
 
-<!-- Top Users retweeted -->
-      <div class="col-xs-12 col-md-2">
-        <p>Top users retweeted</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <% @users_retweeted_by_candidate.each do |user| %>
-            <li> @<%=user.content%> : <%=user.count%> fois</li>
-          <% end%>
-        </ul>
-      </div>
+    <!-- Top Users retweeted -->
+    <div class="col-xs-12 col-md-2">
+      <p>Top users retweeted</p>
+      <ul class="list-unstyled metrics metrics-list">
+        <% @users_retweeted_by_candidate.each do |user| %>
+          <li> @<%=user.content%> : <%=user.count%> fois</li>
+        <% end%>
+      </ul>
+    </div>
 
-<!-- top hashtags in tweets -->
-      <div class="col-xs-12 col-md-2">
-        <p>Les hashtages les plus tweetés par le candidat:</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <% @hashtags_in_tweets.each do |hashtag| %>
-            <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
-          <% end%>
-        </ul>
-      </div>
+    <!-- top hashtags in tweets -->
+    <div class="col-xs-12 col-md-2">
+      <p>Les hashtages les plus tweetés par le candidat:</p>
+      <ul class="list-unstyled metrics metrics-list">
+        <% @hashtags_in_tweets.each do |hashtag| %>
+          <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
+        <% end%>
+      </ul>
+    </div>
 
-<!-- Top hashtags in retweets -->
-      <div class="col-xs-12 col-md-2">
+    <!-- Top hashtags in retweets -->
+    <div class="col-xs-12 col-md-2">
         <p>Les hashtags les plus retweetés par le candidat :</p>
         <ul class="list-unstyled metrics metrics-list">
           <% @hashtags_in_retweets.each do |hashtag| %>
             <li> #<%=hashtag.content%>, <%=hashtag.count%> fois</li>
           <% end%>
         </ul>
-      </div>
-
-
-<!-- Top mentions by candidate -->
-      <div class="col-xs-12 col-md-2">
-        <p>Les comptes que le candidat mentionne dans ses tweets</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <%@top_candidate_mentions.each do |word| %>
-            <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
-          <% end %>
-        </ul>
-      </div>
-
-<!-- top mentions in candidate retweets -->
-      <div class="col-xs-12 col-md-2">
-        <p>Les comptes mentionnés dans les RT du candidat</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <%@top_rt_mentions.each do |word| %>
-            <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
-          <% end %>
-        </ul>
-      </div>
     </div>
 
-    <div class="padded"></div>
+
+    <!-- Top mentions by candidate -->
+    <div class="col-xs-12 col-md-2">
+      <p>Les comptes que le candidat mentionne dans ses tweets</p>
+      <ul class="list-unstyled metrics metrics-list">
+        <%@top_candidate_mentions.each do |word| %>
+          <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- top mentions in candidate retweets -->
+    <div class="col-xs-12 col-md-2">
+      <p>Les comptes mentionnés dans les RT du candidat</p>
+      <ul class="list-unstyled metrics metrics-list">
+        <%@top_rt_mentions.each do |word| %>
+          <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
+        <% end %>
+      </ul>
     </div>
   </div>
-  <svg class="chart">
-
-  <svg>
-
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<style>
-.chart rect {
-}
-
-.chart text {
-  fill: white;
-  font: 17px sans-serif;
-  text-anchor: end;
-  text-transform: capitalize;
-}
-</style>
-<script>
+<svg class="chart">
+<svg>
 
 
-var data = <%= @topwords_bio.to_json %>;
-var max = <%= @topwords_bio.map {|word| word[:count] }.max %>;
-var count = <%= @topwords_bio.count %>;
+<% content_for(:after_js) %>
+  <script>
+    var data = <%= @topwords_bio.to_json %>;
+    var max = <%= @topwords_bio.map {|word| word[:count] }.max %>;
+    var count = <%= @topwords_bio.count %>;
 
-var width = 500,
-    barHeight = 25;
+    var width = 500,
+        barHeight = 25;
 
-var x = d3.scale.linear().domain([0, max]).range([0, 500]);
-var colors = d3.scale.linear().domain([0, max]).range(["blue", "red"]);
+    var x = d3.scale.linear().domain([0, max]).range([0, 500]);
+    var colors = d3.scale.linear().domain([0, max]).range(["blue", "red"]);
 
-var chart = d3.select(".chart")
-    .attr("width", width)
-    .attr("height", count * (barHeight + 10));
+    var chart = d3.select(".chart")
+        .attr("width", width)
+        .attr("height", count * (barHeight + 10));
 
-var bar = chart.selectAll("g")
-    .data(data)
-    .enter().append("g")
-    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+    var bar = chart.selectAll("g")
+        .data(data)
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
-bar.append("rect")
-    .attr("height", barHeight)
-    .attr("y", function(d,i) {
-      return i * 10;
-    })
-    .attr("x", 0)
-    .attr("width", function(d) {
-      return x(d["count"]);
-    })
-    .attr("fill", function(d){ return colors(d["count"]); });
+    bar.append("rect")
+        .attr("height", barHeight)
+        .attr("y", function(d,i) {
+          return i * 10;
+        })
+        .attr("x", 0)
+        .attr("width", function(d) {
+          return x(d["count"]);
+        })
+        .attr("fill", function(d){ return colors(d["count"]); });
 
-bar.append("text")
-    .attr("x", function(d) { return x(d["count"]) - 5; })
-    .attr("y", function(d,i) {
-      return (i*10) + barHeight * 0.5;
-    })
-    .attr("text-anchor", "end")
-    .attr("dy", ".35em")
-    .text(function(d) { return d["content"]; });
+    bar.append("text")
+        .attr("x", function(d) { return x(d["count"]) - 5; })
+        .attr("y", function(d,i) {
+          return (i*10) + barHeight * 0.5;
+        })
+        .attr("text-anchor", "end")
+        .attr("dy", ".35em")
+        .text(function(d) { return d["content"]; });
 
+  </script>
+<% end %>
 
-</script>
