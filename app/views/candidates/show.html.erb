@@ -51,117 +51,108 @@
     </div>
   </div>
 
-  <!-- INTERACTIONS -->
+  <!-- SON COMPTE -->
   <div class="row">
-    <div class="cols-xs-12 col-sm-5 col-sm-offset-1">
-      <h2>Tweets du candidat</h2>
-      <ul>
-        <li><%= @retweets_on_candidate.average %> retweets en moyenne <span class="label label-default"><strong><%= @retweets_on_candidate.percentage %>%</strong> des tweets</span></li>
-        <li><%= @favorites_on_candidate.average %> favoris en moyenne <span class="label label-default"><%= @favorites_on_candidate.percentage %>% des tweets</span></li>
-        <li><%= @candidate_retweets.average %> retweets <span class="label label-default"><%= @candidate_retweets.percentage %>%  des tweets</span></li>
-      </ul>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="card-stats">
+        <div class="row">
+          <div class="cols-xs-12 col-sm-6">
+            <h2>Influence de ses tweets</h2>
+            <ul>
+              <li><%= @retweets_on_candidate.average %> retweets/tweet <span class="label label-default"><strong><%= @retweets_on_candidate.percentage %>%</strong> des tweets retweetés</span></li>
+              <li><%= @favorites_on_candidate.average %> favoris en moyenne <span class="label label-default"><%= @favorites_on_candidate.percentage %>% des tweets sont mis en favoris</span></li>
+            </ul>
+          </div>
 
-      <h2>Followers du candidat</h2>
-      <ul>
-        <li><%= @followers_followers.average %> followers en moyenne</li>
-        <li><%= @followers_followers.percentage %>% des followers ayant plus de X followers</li>
-        <li><%= @lists_containing_followers.average %> listes</li>
-        <li><%= @lists_containing_followers.percentage %>% des followers sont dans des listes</li>
-        <li><%= @followers_tweets.average %> tweets par follower.</li>
-        <li><%= @followers_tweets.percentage %>% ont tweeté plus de 2000 fois.</li>
-      </ul>
-    </div>
-
-    <div class="col-sm-5">
-
+          <div class="col-sm-6">
+            <h2 class="pull-right">TOP WORDS Hashtags (nombre d'occurences)</h2>
+            <svg class="chart" id="tweet-hashtags">
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-<!-- TOPWORDS -->
+<!-- SES INTERACTIONS -->
   <div class="row">
-    <h3>Topwords ROW</h3>
-    <!-- Topwords -->
-    <div class="col-xs-12 col-md-2">
-      <p>Topwords</p>
-      <ul class="list-unstyled metrics metrics-list">
-        <%@topwords_bio.each do |topword| %>
-          <li><%=topword.content%> <span class="metric-even"><%=topword.count%></span> </li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="card-stats">
+        <div class="row">
+          <div class="cols-xs-12 col-sm-6">
+            <h2>Ses interactions</h2>
+            <ul>
+              <li><%= @candidate_retweets.average %> retweets <span class="label label-default"><%= @candidate_retweets.percentage %>% de ses tweets sont des retweets</span></li>
+              <li>User le plus retweeté par le candidat : @<%= @users_retweeted_by_candidate.first[:content] %></li>
+            </ul>
+          </div>
 
-    <!-- Top Users retweeted -->
-    <div class="col-xs-12 col-md-2">
-      <p>Top users retweeted</p>
-      <ul class="list-unstyled metrics metrics-list">
-        <% @users_retweeted_by_candidate.each do |user| %>
-          <li> @<%=user.content%> : <%=user.count%> fois</li>
-        <% end%>
-      </ul>
-    </div>
-
-    <!-- top hashtags in tweets -->
-    <div class="col-xs-12 col-md-2">
-      <p>Les hashtages les plus tweetés par le candidat:</p>
-      <ul class="list-unstyled metrics metrics-list">
-        <% @hashtags_in_tweets.each do |hashtag| %>
-          <li> #<%=hashtag.content%> : <%=hashtag.count%> fois</li>
-        <% end%>
-      </ul>
-    </div>
-
-    <!-- Top hashtags in retweets -->
-    <div class="col-xs-12 col-md-2">
-        <p>Les hashtags les plus retweetés par le candidat :</p>
-        <ul class="list-unstyled metrics metrics-list">
-          <% @hashtags_in_retweets.each do |hashtag| %>
-            <li> #<%=hashtag.content%>, <%=hashtag.count%> fois</li>
-          <% end%>
-        </ul>
-    </div>
-
-
-    <!-- Top mentions by candidate -->
-    <div class="col-xs-12 col-md-2">
-      <p>Les comptes que le candidat mentionne dans ses tweets</p>
-      <ul class="list-unstyled metrics metrics-list">
-        <%@top_candidate_mentions.each do |word| %>
-          <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <!-- top mentions in candidate retweets -->
-    <div class="col-xs-12 col-md-2">
-      <p>Les comptes mentionnés dans les RT du candidat</p>
-      <ul class="list-unstyled metrics metrics-list">
-        <%@top_rt_mentions.each do |word| %>
-          <li>@<%=word.content%>, <span class="metric-even"><%=word.count%>fois</span> </li>
-        <% end %>
-      </ul>
+          <div class="col-sm-6">
+            <h2 class="pull-right">TOP WORDS Mentions (nombre d'occurences)</h2>
+            <svg class="chart" id="tweet-mentions">
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 
-<svg class="chart">
-<svg>
+ <!--  Sa communauté -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="card-stats">
+        <div class="row">
+          <div class="cols-xs-12 col-sm-6">
+            <h2>Sa communauté</h2>
+            <h3>Activité</h3>
+            <ul>
+              <li><%= @followers_tweets.average %> tweets par follower.</li>
+              <li><%= @followers_tweets.percentage %>% ont tweeté plus de 2000 fois.</li>
+            </ul>
+            <h3>Influence</h3>
+            <ul>
+              <li>Chaque follower possède en moyenne <%= @followers_followers.average %> followers</li>
+              <li><%= @followers_followers.percentage %>% des followers ont plus de 1000 followers</li>
+              <li>Ils appartiennent en moyenne à <%= @lists_containing_followers.average %> listes</li>
+              <li><%= @lists_containing_followers.percentage %>% des followers sont dans au moins 20 listes</li>
+            </ul>
+          </div>
 
+          <div class="col-sm-6">
+            <h2 class="pull-right">TOP WORDS Bio Followers (nombre d'occurences)</h2>
+            <svg class="chart" id="bio-followers">
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% content_for(:after_js) %>
+<!-- JS pour les charts -->
+
+<!-- Chart #tweet-hashtags -->
+<% content_for(:after_js) do %>
   <script>
-    var data = <%= @topwords_bio.to_json %>;
-    var max = <%= @topwords_bio.map {|word| word[:count] }.max %>;
-    var count = <%= @topwords_bio.count %>;
 
-    var width = 500,
-        barHeight = 25;
+    if (window.innerWidth < 768) {
+      var chartWidth = window.innerWidth * 0.9;
+    }
+    else {
+      var chartWidth = window.innerWidth * 0.4;
+    }
 
-    var x = d3.scale.linear().domain([0, max]).range([0, 500]);
-    var colors = d3.scale.linear().domain([0, max]).range(["blue", "red"]);
+    var barHeight = 25;
 
-    var chart = d3.select(".chart")
-        .attr("width", width)
+    var data = <%= @hashtags_in_tweets.take(10).to_json.html_safe %>;
+    var max = <%= @hashtags_in_tweets.take(10).map {|word| word[:count] }.max %>;
+    var count = 10;
+
+    var x = d3.scale.linear().domain([0, max]).range([0, chartWidth]);
+    var colors = d3.scale.linear().domain([0, max]).range(["#5778c1","#3E5A9A"]);
+
+    var chart = d3.select("#tweet-hashtags")
+        .attr("width", chartWidth)
         .attr("height", count * (barHeight + 10));
 
     var bar = chart.selectAll("g")
@@ -174,20 +165,124 @@
         .attr("y", function(d,i) {
           return i * 10;
         })
-        .attr("x", 0)
+        .attr("x", function(d) { return chartWidth - x(d["count"]); })
         .attr("width", function(d) {
-          return x(d["count"]);
+          return x(d["count"]) - 20;
         })
         .attr("fill", function(d){ return colors(d["count"]); });
 
     bar.append("text")
-        .attr("x", function(d) { return x(d["count"]) - 5; })
+        .attr("x", function(d) { return chartWidth - 25; })
         .attr("y", function(d,i) {
           return (i*10) + barHeight * 0.5;
         })
         .attr("text-anchor", "end")
         .attr("dy", ".35em")
-        .text(function(d) { return d["content"]; });
+        .text(function(d) { return d["content"] + " (" + d["count"] + ")"; });
+
+  </script>
+<% end %>
+
+<!-- Chart #tweets-mentions -->
+<% content_for(:after_js) do %>
+  <script>
+
+    if (window.innerWidth < 768) {
+      var chartWidth = window.innerWidth * 0.9;
+    }
+    else {
+      var chartWidth = window.innerWidth * 0.4;
+    }
+
+    var barHeight = 25;
+
+    var data = <%= @top_candidate_mentions.take(10).to_json.html_safe %>;
+    var max = <%= @top_candidate_mentions.take(10).map {|word| word[:count] }.max %>;
+    var count = 10;
+
+    var x = d3.scale.linear().domain([0, max]).range([0, chartWidth]);
+    var colors = d3.scale.linear().domain([0, max]).range(["#e8848e", "#D44D5C"]);
+
+    var chart = d3.select("#tweet-mentions")
+        .attr("width", chartWidth)
+        .attr("height", count * (barHeight + 10));
+
+    var bar = chart.selectAll("g")
+        .data(data)
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+    bar.append("rect")
+        .attr("height", barHeight)
+        .attr("y", function(d,i) {
+          return i * 10;
+        })
+        .attr("x", function(d) { return chartWidth - x(d["count"]); })
+        .attr("width", function(d) {
+          return x(d["count"]) - 20;
+        })
+        .attr("fill", function(d){ return colors(d["count"]); });
+
+    bar.append("text")
+        .attr("x", function(d) { return chartWidth - 25; })
+        .attr("y", function(d,i) {
+          return (i*10) + barHeight * 0.5;
+        })
+        .attr("text-anchor", "end")
+        .attr("dy", ".35em")
+        .text(function(d) { return d["content"] + " (" + d["count"] + ")"; });
+
+  </script>
+<% end %>
+
+<!-- Chart #bio-followers -->
+<% content_for(:after_js) do %>
+  <script>
+
+    if (window.innerWidth < 768) {
+      var chartWidth = window.innerWidth * 0.9;
+    }
+    else {
+      var chartWidth = window.innerWidth * 0.4;
+    }
+
+    var barHeight = 25;
+
+    var data = <%= @topwords_bio.take(10).to_json.html_safe %>;
+    var max = <%= @topwords_bio.take(10).map {|word| word[:count] }.max %>;
+    var count = 10;
+
+    var x = d3.scale.linear().domain([0, max]).range([0, chartWidth]);
+    var colors = d3.scale.linear().domain([0, max]).range(["#5fc2d3", "#4895A4"]);
+
+    var chart = d3.select("#bio-followers")
+        .attr("width", chartWidth)
+        .attr("height", count * (barHeight + 10));
+
+    var bar = chart.selectAll("g")
+        .data(data)
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+    bar.append("rect")
+        .attr("height", barHeight)
+        .attr("y", function(d,i) {
+          return i * 10;
+        })
+        .attr("x", function(d) { return chartWidth - x(d["count"]); })
+        .attr("width", function(d) {
+          return x(d["count"]) - 20;
+        })
+        .attr("fill", function(d){ return colors(d["count"]); });
+
+    bar.append("text")
+        .attr("x", function(d) { return chartWidth - 25; })
+        .attr("y", function(d,i) {
+          return (i*10) + barHeight * 0.5;
+        })
+        .attr("text-anchor", "end")
+        .attr("dy", ".35em")
+        .text(function(d) { return d["content"] + " (" + d["count"] + ")"; });
 
   </script>
 <% end %>

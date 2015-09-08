@@ -1,3 +1,19 @@
+.card-stats {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px #EEEEEE;
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
 .candidate-nav{
   font-size: 1em;
 }
@@ -10,11 +26,6 @@
     font: $base-font;
     font-weight: 200;
     height: 300px;
-  }
-
-  h2 {
-    font-size: 18px;
-    font-weight: bold;
   }
 
   .profile-picture{
