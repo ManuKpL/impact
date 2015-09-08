@@ -23,8 +23,10 @@ namespace :followers do
   end
 
   task :update => :environment do
-    candidates.each do |candidate|
-      ids = $twitter.follower_ids(candidate.screen_name).slice(0,600)
+    candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
+    candidates.each do |screen_name|
+      candidate = Candidate.find_by_screen_name(screen_name)
+      ids = $twitter.follower_ids(candidate.screen_name).attrs[:ids].slice(0,590).reverse
 
       start = 0
       stop = start + 99
@@ -39,7 +41,7 @@ namespace :followers do
 
       ids_s.each do |string|
         $twitter.get('https://api.twitter.com/1.1/users/lookup.json?user_id=' << string).each do |follower|
-          twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "follower", id_twitter: follower['id_str'])
+          twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "follower", id_twitter: follower[:id_str])
           twitterdatum.data = twitterdatum.encode_data(follower)
           twitterdatum.save
         end
