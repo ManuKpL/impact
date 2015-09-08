@@ -21,10 +21,11 @@
     align-items: center;
   }
   &-header {
-    border-left: 1px solid rgb(100,100,100);
+    // border-left: 1px solid rgb(100,100,100);
     line-height: 40px;
     font-size: 40px;
     padding-left: 10px;
+    font-family: Montserrat;
     p {
       margin: 0;
       sel-align: center;
@@ -75,16 +76,12 @@
   &-link {
     color: $gray;
     font-size: 20px;
-    text-transform: uppercase;
     &:hover {
       color: #da552f;
       text-decoration: none;
-      p {
-        color: lighten($blue, 30%);
-      }
-      span {
-        color: $blue;
-      }
+    }
+    h1 {
+      margin: 0;
     }
   }
   &-button {
@@ -142,9 +139,10 @@
   .social-link{
     float: right;
   }
-  .end-links{
+  .middle-links{
     display: flex;
     margin-left: auto;
+    margin-right: auto;
     align-items: center;
     .navbar-wagon-item{
       padding: 23px 10px 0;
