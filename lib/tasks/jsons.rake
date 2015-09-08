@@ -64,7 +64,7 @@ namespace :jsons do
 
     candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
     candidates.each_with_index do |screen_name, index|
-      start = Time.now
+      @start = Time.now
       @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
       ids = $twitter.follower_ids(screen_name).attrs[:ids].slice(0,590).reverse
 
@@ -93,8 +93,8 @@ namespace :jsons do
         file.write(JSON.generate(data))
       end
 
-      stop = Time.now
-      p "done! #{index} - #{screen_name.downcase} (#{stop - start} s)"
+      @stop = Time.now
+      p "done! #{index} - #{screen_name.downcase} (#{@stop - @start} s)"
     end
   end
 end
