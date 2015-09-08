@@ -1,8 +1,14 @@
 <div id="home-body"></div>
 <%= render 'shared/banner' %>
-<div id="home-content">
+<div class="home-content home-content-white" id="liste-candidats">
+  <div class="link-back link-back-dark text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
+    <% end %>
+  </div>
   <div class="container text-center">
-    <div class="padded" id="candidates-list"></div>
+    <!-- <div class="padded" id="candidates-list"></div> -->
     <div class="row">
       <% @candidates.each do |candidate| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -19,6 +25,40 @@
           </div>
         </div>
       <% end %>
+    </div>
+  </div>
+</div>
+<div class="home-content home-content-blue" id="a-propos">
+  <div class="link-back link-back-white text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
+    <% end %>
+  </div>
+  <div class="container text-center">
+    <h1>Nos engagements</h1>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="banner-data">
+          <%= image_tag 'white_pie.png', height:"100", class:"banner-icon" %>
+          <h5 class="text hidden-xs">Comprendre leur message</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A nulla est dolore ab beatae cupiditate fugit deserunt eum, quia blanditiis voluptas optio praesentium quas iusto perspiciatis repellat odit delectus itaque!</p>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="banner-data">
+          <%= image_tag 'white_network.png', height:"100", class:"banner-icon" %>
+          <h5 class="text hidden-xs">Comprendre leur communauté</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex perspiciatis animi quibusdam molestiae repellat qui. Accusantium ipsum non itaque amet, deleniti placeat recusandae rerum sapiente mollitia impedit fugiat, officiis eum?</p>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="banner-data">
+          <%= image_tag 'white_bird.png', height:"100", class:"banner-icon"%>
+          <h5 class="text hidden-xs">Comprendre leur piou piou</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa quasi tempore repudiandae laboriosam natus incidunt, pariatur neque! Ipsam, aperiam dolorem amet a dicta explicabo officia saepe, maxime dolores fuga ipsa.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
