@@ -75,7 +75,7 @@
     margin-bottom: 30px;
   }
   .btn {
-    padding: 12px 30px;
+    padding: 0px 30px;
     border-radius: 3px;
     font-weight: bold;
     border: none;
@@ -92,6 +92,9 @@
     margin-bottom: 5vh;
     select {
       height: 40px;
+      width: 450px;
+      text-align: center;
+      // border-radius: 5%;
     }
     input {
       height: 40px;
