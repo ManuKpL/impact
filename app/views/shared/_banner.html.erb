@@ -8,7 +8,9 @@
         <div class="banner-form-marged">
           <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Cherchez le nom d'un candidat" %>
         </div>
-        <%= f.button :submit, "Chercher", class: "btn btn-info" %>
+        <div class="banner-form-marged">
+          <%= f.button :submit, "Chercher", class: "btn btn-info" %>
+        </div>
       </div>
     <% end %>
     <div class="container">
