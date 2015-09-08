@@ -9,6 +9,10 @@ class ExtractFollowersListInfo
     create_interaction_instance
   end
 
+  def update
+    update_interaction_instance
+  end
+
   def attributes_selector(attributes)
     case @data_type
       when 'followers tweets'
@@ -55,5 +59,12 @@ class ExtractFollowersListInfo
 
   def create_interaction_instance
     Interaction.create!(data_type: @data_type, average: count_average, percentage: percent_count, candidate_id: @candidate.id)
+  end
+
+  def update_interaction_instance
+    item = Interaction.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    item[:average] = count_average
+    item[:percentage] = percent_count
+    item.save
   end
 end

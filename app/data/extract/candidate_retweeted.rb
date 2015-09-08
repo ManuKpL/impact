@@ -15,6 +15,15 @@ class ExtractCandidateRetweeted
     end
   end
 
+  def update
+    case @data_type
+    when 'candidate retweets'
+      update_interaction
+    when 'candidate retweeted'
+      update_topword
+    end
+  end
+
   def extract_data
     result = []
     Twitterdatum.where(data_type: 'tweet').where(candidate_id: @candidate.id).each do |tweet|
@@ -57,5 +66,21 @@ class ExtractCandidateRetweeted
       average: select_candidate_retweeted.length,
       percentage: calculate_percentage
     })
+  end
+
+  def update_topword
+    topword = Topword.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    Word.where(topword_id: topword.id).each_with_index do |word, index|
+      word[:content] = calculate_top.keys[index]
+      word[:count] = calculate_top.values[index]
+      word.save
+    end
+  end
+
+  def update_interaction
+    item = Interaction.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    item[:average] = select_candidate_retweeted.length,
+    item[:percentage] = calculate_percentage
+    item.save
   end
 end

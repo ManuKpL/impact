@@ -10,6 +10,10 @@ class FindTopWords
     store_in_database
   end
 
+  def update
+    update_database
+  end
+
   def extract_data
     result = []
     Twitterdatum.where(data_type: @content_type).where(candidate_id: @candidate.id).each do |element|
@@ -66,6 +70,15 @@ class FindTopWords
     # create words instances for each word
     sorted_and_selected.each do |word, frequency|
       Word.create(topword_id: top_word.id, content: word, count: frequency)
+    end
+  end
+
+  def update_database
+    topword = Topword.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    Word.where(topword_id: topword.id).each_with_index do |word, index|
+      word[:content] = sorted_and_selected.keys[index]
+      word[:count] = sorted_and_selected.values[index]
+      word.save
     end
   end
 end

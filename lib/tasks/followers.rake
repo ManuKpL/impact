@@ -21,6 +21,7 @@ namespace :followers do
     end
   end
 
+  desc 'add new followers instances without JSON'
   task :update => :environment do
     candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
     candidates.each do |screen_name|

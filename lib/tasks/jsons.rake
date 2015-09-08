@@ -57,6 +57,7 @@ namespace :jsons do
     end
   end
 
+  desc 'update JSON with followers instances'
   task :update => :environment do
     def open_json
       JSON.parse(File.open(@file_path).read).first.last

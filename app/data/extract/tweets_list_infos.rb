@@ -17,6 +17,10 @@ class ExtractTweetsListInfos
     @check ? create_interaction_instances : create_words_instances
   end
 
+  def update
+    @check ? update_interaction_instances : update_words_instances
+  end
+
   # returns an attributes hash to call methods in run
   def attributes_selector(attributes)
     case @data_type
@@ -124,5 +128,21 @@ class ExtractTweetsListInfos
         average: average_number,
         percentage: part_of_tweets
       })
+  end
+
+  def update_words_instances
+    topword = Topword.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    Word.where(topword_id: topword.id).each_with_index do |word, index|
+      word[:content] = sorted_by_occurence.keys[index]
+      word[:count] = sorted_by_occurence.values[index]
+      word.save
+    end
+  end
+
+  def update_interaction_instances
+    item = Interaction.where(candidate_id: @candidate.id).where(data_type: @data_type).first
+    item[:average] = average_number,
+    item[:percentage] = part_of_tweets
+    item.save
   end
 end

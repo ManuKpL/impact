@@ -20,6 +20,7 @@ namespace :tweets do
     end
   end
 
+  desc 'add new tweets instances without JSON'
   task :update => :environment do
     Candidate.all.each do |candidate|
       tweet = Twitterdatum.where(data_type: "tweet").where(candidate_id: candidate.id).last
