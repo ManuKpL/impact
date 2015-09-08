@@ -24,8 +24,8 @@ namespace :tweets do
     Candidate.all.each do |candidate|
       tweet = Twitterdatum.where(data_type: "tweet").where(candidate_id: candidate.id).last
       results = $twitter.get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=#{candidate.screen_name}&count=200&include_rts=1&since_id=#{tweet.id_twitter.to_i}")
-      results.each do |tweet|
-        twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "tweet", id_twitter: tweet['id_str'])
+      results.reverse.each do |tweet|
+        twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "tweet", id_twitter: tweet[:id_str])
         twitterdatum.data = twitterdatum.encode_data(tweet)
         twitterdatum.save
       end
