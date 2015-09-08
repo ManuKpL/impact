@@ -10,48 +10,48 @@ Interaction.destroy_all
 
 # candidats à récupérer
 
-candidates_h = {
-  vpecresse: 'Les Républicains',
-  claudebartolone: 'Parti socialiste',
-  emmacosse: 'EELV',
-  wdesaintjust: 'Front national',
-  yannwehrling: 'Mouvement démocrate',
-  dupontaignan: 'Debout la France',
-  chantal_jouanno: 'UDI',
-  n_arthaud: "Lutte Ouvrière",
-  delaruejc: "Liste des Usagers",
-  aurelien_veron: "Parti Libéral Démocrate",
-  plaurent_pcf: "Parti Communiste Français",
-  sylvaindesmet: "Indépendant (EELV)"
-}
+# candidates_h = {
+#   vpecresse: 'Les Républicains',
+#   claudebartolone: 'Parti socialiste',
+#   emmacosse: 'EELV',
+#   wdesaintjust: 'Front national',
+#   yannwehrling: 'Mouvement démocrate',
+#   dupontaignan: 'Debout la France',
+#   chantal_jouanno: 'UDI',
+#   n_arthaud: "Lutte Ouvrière",
+#   delaruejc: "Liste des Usagers",
+#   aurelien_veron: "Parti Libéral Démocrate",
+#   plaurent_pcf: "Parti Communiste Français",
+#   sylvaindesmet: "Indépendant (EELV)"
+# }
 
-# récupère les infos du candidat sur Twitter
+# # récupère les infos du candidat sur Twitter
 
-def get_candidate(screen_name)
-  candidate = $twitter.get("https://api.twitter.com/1.1/users/show.json?screen_name=#{screen_name}")
-end
+# def get_candidate(screen_name)
+#   candidate = $twitter.get("https://api.twitter.com/1.1/users/show.json?screen_name=#{screen_name}")
+# end
 
-candidates = []
-candidates_h.keys.each do |candidate|
-  candidates << get_candidate(candidate)
-end
+# candidates = []
+# candidates_h.keys.each do |candidate|
+#   candidates << get_candidate(candidate)
+# end
 
-candidates.each_with_index do |candidate, index|
-  candidates_attributes = [
-    { name: candidate[:name],
-      screen_name: candidate[:screen_name],
-      description: candidate[:description],
-      followers_count: candidate[:followers_count],
-      following_count: candidate [:friends_count],
-      listed: candidate[:listed_count],
-      tweets_count: candidate[:statuses_count],
-      account_creation: candidate[:created_at],
-      picture: candidate[:profile_image_url_https].gsub('normal', '400x400'),
-      party: candidates_h.values[index]
-    }
-  ]
-  candidates_attributes.each { |params| Candidate.create!(params) }
-end
+# candidates.each_with_index do |candidate, index|
+#   candidates_attributes = [
+#     { name: candidate[:name],
+#       screen_name: candidate[:screen_name],
+#       description: candidate[:description],
+#       followers_count: candidate[:followers_count],
+#       following_count: candidate [:friends_count],
+#       listed: candidate[:listed_count],
+#       tweets_count: candidate[:statuses_count],
+#       account_creation: candidate[:created_at],
+#       picture: candidate[:profile_image_url_https].gsub('normal', '400x400'),
+#       party: candidates_h.values[index]
+#     }
+#   ]
+#   candidates_attributes.each { |params| Candidate.create!(params) }
+# end
 
 
 # Extraction des informations des JSON
