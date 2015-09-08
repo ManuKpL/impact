@@ -6,7 +6,7 @@
     <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
       <div class="banner-form">
         <div class="banner-form-marged">
-          <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Cherchez le nom d'un candidat" %>
+          <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Trouvez votre candidat..." %>
         </div>
         <div class="banner-form-marged">
           <%= f.button :submit, "Chercher", class: "btn btn-info" %>
