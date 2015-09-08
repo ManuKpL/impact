@@ -1,6 +1,10 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show]
 
+  def index
+    raise
+  end
+
   def show
     # navigation arrows
     results = []
