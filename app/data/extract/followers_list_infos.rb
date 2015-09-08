@@ -1,10 +1,7 @@
-require 'json'
-
 class ExtractFollowersListInfo
   def initialize(attributes)
     @data_type = attributes[:data_type]
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
-    @file_path = "app/data/json/#{attributes[:screen_name]}_followers.json"
     attributes_selector(attributes)
   end
 
@@ -29,14 +26,17 @@ class ExtractFollowersListInfo
     end
   end
 
-  def open_json
-    JSON.parse(File.open(@file_path).read).first.last
+  def extrac_data
+    result = []
+    Twitterdatum.where(data_type: 'follower').where(candidate_id: @candidate.id).each do |follower|
+      result << follower.decode_data
+    end
   end
 
   # get followers_count for each follower
   def extract_items_counts
     items_counts = []
-    open_json.each do |follower|
+    extrac_data.each do |follower|
       items_counts << follower[@content_type].to_i
     end
     return items_counts
@@ -50,7 +50,7 @@ class ExtractFollowersListInfo
   # get percentage of followers_count >= @at_least
   def percent_count
     top_items = extract_items_counts.select { |c| c >= @at_least }
-    return ((top_items.length.to_f / open_json.length) * 100).round
+    return ((top_items.length.to_f / extrac_data.length) * 100).round
   end
 
   def create_interaction_instance

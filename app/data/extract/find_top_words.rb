@@ -1,26 +1,26 @@
-require 'json'
-
 class FindTopWords
   def initialize(attributes)
     @content_type = attributes[:content_type]
     @data_type = attributes[:data_type]
     @top_size = attributes[:top_size] ? attributes[:top_size] : 20
     @candidate = Candidate.find_by_screen_name(attributes[:screen_name])
-    @file_path = "app/data/json/#{attributes[:screen_name]}_#{@content_type}.json"
   end
 
   def run
     store_in_database
   end
 
-  def open_json
-    JSON.parse(File.open(@file_path).read).first.last
+  def extract_data
+    result = []
+    Twitterdatum.where(data_type: @content_type).where(candidate_id: @candidate.id).each do |element|
+      result << element.decode_data
+    end
   end
 
   def get_array_of_content
     # user descriptions or tweets text
     results = []
-    open_json.each do |element|
+    extract_data.each do |element|
       if element['description'].nil?
         results << element['text']
       else

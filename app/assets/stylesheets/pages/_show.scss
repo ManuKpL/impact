@@ -1,3 +1,19 @@
+.card-stats {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px #EEEEEE;
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
 .candidate-nav{
   font-size: 1em;
 }
@@ -48,7 +64,7 @@
   &-metrics {
     margin-right: 0px;
     font-size: 20px;
-    padding: 10px 90px 0px 80px;
+    padding: 30px;
     border-left: solid 1px $green;
     letter-spacing: 1px;
 
