@@ -61,7 +61,88 @@
             <%= image_tag 'white_bird.png', height:"50", class:"banner-icon"%>
             <h5 class="text hidden-xs">Comparez les candidats!</h5>
             <p>Comparez vos candidats entre eux! Qui maitrise Twitter? Qui est à côté de la plaque?</p>
+            <br>
             <%= link_to "Comparer les candidats!", "#",class: "btn btn-danger" %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- TWITTER FEED -->
+<div class="home-content home-content-white" id="feed">
+  <div class="title text-center">
+    <h1>Les candidats sur Twitter</h1>
+  </div>
+
+  <div class="link-back link-back-black text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+    <% end %>
+  </div>
+
+  <div class="container text-center">
+      <div class="row">
+      <!-- TWITTER FEED -->
+        <div class="col-xs-12">
+          <div class="banner-data">
+            <h5 class="text hidden-xs">Insert Twitter FEed</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+
+<div class="home-content home-content-blue" id="team">
+  <div class="title text-center">
+    <h1>Equipe</h1>
+  </div>
+
+  <div class="link-back link-back-black text-center">
+    <%= link_to root_path << "#accueil" do %>
+      <i class="fa fa-angle-up"></i>
+    <% end %>
+  </div>
+
+  <div class="container text-center">
+      <div class="row">
+      <!-- manu -->
+        <div class="col-xs-12 col-sm-3">
+          <div class="banner-data">
+            <%= image_tag 'manu.jpeg', height:"100", class:"team-picture" %>
+            <h5 class="text hidden-xs">Manu</h5>
+            <p>Lead developer</p>
+          </div>
+        </div>
+
+        <!-- alice -->
+        <div class="col-xs-12 col-sm-3">
+          <div class="banner-data">
+            <%= image_tag 'alice.jpeg', height:"100", class:"team-picture" %>
+            <h5 class="text hidden-xs">Alice</h5>
+            <p>Lead ballbreaker</p>
+          </div>
+        </div>
+
+        <!-- vincent -->
+        <div class="col-xs-12 col-sm-3">
+          <div class="banner-data">
+            <%= image_tag 'vincent.jpeg', height:"100", class:"team-picture"%>
+            <h5 class="text hidden-xs">Vincent</h5>
+            <p>Lead designer</p>
+          </div>
+        </div>
+
+        <!-- antonin -->
+        <div class="col-xs-12 col-sm-3">
+          <div class="banner-data">
+            <%= image_tag 'antonin.jpeg', height:"100", class:"team-picture"%>
+            <h5 class="text hidden-xs">Antonin</h5>
+            <p>Lead swagger</p>
+
           </div>
         </div>
     </div>

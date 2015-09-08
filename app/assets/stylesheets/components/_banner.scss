@@ -48,7 +48,7 @@
     background:    -moz-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
     background:     -ms-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
     background:      -o-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* Opera 11.10+ */
-    background:         linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* W3C */
+     /* W3C */
     background-color: rgba(40,60,100,0.6);
     z-index: 1;
   }
@@ -64,6 +64,7 @@
   &-data {
     color: white;
     z-index: 2;
+    padding: 0.7em;
     .text {
       line-height: 20px;
       font-size: 19px;
