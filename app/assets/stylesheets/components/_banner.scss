@@ -44,10 +44,11 @@
     left: 0;
     right: 0;
     // background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
-    background: -webkit-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* Chrome 10+, Saf5.1+ */
-    background:    -moz-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
-    background:     -ms-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
-    background:      -o-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* Opera 11.10+ */
+    background: -webkit-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
+    background:      -o-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%);
+    background:         linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Opera 11.10+ */
      /* W3C */
     background-color: rgba(40,60,100,0.6);
     z-index: 1;
