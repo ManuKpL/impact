@@ -15,6 +15,10 @@
 
 }
 
+#navigation{
+  padding-top: 20px;
+}
+
 .mini-box{
 
   padding: 30px;
@@ -40,7 +44,6 @@
     color: $gray-darker;
    }
 
-
   h4{
     font-family: $header-font;
     font-size: $base-size;
@@ -56,7 +59,11 @@
 
 
 .candidate-nav{
-  font-size: 1em;
+  a{
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .presentation{
