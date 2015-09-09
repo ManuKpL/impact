@@ -58,7 +58,7 @@ namespace :datas do
       ExtractFollowersListInfo.new({
         screen_name: candidate.screen_name,
         data_type: 'followers followings',
-        at_least: 1000
+        at_least: 50
       }).run
 
       ExtractTweetsListInfos.new({
@@ -161,7 +161,7 @@ namespace :datas do
       ExtractFollowersListInfo.new({
         screen_name: candidate.screen_name,
         data_type: 'followers followings',
-        at_least: 1000
+        at_least: 50
       }).update
 
       ExtractTweetsListInfos.new({
