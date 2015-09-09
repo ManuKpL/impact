@@ -6,11 +6,9 @@ namespace :followers do
       JSON.parse(File.open(@file_path).read).first.last
     end
 
-    candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
-    candidates.each_with_index do |screen_name, index|
+    Candidate.all.each_with_index do |candidate, index|
       start = Time.now
-      @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
-      candidate = Candidate.find_by_screen_name(screen_name)
+      @file_path = "app/data/json/#{candidate.screen_name.downcase}_followers.json"
       open_json.reverse.each do |follower|
         twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "follower", id_twitter: follower['id_str'])
         twitterdatum.data = twitterdatum.encode_data(follower)
@@ -23,9 +21,7 @@ namespace :followers do
 
   desc 'add new followers instances without JSON'
   task :update => :environment do
-    candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
-    candidates.each do |screen_name|
-      candidate = Candidate.find_by_screen_name(screen_name)
+    Candidate.all.each do |candidate|
       ids = $twitter.follower_ids(candidate.screen_name).attrs[:ids].slice(0,590).reverse
 
       start = 0
