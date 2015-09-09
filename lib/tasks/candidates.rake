@@ -29,9 +29,11 @@ namespace :candidates do
       candidates << get_candidate(candidate)
     end
 
+    true_names = ['Valérie Pécresse', 'Clause Bartolone', 'Emma Cosse', 'Wallerand de Saint-Just', 'Yann Wehrling', 'Nicolas Dupont-Aignan', 'Chantal Jouanno', 'Nathalie Arthaud', 'Jean-Claude Delarue', 'Aurélien Veron', 'Pierre Laurent', 'Sylvain De Smet']
+
     candidates.each_with_index do |candidate, index|
       Candidate.create({
-        name: candidate[:name],
+        name: true_names[index],
         screen_name: candidate[:screen_name],
         description: candidate[:description],
         followers_count: candidate[:followers_count],
