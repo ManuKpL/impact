@@ -51,7 +51,7 @@
           <div class="banner-data">
             <%= image_tag 'white_network.png', height:"50", class:"banner-icon" %>
             <h5 class="text hidden-xs">Analysez la communauté de chaque candidat!</h5>
-            <p>Êtes vous dans leur cible? Qui relaie leurs twitts? Sont ils performants?</p>
+            <p>Êtes vous dans leur cible? Qui relaie leurs tweets? Sont ils performants?</p>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
             <h5 class="text hidden-xs">Comparez les candidats!</h5>
             <p>Mettez vos candidats face à face. Qui maitrise Twitter? Qui est à côté de la plaque?</p>
             <br>
-            <%= link_to "Comparer les candidats!", "#",class: "btn btn-danger" %>
+            <%= link_to "Comparer les candidats!", compare_path, class: "btn btn-danger" %>
           </div>
         </div>
     </div>
@@ -75,9 +75,10 @@
     <h2>Les derniers twitts de vos candidats en live</h2>
   </div>
   <!-- give access to accueil -->
-  <div class="link-back link-back-black text-center">
+  <div class="link-back link-back-dark text-center">
     <%= link_to root_path << "#accueil" do %>
       <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
     <% end %>
   </div>
 
@@ -103,9 +104,10 @@
     <h2>L'équipe</h2>
   </div>
 
-  <div class="link-back link-back-black text-center">
+  <div class="link-back link-back-white text-center">
     <%= link_to root_path << "#accueil" do %>
       <i class="fa fa-angle-up"></i>
+      <p>Haut<br>de<br>page</p>
     <% end %>
   </div>
 
@@ -114,36 +116,44 @@
       <!-- manu -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'manu.jpeg', height:"100", class: "banner-data-img" %>
-            <h5 class="text hidden-xs">Manu</h5>
-            <p>Lead developer</p>
+            <%= link_to "https://github.com/ManuKpL", target: :_blank do %>
+              <%= image_tag 'manu.jpeg', height:"100", class: "banner-data-img" %>
+            <% end %>
+              <h5 class="text hidden-xs">Manu</h5>
+              <p>Lead developer</p>
           </div>
         </div>
 
         <!-- alice -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'alice.jpeg', height:"100", class: "banner-data-img" %>
-            <h5 class="text hidden-xs">Alice</h5>
-            <p>Lead ballbreaker</p>
+            <%= link_to "https://github.com/alicemomo", target: :_blank do %>
+              <%= image_tag 'alice.jpeg', height:"100", class: "banner-data-img" %>
+            <% end %>
+              <h5 class="text hidden-xs">Alice</h5>
+              <p>Lead ballbreaker</p>
           </div>
         </div>
 
         <!-- vincent -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'vincent.jpeg', height:"100", class: "banner-data-img" %>
-            <h5 class="text hidden-xs">Vincent</h5>
-            <p>Lead designer</p>
+            <%= link_to "https://github.com/vincentpons", target: :_blank do %>
+              <%= image_tag 'vincent.jpeg', height:"100", class: "banner-data-img" %>
+            <% end %>
+              <h5 class="text hidden-xs">Vincent</h5>
+              <p>Lead designer</p>
           </div>
         </div>
 
         <!-- antonin -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'antonin.jpeg', height:"100", class: "banner-data-img" %>
-            <h5 class="text hidden-xs">Antonin</h5>
-            <p>Lead swagger</p>
+            <%= link_to "https://github.com/nicknem", target: :_blank do %>
+              <%= image_tag 'antonin.jpeg', height:"100", class: "banner-data-img" %>
+            <% end %>
+              <h5 class="text hidden-xs">Antonin</h5>
+              <p>Lead swagger</p>
           </div>
         </div>
     </div>
