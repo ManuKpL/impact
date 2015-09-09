@@ -1,6 +1,6 @@
 .card-stats {
   margin-top: 30px;
-  background: rgb(250, 250, 250);
+  background: rgb(245, 245, 245);
   padding: 20px;
   border-radius: 13px;
   box-shadow: 1px 1px 3px #EEEEEE;
@@ -21,8 +21,8 @@
   background-color: #fafafa;
   border-radius: 5px;
   color: #141414;
-  border: 3px solid #89C9FA;
   height: 150px;
+
 
   h4{
     font-family: $header-font;
@@ -31,7 +31,11 @@
   p{
     text-align: center;
   }
+  i{
+    color: #4D9CC5;
+  }
 }
+
 
 .candidate-nav{
   font-size: 1em;
