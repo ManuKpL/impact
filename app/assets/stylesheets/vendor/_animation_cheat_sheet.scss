@@ -739,10 +739,6 @@ pulse
 
 @keyframes pulse {
   0% {
-    transform: scale(0.9);
-    opacity: 0.4;
-  }
-  50% {
     transform: scale(1.1);
     opacity: 1;
   }
@@ -750,20 +746,24 @@ pulse
     transform: scale(0.9);
     opacity: 0.4;
   }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes pulse {
   0% {
-    -webkit-transform: scale(0.95);
-    opacity: 0.4;
-  }
-  50% {
     -webkit-transform: scale(1.1);
     opacity: 1;
   }
   100% {
     -webkit-transform: scale(0.95);
     opacity: 0.4;
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    opacity: 1;
   }
 }
 

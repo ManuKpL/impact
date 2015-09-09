@@ -24,10 +24,11 @@
   }
   &-blue {
 
-    background: -webkit-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* Chrome 10+, Saf5.1+ */
-    background:    -moz-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
-    background:     -ms-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
-    background:      -o-linear-gradient(90deg, #68b0ab 10%, #247ba0 90%);
+    background: -webkit-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
+    background:      -o-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%);
+    background:         linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Opera 11.10+ */
     background-color: rgba(40,60,100,0.6);
     text-shadow: 0.5px 0.5px 0.5px rgb(60,60,60);
     h1 {
