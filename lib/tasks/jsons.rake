@@ -3,20 +3,22 @@ namespace :jsons do
   desc 'create JSON with followers instances'
   task :create => :environment do
 
-    candidates = %w(vpecresse dupontaignan)
+    candidates = %w(dupontaignan vpecresse)
     candidates.each_with_index do |screen_name, index|
-      start = Time.now
+      @start = Time.now
       @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
       cursor = -1
       ids = []
       until cursor == 0
         extract = $twitter.get("https://api.twitter.com/1.1/followers/ids.json?cursor=#{cursor}&screen_name=#{screen_name}&count=5000")
-        extract.attrs[:ids].each do |id|
+        extract[:ids].each do |id|
           ids << id
         end
+        cursor = extract[:next_cursor]
+        puts "waiting"
+        sleep 60
+        puts "done"
       end
-      cursor = extract.attrs[:next_cursor]
-      puts "done"
 
       start = 0
       stop = start + 99
@@ -35,25 +37,25 @@ namespace :jsons do
           users << user
         end
         print "Loading"
-        13.times do
+        3.times do
           sleep 1
           print "."
         end
         sleep 1
         puts "."
         sleep 1
-        puts "Done! (#{index + 1})"
+        puts ">Done! (#{index + 1} - #{users.length} followers added)"
       end
 
       data = {}
       data[:users] = users
 
-      File.open(filepath, 'w') do |file|
+      File.open(@file_path, 'w') do |file|
         file.write(JSON.generate(data))
       end
 
-      stop = Time.now
-      p "done! #{index} - #{candidate} (#{((stop - start) * 3600).rand(2)}s - #{users.length} followers)"
+      @stop = Time.now
+      p "done! #{index} - #{screen_name} (#{((@stop - @start) / 3600)}s - #{users.length} followers)"
     end
   end
 
