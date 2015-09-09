@@ -53,6 +53,7 @@ namespace :tweets do
     Candidate.all.each_with_index do |candidate, index|
       @start = Time.now
       @file_path = "app/data/json/#{candidate.screen_name.downcase}_tweets.json"
+      tweet = Twitterdatum.where(data_type: "tweet").where(candidate_id: candidate.id).last
       results = $twitter.get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=#{candidate.screen_name}&count=200&include_rts=1&since_id=#{tweet.id_twitter.to_i}")
       tweets = open_json.reverse
       results.reverse.each do |tweet|
