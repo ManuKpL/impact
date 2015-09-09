@@ -199,7 +199,7 @@
         .attr("x", function(d) { return 0; })
         .attr('fill', "#E1E1E1")
         .attr("width", function(d) {
-          return 500 - x(d["count"]) + 20;
+          return chartWidth - x(d["count"]);
         })
         .attr("rx", "4")
         .attr("ry", "4");
@@ -266,7 +266,7 @@
         .attr("x", function(d) { return 0; })
         .attr('fill', "#E1E1E1")
         .attr("width", function(d) {
-          return 500 - x(d["count"]) + 20;
+          return chartWidth - x(d["count"]);
         })
         .attr("rx", "4")
         .attr("ry", "4");
@@ -333,7 +333,7 @@
         .attr("x", function(d) { return 0; })
         .attr('fill', "#E1E1E1")
         .attr("width", function(d) {
-          return 500 - x(d["count"]) + 20;
+          return chartWidth - x(d["count"]);
         })
         .attr("rx", "4")
         .attr("ry", "4");
