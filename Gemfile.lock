@@ -124,6 +124,7 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-d3 (3.5.6)
+    rails-assets-scrollReveal.js (2.3.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -201,6 +202,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.3)
   rails-assets-d3!
+  rails-assets-scrollReveal.js!
   rails_12factor
   sass-rails (~> 5.0)
   simple_form

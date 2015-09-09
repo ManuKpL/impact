@@ -42,9 +42,16 @@ class CandidatesController < ApplicationController
     @lists_containing_followers = @candidate.interactions.where(data_type: "followers listed").first
     # followers tweets
     @followers_tweets = @candidate.interactions.where(data_type: "followers tweets").first
+  end
 
-
-
+  def compare
+    @candidates = Candidate.all
+    # Wait for data on all candidates
+    @data = @candidates.map do |c|
+      { retweets: c.interactions.where(data_type: "retweets").first,
+        favorites: c.interactions.where(data_type: "favorites").first
+      }
+    end
   end
 
   private

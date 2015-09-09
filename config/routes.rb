@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :candidates, only: [:show, :index]
   root to: 'pages#home'
-
+  get 'compare' => 'candidates#compare', as: 'compare'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
