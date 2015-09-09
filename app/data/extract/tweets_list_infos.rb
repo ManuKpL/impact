@@ -41,13 +41,13 @@ class ExtractTweetsListInfos
         @key_name = 'favorite_count'
         @at_least = attributes[:at_least] ? attributes[:at_least] : 5
       when 'hashtags'
-        @content_type = 'candidate tweets'
+        @content_type = 'tweets' # specific action
         @mention_name = @data_type
         @mention_key = 'text'
-      when 'RT hashtags'
-        @content_type = 'candidate retweets'
-        @mention_name = 'hashtags'
-        @mention_key = 'text'
+      # when 'RT hashtags'
+      #   @content_type = 'candidate retweets'
+      #   @mention_name = 'hashtags'
+      #   @mention_key = 'text'
       when 'mentions'
         @content_type = 'candidate tweets'
         @mention_name = 'user_mentions'
@@ -64,6 +64,7 @@ class ExtractTweetsListInfos
     Twitterdatum.where(data_type: 'tweet').where(candidate_id: @candidate.id).each do |tweet|
       result << tweet.decode_data
     end
+    return result
   end
 
   def average_number
@@ -85,6 +86,8 @@ class ExtractTweetsListInfos
           datas.each { |element| result << element } if tweet['retweeted_status'].nil? && datas.length > 0
         elsif @content_type == 'candidate retweets'
           datas.each { |element| result << element } if tweet['retweeted_status'] && datas.length > 0
+        elsif @content_type == 'tweets'
+          datas.each { |element| result << element } if datas.length > 0
         end
       end
     end
