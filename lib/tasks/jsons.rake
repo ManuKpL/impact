@@ -15,6 +15,8 @@ namespace :jsons do
           ids << id
         end
         cursor = extract[:next_cursor]
+        puts "waiting"
+        sleep 60
         puts "done"
       end
 
