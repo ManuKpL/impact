@@ -16,25 +16,20 @@
     </div>
   </div>
 
-  <!-- name and party -->
-  <div class="row">
-    <div class="class profile">
-      <div class="profile profile-name text-center">
-        <h3><%= @candidate.name %></h3>
-        <h4><%= @candidate.party %></h4>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
+  <div class="presentation">
+
     <!-- profile picture-->
-    <div class="col-xs-12 col-sm-2 col-sm-offset-1">
-      <%= image_tag @candidate.picture, class: "img-responsive img-rounded" %>
+    <div class="col-xs-12 col-sm-2 col-sm-offset-1 ">
+      <%= image_tag @candidate.picture, class: "profile-picture" %>
     </div>
 
     <!-- profile infos -->
     <div class="col-xs-12 col-sm-5">
       <div class="profile profile-info">
+        <h4><%= @candidate.name %></h4>
+        <p><%= @candidate.party %></p>
         <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
         <p><%= @candidate.description %></p>
       </div>
@@ -44,31 +39,53 @@
     <div class="col-xs-12 col-sm-3">
       <div class="profile profile-metrics">
         <ul class="list-unstyled text-left">
-          <li><i class="fa fa-twitter"></i><span class="metric-odd"> <%= @candidate.tweets_count%> </span>Tweets</li>
-          <li><i class="fa fa-clock-o"></i> créé le <span class="metric-even"><%= @candidate.account_creation%></span></li>
+          <li><i class="fa fa-twitter"></i><span class="metric-red"> <%= @candidate.tweets_count%> </span>Tweets</li>
+          <li><i class="fa fa-clock-o"></i> créé le <span class="metric-blue"><%= @candidate.account_creation%></span></li>
         </ul>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- SON COMPTE -->
+  <!-- SES EXPRESSIONS -->
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
       <div class="card-stats">
         <div class="row">
-          <div class="cols-xs-12 col-sm-6">
-            <h2>Influence de ses tweets</h2>
-            <ul>
-              <li><%= @retweets_on_candidate.average %> retweets/tweet <span class="label label-default"><strong><%= @retweets_on_candidate.percentage %>%</strong> des tweets retweetés</span></li>
-              <li><%= @favorites_on_candidate.average %> favoris en moyenne <span class="label label-default"><%= @favorites_on_candidate.percentage %>% des tweets sont mis en favoris</span></li>
-            </ul>
+          <div class="col-xs-6">
+            <h2>Son Compte</h2>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="mini-box">
+                  <h4>Retweets:</h4>
+                  <p><i class="fa fa-retweet"> </i> <%= @retweets_on_candidate.average %> par tweet.</p>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="mini-box">
+                  <h4>Favoris:</h4>
+                  <p><i class="fa fa-star"></i>   <%= @favorites_on_candidate.average %> par tweet.</p>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="mini-box">
+                 <p><strong><%= @retweets_on_candidate.percentage %>%</strong> de ses tweets sont retweetés au moins X fois</p>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="mini-box">
+                  <p><%= @favorites_on_candidate.percentage %>% des ses tweets sont mis en favoris</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="col-sm-6">
-            <h2 class="pull-right">TOP WORDS Hashtags (nombre d'occurences)</h2>
+          <div class="col xs-6 col-sm-6">
+            <h2 class="pull-right">Les hashtags que ce candidat utilise le plus (par nombre d'occurences):</h2>
             <svg class="chart" id="tweet-hashtags">
             </svg>
           </div>
+
         </div>
       </div>
     </div>
@@ -88,7 +105,7 @@
           </div>
 
           <div class="col-sm-6">
-            <h2 class="pull-right">TOP WORDS Mentions (nombre d'occurences)</h2>
+            <h2 class="pull-right">Les comptes que le candidat mentionne le plus:</h2>
             <svg class="chart" id="tweet-mentions">
             </svg>
           </div>
@@ -107,20 +124,20 @@
             <h2>Sa communauté</h2>
             <h3>Activité</h3>
             <ul>
-              <li><%= @followers_tweets.average %> tweets par follower.</li>
-              <li><%= @followers_tweets.percentage %>% ont tweeté plus de 2000 fois.</li>
+              <li>Ses followers tweetent <%= @followers_tweets.average %> fois en moyenne.</li>
+              <li><%= @followers_tweets.percentage %>% de ses followers ont tweeté plus de 2000 fois.</li>
             </ul>
             <h3>Influence</h3>
             <ul>
-              <li>Chaque follower possède en moyenne <%= @followers_followers.average %> followers</li>
-              <li><%= @followers_followers.percentage %>% des followers ont plus de 1000 followers</li>
-              <li>Ils appartiennent en moyenne à <%= @lists_containing_followers.average %> listes</li>
-              <li><%= @lists_containing_followers.percentage %>% des followers sont dans au moins 20 listes</li>
+              <li>Chacun de ses followers est suivi par <%= @followers_followers.average %> comptes en moyenne.</li>
+              <li><%= @followers_followers.percentage %>% de ses followers sont suivis par plus de 1000 comptes.</li>
+              <li>Ses followers appartiennent à <%= @lists_containing_followers.average %> listes en moyenne.</li>
+              <li><%= @lists_containing_followers.percentage %>% de ses followers appartiennent à au moins 20 listes.</li>
             </ul>
           </div>
 
           <div class="col-sm-6">
-            <h2 class="pull-right">TOP WORDS Bio Followers (nombre d'occurences)</h2>
+            <h2 class="pull-right">Les termes qui apparaissent le plus dans la bio des followers du candidat:</h2>
             <svg class="chart" id="bio-followers">
             </svg>
           </div>
@@ -129,6 +146,16 @@
     </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 
