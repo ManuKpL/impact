@@ -35,6 +35,7 @@ class ExtractFollowersListInfo
     Twitterdatum.where(data_type: 'follower').where(candidate_id: @candidate.id).each do |follower|
       result << follower.decode_data
     end
+    return result
   end
 
   # get followers_count for each follower

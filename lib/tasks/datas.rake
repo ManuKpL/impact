@@ -86,11 +86,11 @@ namespace :datas do
         top_size: 20
       }).run
 
-      ExtractTweetsListInfos.new({
-        screen_name: candidate.screen_name,
-        data_type: 'RT hashtags',
-        top_size: 20
-      }).run
+      # ExtractTweetsListInfos.new({
+      #   screen_name: candidate.screen_name,
+      #   data_type: 'RT hashtags',
+      #   top_size: 20
+      # }).run
 
       ExtractCandidateRetweeted.new({
         screen_name: candidate.screen_name,
@@ -189,11 +189,11 @@ namespace :datas do
         top_size: 20
       }).update
 
-      ExtractTweetsListInfos.new({
-        screen_name: candidate.screen_name,
-        data_type: 'RT hashtags',
-        top_size: 20
-      }).update
+      # ExtractTweetsListInfos.new({
+      #   screen_name: candidate.screen_name,
+      #   data_type: 'RT hashtags',
+      #   top_size: 20
+      # }).update
 
       ExtractCandidateRetweeted.new({
         screen_name: candidate.screen_name,

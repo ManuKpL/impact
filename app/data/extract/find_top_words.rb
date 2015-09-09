@@ -19,6 +19,7 @@ class FindTopWords
     Twitterdatum.where(data_type: @content_type).where(candidate_id: @candidate.id).each do |element|
       result << element.decode_data
     end
+    return result
   end
 
   def get_array_of_content

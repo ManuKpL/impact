@@ -29,6 +29,7 @@ class ExtractCandidateRetweeted
     Twitterdatum.where(data_type: 'tweet').where(candidate_id: @candidate.id).each do |tweet|
       result << tweet.decode_data
     end
+    return result
   end
 
   def select_candidate_retweeted
