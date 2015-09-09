@@ -37,7 +37,9 @@
           <div class="profile profile-info">
             <h4><%= @candidate.name %></h4>
             <p><%= @candidate.party %></p>
-            <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
+            <%=link_to  "https://twitter.com/#{@candidate.screen_name}", target: "_blank"  do %>
+              <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
+            <% end %>
             <p><%= @candidate.description %></p>
 
           </div>
@@ -47,10 +49,10 @@
         <div class="col-xs-12 col-sm-3">
           <div class="profile profile-metrics">
             <ul class="list-unstyled text-left">
-              <li><i class="fa fa-twitter"></i><span class="metric-red"> <%= @candidate.tweets_count%> </span>Tweets</li>
-              <li><i class="fa fa-clock-o"></i> créé le <span class="metric-blue"><%= @candidate.account_creation%></span></li>
-              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.followers_count %></span> </i> followers</li>
-              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.following_count %></span> </i> followers</li>
+              <li><i class="fa fa-clock-o"></i><span class="metric-red"> <%= @candidate.account_creation%></span></li>
+              <li><i class="fa fa-twitter"></i><span class="metric-red"> <%= @candidate.tweets_count%> </span>tweets</li>
+              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.followers_count %></span> </i> abonnés</li>
+              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.following_count %></span> </i> abonnements</li>
             </ul>
           </div>
         </div>
@@ -58,21 +60,19 @@
       </div>
     </div>
 
-
-
     <!--  Sa communauté -->
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <div class="card-stats" data-sr="over 1s">
           <div class="row">
             <div class="cols-xs-12 col-sm-6">
-              <h2>Sa communauté</h2>
+              <h2>Ses abonnés :</h2>
 
               <div class="row">
                 <div class="col-xs-6">
                   <div class="mini-box">
                     <p><i class="fa fa-comment"></i><span class="number"> <%= @followers_tweets.average %></span></p>
-                    <p>nombre moyen de tweets émis par chacun de ses followers</p>
+                    <p>nombre moyen de tweets de chaque abonné</p>
 
                     <% if false %>
                       <p><%= @followers_tweets.percentage %>% de ses followers ont tweeté plus de 2000 fois</p>
@@ -84,7 +84,7 @@
                   <div class="mini-box">
                     <p><i class="fa fa-users"></i><span class="number"> <%= @followers_followers.average %></span>
                     </p>
-                    <p>nombre moyen de followers de ses followers</p>
+                    <p>nombre moyen d'abonnés de chaque abonné</p>
                     <% if false %>
                       <p><%= @followers_followers.percentage %>% ont plus de 1000 followers</p>
                     <% end %>
@@ -182,7 +182,7 @@
                 <div class="col-xs-6">
                   <div class="mini-box">
                     <p>Il aime : <span class="number"> @<%= @users_retweeted_by_candidate.first[:content] %></span></p>
-                    <p><i class="fa fa-retweet"></i><span class="number"> <%= @users_retweeted_by_candidate.first[:count] %></span>fois</p>
+                    <p><i class="fa fa-retweet"></i><span class="number"> <%= @users_retweeted_by_candidate.first[:count] %></span> fois</p>
                   </div>
                 </div>
                 <div class="col-xs-6">
@@ -191,11 +191,11 @@
                    <p>de ses tweets sont des RT</p>
                   </div>
                 </div>
-                <div class="col-xs-6">
+               <!--  <div class="col-xs-6">
                   <div class="mini-box">
                   <p>???</p>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 

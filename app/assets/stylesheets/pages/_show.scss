@@ -15,6 +15,13 @@
 
 }
 
+a{
+  &:hover {
+    text-decoration: none;
+    color: $red;
+  }
+}
+
 #navigation{
   padding-top: 20px;
 }
@@ -58,13 +65,7 @@
 }
 
 
-.candidate-nav{
-  a{
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
+
 
 .presentation{
   padding: 20px;
@@ -74,7 +75,9 @@
   margin-left: 10px;
 }
 .profile{
-
+  i{
+    color: #4D9CC5
+  }
   body{
     font: $base-font;
     font-weight: 200;
