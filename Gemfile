@@ -14,8 +14,11 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# gems de front
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-d3'
+  gem 'rails-assets-scrollReveal.js'
 end
 
 gem 'twitter'
