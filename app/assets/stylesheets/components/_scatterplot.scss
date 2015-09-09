@@ -1,0 +1,53 @@
+body {
+  font: 11px sans-serif;
+}
+.chart-container {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #F2F2F2;
+  margin-bottom: 50px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: none;
+  transition: all 1s cubic-bezier(0, 1.2, 1, 1.2);
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}
+.label {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.tick {
+  font-size: 15px;
+  font-weight: normal;
+}
+.card-candidate {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
+.card-candidate h2 {
+  font-size: 15px;
+  font-weight: lighter;
+  margin-top: 0px;
+}
+
+.candidate_avatar {
+  img {
+    width: 100px;
+  }
+}
