@@ -1,5 +1,5 @@
-<!-- <div id="home-body"></div> -->
 <%= render 'shared/banner' %>
+<!-- give access to next section "candidates" -->
 <div class="home-content home-content-white" id="liste-candidats">
   <div class="link-back link-back-dark text-center">
     <%= link_to root_path << "#accueil" do %>
@@ -7,8 +7,10 @@
       <p>Haut<br>de<br>page</p>
     <% end %>
   </div>
+  <!-- display all candidates -->
+  <h4 class="text-center">Cliquez sur un des candidats pour afficher son profil</h4>
+  <br>
   <div class="container text-center">
-    <!-- <div class="padded" id="candidates-list"></div> -->
     <div class="row">
       <% @candidates.each do |candidate| %>
         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -17,18 +19,15 @@
             <%= link_to candidate_path(candidate.id), class: "candidate-card-shadow" do %>
               <h4><%= candidate.name %></h4>
               <h5>@<%= candidate.screen_name %></h5>
-              <p><%= candidate.party %></p>
-<!--               <p><%= candidate.tweets_count %> <b>tweets</b></p>
-              <p><%= candidate.followers_count %> <b>followers</b></p>
-              <p>Depuis <%= candidate.account_creation.strftime("%m/%Y") %></p> -->
+              <p><%= candidate.party %></p>>
             <% end %>
-            <!-- <%= image_tag candidate.picture, class: "candidate-card-image" %> -->
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+<!-- give access to accueil -->
 <div class="home-content home-content-blue" id="a-propos">
   <div class="link-back link-back-white text-center">
     <%= link_to root_path << "#accueil" do %>
@@ -36,6 +35,7 @@
       <p>Haut<br>de<br>page</p>
     <% end %>
   </div>
+  <!-- content section "A propos" -->
   <div class="container text-center">
       <div class="row">
         <div class="col-xs-12">
@@ -51,7 +51,7 @@
           <div class="banner-data">
             <%= image_tag 'white_network.png', height:"50", class:"banner-icon" %>
             <h5 class="text hidden-xs">Analysez la communauté de chaque candidat!</h5>
-            <p>Qui les candidats ciblent ils? Qui les relaie? Sont ils performants?</p>
+            <p>Êtes vous dans leur cible? Qui relaie leurs twitts? Sont ils performants?</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
           <div class="banner-data">
             <%= image_tag 'white_bird.png', height:"50", class:"banner-icon"%>
             <h5 class="text hidden-xs">Comparez les candidats!</h5>
-            <p>Comparez vos candidats entre eux! Qui maitrise Twitter? Qui est à côté de la plaque?</p>
+            <p>Mettez vos candidats face à face. Qui maitrise Twitter? Qui est à côté de la plaque?</p>
             <br>
             <%= link_to "Comparer les candidats!", "#",class: "btn btn-danger" %>
           </div>
@@ -72,9 +72,9 @@
 <!-- TWITTER FEED -->
 <div class="home-content home-content-white" id="feed">
   <div class="title text-center">
-    <h1>Les candidats sur Twitter</h1>
+    <h2>Les derniers twitts de vos candidats en live</h2>
   </div>
-
+  <!-- give access to accueil -->
   <div class="link-back link-back-black text-center">
     <%= link_to root_path << "#accueil" do %>
       <i class="fa fa-angle-up"></i>
@@ -96,11 +96,11 @@
   </div>
 </div>
 
-<!-- TEAM -->
+<!-- Contacts -->
 
 <div class="home-content home-content-blue" id="team">
   <div class="title text-center">
-    <h1>Equipe</h1>
+    <h2>L'équipe</h2>
   </div>
 
   <div class="link-back link-back-black text-center">
@@ -123,7 +123,7 @@
         <!-- alice -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'alice.jpeg', height:"100", class:"team-picture" %>
+            <%= image_tag 'alice.jpeg', height:"100", class: "team-picture" %>
             <h5 class="text hidden-xs">Alice</h5>
             <p>Lead ballbreaker</p>
           </div>
@@ -132,7 +132,7 @@
         <!-- vincent -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'vincent.jpeg', height:"100", class:"team-picture"%>
+            <%= image_tag 'vincent.jpeg', height:"100", class: "team-picture"%>
             <h5 class="text hidden-xs">Vincent</h5>
             <p>Lead designer</p>
           </div>
@@ -141,7 +141,7 @@
         <!-- antonin -->
         <div class="col-xs-12 col-sm-3">
           <div class="banner-data">
-            <%= image_tag 'antonin.jpeg', height:"100", class:"team-picture"%>
+            <%= image_tag 'antonin.jpeg', height:"100", class: "team-picture"%>
             <h5 class="text hidden-xs">Antonin</h5>
             <p>Lead swagger</p>
           </div>

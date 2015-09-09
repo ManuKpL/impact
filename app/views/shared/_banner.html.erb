@@ -1,8 +1,8 @@
 <div class="banner text-center" id="accueil">
   <div class="banner-shadow"></div>
   <div class="banner-content">
-    <h1>LES CANDIDATS AUX<br> REGIONALES SUR TWITTER</h1>
-    <h2>REGIONALES 2015 - Île de France</h2>
+    <h1>vos candidats aux éléctions<br>sur twitter</h1>
+    <h2>Régionales 2015 en Île de France</h2>
     <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
       <div class="banner-form">
         <div class="banner-form-marged">
@@ -16,21 +16,21 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-4">
-          <div class="banner-data tossed">
+          <div class="banner-data">
             <%= image_tag 'white_pie.png', height:"100", class:"banner-icon" %>
-            <p class="text hidden-xs">Comprendre leur message</p>
+            <p class="text hidden-xs">Leur message explicité</p>
           </div>
         </div>
         <div class="col-xs-4">
-          <div class="banner-data tossed">
+          <div class="banner-data">
             <%= image_tag 'white_network.png', height:"100", class:"banner-icon" %>
-            <p class="text hidden-xs">Comprendre leur communauté</p>
+            <p class="text hidden-xs">Leurs communautés explorées</p>
           </div>
         </div>
         <div class="col-xs-4">
-          <div class="banner-data tossed">
+          <div class="banner-data">
             <%= image_tag 'white_bird.png', height:"100", class:"banner-icon"%>
-            <p class="text hidden-xs">Comprendre leur piou piou</p>
+            <p class="text hidden-xs">Leur twitter décortiqué</p>
           </div>
         </div>
       </div>
@@ -38,8 +38,8 @@
   </div>
   <div class="home-preview">
     <div class="floating">
-      <p>Voir tous les candidats</p>
-      <p><i class="fa fa-angle-down"></i></p>
+      <p>Voir les candidats</p>
+      <p><i class="fa fa-angle-double-down"></i></p>
     </div>
     <%= link_to "", "#liste-candidats", class: "home-preview-link" %>
   </div>
