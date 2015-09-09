@@ -12,6 +12,7 @@
     margin-bottom: 5vh;
     z-index: 2;
     text-shadow: 1px 1px 1px rgb(60,60,60);
+    text-transform : uppercase;
     // span {
     //   color: $yellow;
     // }
@@ -66,6 +67,11 @@
     color: white;
     z-index: 2;
     padding: 0.7em;
+    &-img{
+      width: 150px;
+      height:150px;
+      border-radius: 50%;
+    }
     .text {
       line-height: 20px;
       font-size: 19px;
