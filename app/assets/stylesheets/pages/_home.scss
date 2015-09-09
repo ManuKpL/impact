@@ -14,7 +14,11 @@
   z-index: -1;
 }
 
-
+#a-propos, #team {
+  a {
+    text-shadow: none;
+  }
+}
 
 .home-content{
   position: relative;
