@@ -1,0 +1,14 @@
+.chart-menu {
+  display: flex;
+  padding: 20px;
+}
+
+.chart-menu-item {
+  padding-right: 20px;
+
+  opacity: 0.4;
+
+  &.active {
+    opacity: 1;
+  }
+}
