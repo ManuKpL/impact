@@ -46,34 +46,39 @@ class CandidatesController < ApplicationController
 
   def compare
     @candidates = Candidate.all
-    # Wait for data on all candidates
+
     @data_retweets_favorites = @candidates.map do |c|
       { retweets: c.interactions.where(data_type: "retweets").first,
         favorites: c.interactions.where(data_type: "favorites").first,
+        name: c.name,
         id: c.id
       }
     end
     @data_followers_followers = @candidates.map do |c|
       { followers: c.followers_count,
         followers_followers: c.interactions.where(data_type: "followers followers").first,
+        name: c.name,
         id: c.id
       }
     end
     @data_followers_tweets = @candidates.map do |c|
       { followers: c.followers_count,
         followers_tweets: c.interactions.where(data_type: "followers tweets").first,
+        name: c.name,
         id: c.id
       }
     end
    @data_tweets_retweets = @candidates.map do |c|
       { tweets: c.tweets_count,
         retweets: c.interactions.where(data_type: "retweets").first,
+        name: c.name,
         id: c.id
       }
     end
     @data_followers_followings = @candidates.map do |c|
       { followers: c.followers_count,
         followings: c.following_count,
+        name: c.name,
         id: c.id
       }
     end

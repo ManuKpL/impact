@@ -67,6 +67,12 @@
     color: white;
     z-index: 2;
     padding: 0.7em;
+    i {
+      font-size: 40px;
+      &:hover {
+        color: #247ba0;
+      }
+    }
     &-img{
       width: 150px;
       height:150px;

@@ -65,7 +65,7 @@ a{
 }
 
 .presentation{
-  padding: 20px;
+  padding: 0px;
   // background: rgb(245, 245, 245);
   // border-radius: 13px;
   // box-shadow: 1px 1px 3px #EEEEEE;
@@ -115,7 +115,10 @@ a{
   &-metrics {
     font-size: 20px;
     letter-spacing: 1px;
-    padding: 20px 0 0 10px;
+    padding: 40px 0 0 10px;
+    li {
+      padding: 3px;
+    }
 
     .metric-red{
       font-family: Montserrat;
@@ -126,4 +129,7 @@ a{
       color: $blue;
     }
   }
+}
+.candidate-nav {
+  padding: 20px;
 }
