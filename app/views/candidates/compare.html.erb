@@ -1,23 +1,42 @@
 <div class="container page-padding">
-  <div class="row">
-    <% @candidates.each do |candidate| %>
-      <div class="col-xs-12 col-sm-1 candidate_avatar">
-        <%= image_tag candidate.picture, id: candidate.screen_name, "data-target" => "##{candidate.id}" %>
+  <div class="padded">
+    <div class="row">
+      <h1>Compare the candidates</h1>
+    </div>
+    <div class="row">
+      <!-- favorites vs retweets -->
+      <div class="col-xs-12 col-sm-4">
+        <div class="candidate-menu">
+          <ul class="list-unstyled">
+            <% @candidates.each do |candidate| %>
+                <div class="candidate-button">
+                  <div class="candidate-avatar">
+                    <%= image_tag candidate.picture, id: candidate.screen_name,
+                          "data-target" => "##{candidate.id}", width: 50 %>
+                  </div>
+                  <div class="candidate-info">
+                    <div class="candidate-name">
+                      <%= candidate.name %>
+                    </div>
+                    <div class="candidate-screen-name">
+                      @<%= candidate.screen_name %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div class="row">
-    <div class="row-padded">
-      <div class="col-xs-12 col-sm-2">
-        <h2>Favorites VS Retweets</h2>
-      </div>
-      <div class="col-xs-12 col-sm-9">
-        <div class="chart-container">
+        <div class="col-xs-12 col-sm-8">
+          <div class="chart-container">
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
+
+
+<!-- CREEPY STUFF BELOW -->
 
 <% content_for(:after_js) do %>
   <script>
