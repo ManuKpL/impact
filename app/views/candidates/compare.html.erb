@@ -10,9 +10,8 @@
         <div class="candidate-flex">
           <% @candidates.each do |candidate| %>
             <div class="candidate-button">
-              <div class="candidate-avatar">
-                <%= image_tag candidate.picture, id: candidate.screen_name,
-                      "data-target" => "##{candidate.id}", width: 50 %>
+              <div class="candidate-avatar" id="<%=candidate.screen_name%>" data-target="#<%=candidate.id%>">
+                <%= image_tag candidate.picture, width: 50 %>
               </div>
               <div class="candidate-info">
                 <div class="candidate-name">
@@ -27,9 +26,16 @@
 
 <!-- GRAPHS -->
     <div class="col-xs-6 col-sm-9">
-      <div class="chart-container" id="favorites"></div>
-      <div class="chart-container" id="followers"></div>
-      <div class="chart-container" id="followings"></div>
+      <div class='chart-menu'>
+        <div id='favorites-menu' data-chart='favorites' class='chart-menu-item active'>Favorites</div>
+        <div id='followers-menu' data-chart='followers' class='chart-menu-item'>Followers</div>
+        <div id='followings-menu' data-chart='followings' class='chart-menu-item'>Followings</div>
+      </div>
+      <div class="chart-overlay">
+        <div class="chart-container" id="favorites"></div>
+        <div class="chart-container hidden" id="followers"></div>
+        <div class="chart-container hidden" id="followings"></div>
+      </div>
     </div>
 
   </div>
