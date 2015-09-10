@@ -7,7 +7,9 @@
     <div class="col-sm-3">
       <ul>
         <% @candidates.each do |candidate| %>
-          <li class='candidate_avatar' id="<%= candidate.screen_name %>" data-target="#<%= candidate.id %>"> <%= image_tag candidate.picture %> </li>
+          <li class='candidate_avatar'>
+            <%= image_tag candidate.picture, id: candidate.screen_name, "data-target" => "##{candidate.id}" %>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -26,6 +28,8 @@
    * map function - maps from data value to display value
    * axis - sets up axis
    */
+
+  // var data = <%= @data_retweets_favorites.to_json.html_safe %>;
 
   var data = [{
                id: 1,
