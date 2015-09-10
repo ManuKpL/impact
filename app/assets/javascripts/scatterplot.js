@@ -1,15 +1,14 @@
 $(function() {
-  var radius;
-  var $target;
-  $(".candidate_avatar").mouseover(function(){
-    var $target = $($(this).attr('data-target'));
+
+  $(".candidate_avatar img").mouseover(function(){
+    var $target = $("circle" + $(this).attr('data-target'));
     var radius = $target.attr("r");
-    $target.attr("r-initial", radius);
-    $target.attr("r", 60);
+    $target.attr("r", radius * 2);
   })
-  .mouseleave(function() {
-    var $target = $($(this).attr('data-target'));
-    var rInitial = $target.attr("r-initial");
-    $target.attr("r", rInitial);
+
+  $(".candidate_avatar img").mouseleave(function() {
+    var $target = $("circle" + $(this).attr('data-target'));
+    var radius = $target.attr("r");
+    $target.attr("r", radius / 2);
   })
 });
