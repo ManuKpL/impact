@@ -1,47 +1,41 @@
 <div class="container page-padding">
-  <div class="row">
-    <% @candidates.each do |candidate| %>
-      <div class="col-xs-12 col-sm-1 candidate_avatar">
-        <%= image_tag candidate.picture, id: candidate.screen_name, "data-target" => "##{candidate.id}" %>
-      </div>
-    <% end %>
+  <div class="header">
+    <h1>Compare the candidates</h1>
   </div>
+
   <div class="row">
-    <div class="row-padded">
-      <div class="col-xs-12 col-sm-2">
-        <h2>Favorites VS Retweets</h2>
-      </div>
-      <div class="col-xs-12 col-sm-9">
-        <div class="chart-container" id="favorites">
+  <!-- A GAUCHE -->
+    <div class="col-xs-6 col-sm-3">
+      <div class="candidate-menu">
+        <div class="candidate-flex">
+          <% @candidates.each do |candidate| %>
+            <div class="candidate-button">
+              <div class="candidate-avatar">
+                <%= image_tag candidate.picture, id: candidate.screen_name,
+                      "data-target" => "##{candidate.id}", width: 50 %>
+              </div>
+              <div class="candidate-info">
+                <div class="candidate-name">
+                  <%= candidate.name %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="row-padded">
-      <div class="col-xs-12 col-sm-2">
-        <h2>Followers_followers VS Followers_tweets</h2>
-      </div>
-      <div class="col-xs-12 col-sm-9">
-        <div class="chart-container" id="followers">
-        </div>
-      </div>
+
+<!-- GRAPHS -->
+    <div class="col-xs-6 col-sm-9">
+      <div class="chart-container" id="favorites"></div>
+      <div class="chart-container" id="followers"></div>
+      <div class="chart-container" id="followings"></div>
     </div>
-  </div>
-  <div class="row">
-    <div class="row-padded">
-      <div class="col-xs-12 col-sm-2">
-        <h2>Followers VS Followings</h2>
-      </div>
-      <div class="col-xs-12 col-sm-9">
-        <div class="chart-container" id="followings">
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 
-<!-- Scatterplot D3 -->
+<!-- CREEPY SCATTER_BOB -->
 
 <% content_for(:after_js) do %>
   <script>

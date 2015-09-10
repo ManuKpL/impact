@@ -15,6 +15,7 @@
   }
   &-logo {
     width: 74px;
+    font-size: 20px;
   }
   &-container {
     display: flex;
@@ -73,6 +74,7 @@
     h1 {
       margin: 0;
       text-transform: none;
+      font-size: 20px;
     }
     &:hover {
       color: #da552f;
