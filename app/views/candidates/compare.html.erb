@@ -1,14 +1,15 @@
 <div class="container page-padding">
-  <div class="padded">
-    <div class="row">
-      <h1>Compare the candidates</h1>
-    </div>
-    <div class="row">
-      <!-- favorites vs retweets -->
-      <div class="col-xs-12 col-sm-4">
-        <div class="candidate-menu">
-          <ul class="list-unstyled">
+  <div class="header">
+    <h1>Compare the candidates</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="candidate-menu">
+        <div class="row">
+          <div class="candidate-flex">
             <% @candidates.each do |candidate| %>
+
                 <div class="candidate-button">
                   <div class="candidate-avatar">
                     <%= image_tag candidate.picture, id: candidate.screen_name,
@@ -18,21 +19,26 @@
                     <div class="candidate-name">
                       <%= candidate.name %>
                     </div>
+                  <% if false %>
                     <div class="candidate-screen-name">
                       @<%= candidate.screen_name %>
                     </div>
+                  <% end %>
                   </div>
                 </div>
+
             <% end %>
-          </ul>
-        </div>
-      </div>
-        <div class="col-xs-12 col-sm-8">
-          <div class="chart-container">
           </div>
         </div>
       </div>
     </div>
+
+
+    <div class="col-xs-12 col-sm-8">
+      <div class="chart-container">
+      </div>
+    </div>
+  </div>
 </div>
 
 
