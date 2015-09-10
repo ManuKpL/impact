@@ -7,7 +7,7 @@ namespace :followers do
       JSON.parse(File.open(@file_path).read).first.last
     end
 
-    Candidate.all.reject { |c| c.id == 1 || c.id == 2 || c.id == 6 }.each_with_index do |candidate, index|
+    Candidate.all.each_with_index do |candidate, index|
       start = Time.now
       @file_path = "app/data/json/#{candidate.screen_name.downcase}_followers.json"
       open_json.each do |follower|
