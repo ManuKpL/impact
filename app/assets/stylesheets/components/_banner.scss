@@ -80,7 +80,7 @@
     }
     .text {
       line-height: 20px;
-      font-size: 19px;
+      font-size: 17px;
     }
   }
   &-icon {
@@ -118,4 +118,8 @@
       }
     }
   }
+}
+.btn-marged {
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
