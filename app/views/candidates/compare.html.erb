@@ -10,9 +10,8 @@
         <div class="candidate-flex">
           <% @candidates.each do |candidate| %>
             <div class="candidate-button">
-              <div class="candidate-avatar">
-                <%= image_tag candidate.picture, id: candidate.screen_name,
-                      "data-target" => "##{candidate.id}", width: 50 %>
+              <div class="candidate-avatar" id="<%=candidate.screen_name%>" data-target="#<%=candidate.id%>">
+                <%= image_tag candidate.picture, width: 50 %>
               </div>
               <div class="candidate-info">
                 <div class="candidate-name">
