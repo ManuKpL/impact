@@ -138,15 +138,12 @@
   -webkit-border-radius: 10px;
   border-radius: 10px;
   margin-top: 70px;
+  z-index:1;
   p{
     font-family: raleway;
     color: white;
     padding: 7px;
-  }
-  i{
-    font-size: 150px;
-    margin-left: 50px;
-    margin-top: 50px;
+    z-index: 1;
   }
   }
   #talkbubble:before {
@@ -159,6 +156,18 @@
     border-top: 33px solid transparent;
     border-right: 51px solid grey;
     border-bottom: 50px solid transparent;
+    z-index: -1;
+  }
+
+  .flexed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #birdy {
+    font-size: 125px;
+    margin: 50px 50px 0px 50px;
   }
 
 @media screen and (min-width: 991px) and (max-width: 1438px) {
@@ -171,5 +180,28 @@
 @media screen and (max-width: 768px) {
   #picture-container {
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .flexed {
+    flex-direction: row-reverse;
+  }
+  #birdy {
+    margin-left: 0px;
+  }
+  #talkbubble:before {
+    right: 100%;
+    top: 26px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid grey;
+    border-bottom: 13px solid transparent;
+  }
+  #talkbubble {
+    p{
+    font-size: 12px;
+    }
   }
 }
