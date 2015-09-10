@@ -63,8 +63,12 @@
             <% end %>
           </div>
         </div>
-
-        <div class="col-xs-6 col-md-4 col-md-offset-4">
+        <div class="col-xs-6 col-md-4">
+          <div class="text-center">
+            <%= link_to "Comparer les candidats", compare_path, class: "btn btn-danger" %>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-4">
           <div class="candidate-nav text-center">
             <%=link_to candidate_path(@next_id) do %>
               <%= Candidate.find(@next_id).name %>
