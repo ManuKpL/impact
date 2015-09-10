@@ -1,7 +1,58 @@
 <!-- THIS IS THE CANDIDATE SHOW VIEW -->
-<div class="padded-top">
-<!-- navigation arrows -->
-  <div class="container-fluid profile">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card-stats card-stats-marged">
+        <div class="row">
+          <div class="id-card">
+            <!-- profile picture-->
+            <div class="col-xs-12 col-sm-4 col-md-2" id="picture-container">
+              <%= image_tag @candidate.picture, class: "profile-picture" %>
+            </div>
+            <!-- profile infos -->
+            <div class="col-xs-12 col-sm-5 col-md-6">
+                <h4><%= @candidate.name %></h4>
+              <p><%= @candidate.party %></p>
+              <%=link_to  "https://twitter.com/#{@candidate.screen_name}", target: "_blank"  do %>
+                <p>@<%=@candidate.screen_name %></p>
+              <% end %>
+              <p><%= @candidate.description %></p>
+            </div>
+            <!-- info metrics -->
+            <div class="col-xs-12 col-sm-3 col-md-4">
+              <ul class="list-unstyled text-left">
+                <li>
+                  <i class="fa fa-clock-o"></i>
+                  <span class="metric-red">
+                    <%= @candidate.account_creation%>
+                  </span>
+                </li>
+                <li>
+                  <i class="fa fa-twitter"></i>
+                  <span class="metric-red">
+                    <%= @candidate.tweets_count%>
+                  </span>tweets
+                </li>
+                <li>
+                  <i class="fa fa-users">
+                    <span class="metric-red"><%= @candidate.followers_count %></span>
+                  </i>abonnés
+                </li>
+                <li>
+                  <i class="fa fa-users">
+                    <span class="metric-red"><%= @candidate.following_count %></span>
+                  </i>abonnements
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- navigation arrows -->
     <div class="row">
       <div id="navigation">
         <div class="col-xs-6 col-md-4">
@@ -23,49 +74,12 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="presentation">
-
-        <!-- profile picture-->
-        <div class="col-xs-12 col-sm-2 col-sm-offset-1 ">
-          <%= image_tag @candidate.picture, class: "profile-picture" %>
-        </div>
-
-        <!-- profile infos -->
-        <div class="col-xs-12 col-sm-5">
-          <div class="profile profile-info">
-            <h4><%= @candidate.name %></h4>
-            <p><%= @candidate.party %></p>
-            <%=link_to  "https://twitter.com/#{@candidate.screen_name}", target: "_blank"  do %>
-              <span id="screen-name"><p>@<%=@candidate.screen_name %></p></span>
-            <% end %>
-            <p><%= @candidate.description %></p>
-
-          </div>
-        </div>
-
-        <!-- info metrics -->
-        <div class="col-xs-12 col-sm-3">
-          <div class="profile profile-metrics">
-            <ul class="list-unstyled text-left">
-              <li><i class="fa fa-clock-o"></i><span class="metric-red"> <%= @candidate.account_creation%></span></li>
-              <li><i class="fa fa-twitter"></i><span class="metric-red"> <%= @candidate.tweets_count%> </span>tweets</li>
-              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.followers_count %></span> </i> abonnés</li>
-              <li><i class="fa fa-users"> <span class="metric-red"><%= @candidate.following_count %></span> </i> abonnements</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
     <!--  Sa communauté -->
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="col-xs-12">
         <div class="card-stats">
           <div class="row">
-            <div class="cols-xs-12 col-sm-6">
+            <div class="cols-xs-12 col-sm-12 col-md-6">
               <h2>Ses abonnés :</h2>
 
               <div class="row">
@@ -105,7 +119,7 @@
               </div>
             </div>
 
-            <div class="col-xs-6 col-sm-6">
+            <div class="col-xs-12 col-sm-6">
               <h2 class="pull-right">Les termes qui apparaissent le plus dans la bio des followers du candidat:</h2>
               <svg class="chart" id="bio-followers">
               </svg>
@@ -118,10 +132,10 @@
 
     <!-- SES EXPRESSIONS -->
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="col-xs-12">
         <div class="card-stats" data-sr="over 1s">
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-12 col-md-6">
               <h2>Son Compte</h2>
 
               <div class="row">
@@ -152,7 +166,7 @@
               </div>
             </div>
 
-            <div class="col xs-6 col-sm-6">
+            <div class="col xs-12 col-sm-6">
               <h2 class="pull-right">Les hashtags que ce candidat utilise le plus (par nombre d'occurences):</h2>
               <svg class="chart" id="tweet-hashtags">
               </svg>
@@ -165,11 +179,11 @@
 
   <!-- SES INTERACTIONS -->
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="col-xs-12">
         <div class="card-stats" data-sr="over 1s">
 
           <div class="row">
-            <div class="cols-xs-12 col-sm-6">
+            <div class="cols-xs-12 col-sm-12 col-md-6">
               <h2>Ses interactions</h2>
 
               <div class="row">
@@ -199,7 +213,7 @@
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-x-12 col-sm-6">
               <h2 class="pull-right">Les comptes que le candidat mentionne le plus:</h2>
               <svg class="chart" id="tweet-mentions">
               </svg>
@@ -209,28 +223,19 @@
         </div>
       </div>
     </div>
-
-
-
-
-  </div
-
-
-
-
-
+  </div>
 <!-- JS pour les charts -->
 
 <!-- Chart #tweet-hashtags -->
 <% content_for(:after_js) do %>
   <script>
 
-    if (window.innerWidth < 768) {
-      var chartWidth = window.innerWidth * 0.9;
-    }
-    else {
-      var chartWidth = window.innerWidth * 0.4;
-    }
+    // if (window.innerWidth < 768) {
+      var chartWidth = $('#tweet-hashtags').parent().width()
+    // }
+    // else {
+    //   var chartWidth = window.innerWidth * 0.4;
+    // }
 
     var barHeight = 25;
 
@@ -293,12 +298,14 @@
 <% content_for(:after_js) do %>
   <script>
 
-    if (window.innerWidth < 768) {
-      var chartWidth = window.innerWidth * 0.9;
-    }
-    else {
-      var chartWidth = window.innerWidth * 0.4;
-    }
+    // if (window.innerWidth < 768) {
+    //   var chartWidth = window.innerWidth * 0.9;
+    // }
+    // else {
+    //   var chartWidth = window.innerWidth * 0.4;
+    // }
+
+    var chartWidth = $('#tweet-mentions').parent().width()
 
     var barHeight = 25;
 
@@ -360,12 +367,14 @@
 <% content_for(:after_js) do %>
   <script>
 
-    if (window.innerWidth < 768) {
-      var chartWidth = window.innerWidth * 0.9;
-    }
-    else {
-      var chartWidth = window.innerWidth * 0.4;
-    }
+    // if (window.innerWidth < 768) {
+    //   var chartWidth = window.innerWidth * 0.9;
+    // }
+    // else {
+    //   var chartWidth = window.innerWidth * 0.4;
+    // }
+
+    var chartWidth = $('#bio-followers').parent().width()
 
     var barHeight = 25;
 

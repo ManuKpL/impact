@@ -1,9 +1,12 @@
 .card-stats {
   margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
   background: rgb(245, 245, 245);
   padding: 20px;
   border-radius: 13px;
   box-shadow: 1px 1px 3px #EEEEEE;
+  width: 90%;
   h2 {
     font-size: 18px;
     font-weight: bold;
@@ -12,13 +15,8 @@
   h3 {
     font-size: 16px;
   }
-
-}
-
-a{
-  &:hover {
-    text-decoration: none;
-    color: $red;
+  &-marged {
+    margin-top: 100px;
   }
 }
 
@@ -27,14 +25,12 @@ a{
 }
 
 .mini-box{
-
   padding: 30px;
   margin: 13px 0px;
   background-color: #fafafa;
   border-radius: 5px;
   color: #141414;
   height: 165px;
-
 
   .number{
   font-family: Montserrat;
@@ -62,13 +58,6 @@ a{
     font-size: 30px;
     color: #4D9CC5;
   }
-}
-
-.presentation{
-  padding: 0px;
-  // background: rgb(245, 245, 245);
-  // border-radius: 13px;
-  // box-shadow: 1px 1px 3px #EEEEEE;
 }
 
 .metrics{
@@ -132,4 +121,23 @@ a{
 }
 .candidate-nav {
   padding: 20px;
+}
+
+.id-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 991px) and (max-width: 1438px) {
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #picture-container {
+    text-align: center;
+  }
 }
