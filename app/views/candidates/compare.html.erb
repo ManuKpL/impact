@@ -1,17 +1,20 @@
 <div class="container page-padding">
   <div class="row">
-    <div class="col-sm-9">
-      <div class="chart-container">
+    <% @candidates.each do |candidate| %>
+      <div class="col-xs-12 col-sm-1 candidate_avatar">
+        <%= image_tag candidate.picture, id: candidate.screen_name, "data-target" => "##{candidate.id}" %>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <ul>
-        <% @candidates.each do |candidate| %>
-          <li class='candidate_avatar'>
-            <%= image_tag candidate.picture, id: candidate.screen_name, "data-target" => "##{candidate.id}" %>
-          </li>
-        <% end %>
-      </ul>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="row-padded">
+      <div class="col-xs-12 col-sm-2">
+        <h2>Favorites VS Retweets</h2>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <div class="chart-container">
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -136,7 +139,6 @@
                .style("opacity", .9);
           tooltip.html("<div class='card-candidate text-center'>"
                         + "<h2>" + d["name"] + "</h2>"
-                        + "<img src='http://placehold.it/100x100' class='img-circle'>"
                         + "</div>")
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
