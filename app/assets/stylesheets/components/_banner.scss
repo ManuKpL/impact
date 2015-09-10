@@ -80,14 +80,14 @@
     }
     .text {
       line-height: 20px;
-      font-size: 19px;
+      font-size: 17px;
     }
   }
   &-icon {
     margin-bottom: 30px;
   }
   .btn {
-    padding: 0px 30px;
+
     border-radius: 3px;
     font-weight: bold;
     border: none;
@@ -118,4 +118,7 @@
       }
     }
   }
+}
+.btn-marged {
+  margin-bottom: 20px;
 }
