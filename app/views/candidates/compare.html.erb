@@ -12,12 +12,36 @@
         <h2>Favorites VS Retweets</h2>
       </div>
       <div class="col-xs-12 col-sm-9">
-        <div class="chart-container">
+        <div class="chart-container" id="favorites">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row-padded">
+      <div class="col-xs-12 col-sm-2">
+        <h2>Followers_followers VS Followers_tweets</h2>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <div class="chart-container" id="followers">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row-padded">
+      <div class="col-xs-12 col-sm-2">
+        <h2>Followers VS Followings</h2>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <div class="chart-container" id="followings">
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Scatterplot D3 -->
 
 <% content_for(:after_js) do %>
   <script>
@@ -32,59 +56,25 @@
    * axis - sets up axis
    */
 
-  // var data = <%= @data_retweets_favorites.to_json.html_safe %>;
-
-  var data = [{
-               id: 1,
-               name: "Claude Bartolone",
-               favorites: 12,
-               retweets: 5,
-               followers: 150000
-             },
-             {
-                id: 2,
-                name: "Valérie Pécresse",
-                favorites: 15,
-                retweets: 10,
-                followers: 150000
-             },
-             {
-              id: 3,
-               name: "Emmanuelle Cosse",
-               favorites: 25,
-               retweets: 4,
-               followers: 20000
-             },
-             {
-              id: 4,
-               name: "Nathalie Arthaud",
-               favorites: 25,
-               retweets: 7,
-               followers: 100000
-             }]
+  var data = <%= @data_retweets_favorites.to_json.html_safe %>;
 
   // setup x
-  var xValue = function(d) { return d["retweets"];}, // data -> value
+  var xValue = function(d) { return d["favorites"];}, // data -> value
       xScale = d3.scale.linear().range([0, width]), // value -> display
       xMap = function(d) { return xScale(xValue(d));}, // data -> display
       xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
   // setup y
-  var yValue = function(d) { return d["favorites"];}, // data -> value
+  var yValue = function(d) { return d["retweets"];}, // data -> value
       yScale = d3.scale.linear().range([height, 0]), // value -> display
       yMap = function(d) { return yScale(yValue(d));}, // data -> display
       yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-  // setup y
-  var rValue = function(d) { return d["followers"];}, // data -> value
-      rScale = d3.scale.linear().range([0, 30]).domain([0, 200000]), // value -> display
-      rMap = function(d) { return rScale(rValue(d));}; // data -> display
-
   // Setup fill color
-  var color = d3.scale.linear().range(["#5778c1","#3E5A9A"]).domain([0, 1, 2, 3]);
+  var color = d3.scale.category10();
 
   // add the graph canvas to the body of the webpage
-  var svg = d3.select(".chart-container").append("svg")
+  var svg = d3.select("#favorites").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -96,8 +86,8 @@
       .style("opacity", 0);
 
   // Don't want dots overlapping axis, so add in buffer to data domain
-  xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
-  yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
+  xScale.domain([d3.min(data, xValue) - 0.1, d3.max(data, xValue)]);
+  yScale.domain([d3.min(data, yValue) - 5, d3.max(data, yValue)]);
 
   // x-axis
   svg.append("g")
@@ -109,7 +99,7 @@
       .attr("x", width)
       .attr("y", -6)
       .style("text-anchor", "end")
-      .text("Retweets");
+      .text("Favorites");
 
   // y-axis
   svg.append("g")
@@ -121,14 +111,14 @@
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Favorites");
+      .text("Retweets");
 
   // draw dots
   svg.selectAll(".dot")
       .data(data)
     .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", rMap)
+      .attr("r", 12)
       .attr("cx", xMap)
       .attr("cy", yMap)
       .attr("id", function(d) { return d["id"]})
@@ -149,11 +139,208 @@
                .style("opacity", 0);
       });
 
+  </script>
+<% end %>
 
+<% content_for(:after_js) do %>
+  <script>
 
+  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+      width = window.innerWidth * 0.6,
+      height = 500 - margin.top - margin.bottom;
+  /*
+   * value accessor - returns the value to encode for a given data object.
+   * scale - maps value to a visual display encoding, such as a pixel position.
+   * map function - maps from data value to display value
+   * axis - sets up axis
+   */
 
+  var data = <%= @data_followers_followers.to_json.html_safe %>;
+
+  // setup x
+  var xValue = function(d) { return d["followers_tweets"];}, // data -> value
+      xScale = d3.scale.linear().range([0, width]), // value -> display
+      xMap = function(d) { return xScale(xValue(d));}, // data -> display
+      xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+  // setup y
+  var yValue = function(d) { return d["followers_followers"];}, // data -> value
+      yScale = d3.scale.linear().range([height, 0]), // value -> display
+      yMap = function(d) { return yScale(yValue(d));}, // data -> display
+      yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+  // Setup fill color
+  var color = d3.scale.category10();
+
+  // add the graph canvas to the body of the webpage
+  var svg = d3.select("#followers").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // add the tooltip area to the webpage
+  var tooltip = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+  // Don't want dots overlapping axis, so add in buffer to data domain
+  xScale.domain([d3.min(data, xValue)-400, d3.max(data, xValue)+400]);
+  yScale.domain([d3.min(data, yValue)-400, d3.max(data, yValue)+400]);
+
+  // x-axis
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+      .text("Tweets");
+
+  // y-axis
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Followers");
+
+  // draw dots
+  svg.selectAll(".dot")
+      .data(data)
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 12)
+      .attr("cx", xMap)
+      .attr("cy", yMap)
+      .attr("id", function(d) { return d["id"]})
+      .style("fill", function(d, i) { return color(i);})
+      .on("mouseover", function(d) {
+          tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html("<div class='card-candidate text-center'>"
+                        + "<h2>" + d["name"] + "</h2>"
+                        + "</div>")
+               .style("left", (d3.event.pageX + 5) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
 
   </script>
 <% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+
+  var margin = {top: 20, right: 20, bottom: 30, left: 40},
+      width = window.innerWidth * 0.6,
+      height = 500 - margin.top - margin.bottom;
+  /*
+   * value accessor - returns the value to encode for a given data object.
+   * scale - maps value to a visual display encoding, such as a pixel position.
+   * map function - maps from data value to display value
+   * axis - sets up axis
+   */
+
+  var data = <%= @data_followers_followings.to_json.html_safe %>;
+
+  // setup x
+  var xValue = function(d) { return d["followings"] / 1000 ;}, // data -> value
+      xScale = d3.scale.linear().range([0, width]), // value -> display
+      xMap = function(d) { return xScale(xValue(d));}, // data -> display
+      xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+
+  // setup y
+  var yValue = function(d) { return d["followers"] / 1000 ;}, // data -> value
+      yScale = d3.scale.linear().range([height, 0]), // value -> display
+      yMap = function(d) { return yScale(yValue(d));}, // data -> display
+      yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+  // Setup fill color
+  var color = d3.scale.category10();
+
+  // add the graph canvas to the body of the webpage
+  var svg = d3.select("#followings").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // add the tooltip area to the webpage
+  var tooltip = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+  // Don't want dots overlapping axis, so add in buffer to data domain
+  xScale.domain([d3.min(data, xValue) - 0.1, d3.max(data, xValue)]);
+  yScale.domain([d3.min(data, yValue) - 5, d3.max(data, yValue)]);
+
+  // x-axis
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+      .text("Kilo-Followings");
+
+  // y-axis
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Kilo-Followers");
+
+  // draw dots
+  svg.selectAll(".dot")
+      .data(data)
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 12)
+      .attr("cx", xMap)
+      .attr("cy", yMap)
+      .attr("id", function(d) { return d["id"]})
+      .style("fill", function(d, i) { return color(i);})
+      .on("mouseover", function(d) {
+          tooltip.transition()
+               .duration(200)
+               .style("opacity", .9);
+          tooltip.html("<div class='card-candidate text-center'>"
+                        + "<h2>" + d["name"] + "</h2>"
+                        + "</div>")
+               .style("left", (d3.event.pageX + 5) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });
+
+  </script>
+<% end %>
+
+
+
 
 
