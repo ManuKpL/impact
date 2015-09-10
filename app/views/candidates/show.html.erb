@@ -63,8 +63,12 @@
             <% end %>
           </div>
         </div>
-
-        <div class="col-xs-6 col-md-4 col-md-offset-4">
+        <div class="col-xs-6 col-md-4">
+          <div class="text-center">
+            <%= link_to "Comparer les candidats", compare_path, class: "btn btn-danger" %>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-4">
           <div class="candidate-nav text-center">
             <%=link_to candidate_path(@next_id) do %>
               <%= Candidate.find(@next_id).name %>
@@ -120,9 +124,15 @@
             </div>
 
             <div class="col-xs-12 col-sm-6">
-              <h2 class="pull-right">Les termes qui apparaissent le plus dans la bio des followers du candidat:</h2>
+              <h2 class="pull-right">
+                Les termes qui apparaissent le plus dans la bio des followers du candidat:
+              </h2>
+              <% if @topwords_bio.length < 20 %>
+              <div id="talkbubble">h</div>
+              <% else %>
               <svg class="chart" id="bio-followers">
               </svg>
+              <% end %>
             </div>
 
           </div>
@@ -167,9 +177,13 @@
             </div>
 
             <div class="col xs-12 col-sm-6">
-              <h2 class="pull-right">Les hashtags que ce candidat utilise le plus (par nombre d'occurences):</h2>
-              <svg class="chart" id="tweet-hashtags">
-              </svg>
+              <h2>Les hashtags que ce candidat utilise le plus (par nombre d'occurences):</h2>
+              <% if @hashtags_in_tweets.length < 5 %>
+                <div id="talkbubble"><p class="text-center">Désolé, les données disponibles sont insuffisantes pour vous montrer des résultats pertinents...</p><i class="fa fa-twitter"></i></div>
+
+              <% else %>
+                <svg class="chart" id="tweet-hashtags"></svg>
+              <% end %>
             </div>
 
           </div>
@@ -214,9 +228,20 @@
             </div>
 
             <div class="col-x-12 col-sm-6">
-              <h2 class="pull-right">Les comptes que le candidat mentionne le plus:</h2>
+              <h2 class="pull-right">
+                Les comptes que le candidat mentionne le plus:
+              </h2>
+              <% if @top_candidate_mentions.length < 5 %>
+                <div id="talkbubble">
+                  <p class="text-center">
+                    Désolé, les données disponibles sont insuffisantes pour vous montrer des résultats pertinents...
+                  </p>
+                  <i class="fa fa-twitter"></i>
+                </div>
+              <% else %>
               <svg class="chart" id="tweet-mentions">
               </svg>
+              <% end %>
             </div>
 
           </div>
