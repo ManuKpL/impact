@@ -129,6 +129,38 @@
   flex-wrap: wrap;
 }
 
+#talkbubble {
+  width: 100%;
+  height: 80px;
+  background: grey;
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin-top: 70px;
+  p{
+    font-family: raleway;
+    color: white;
+    padding: 7px;
+  }
+  i{
+    font-size: 150px;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+  }
+  #talkbubble:before {
+    content:"";
+    position: absolute;
+    bottom: 100%;
+    top: 26px;
+    width: 0;
+    height: 0;
+    border-top: 33px solid transparent;
+    border-right: 51px solid grey;
+    border-bottom: 50px solid transparent;
+  }
+
 @media screen and (min-width: 991px) and (max-width: 1438px) {
   .profile-picture {
     width: 150px;
