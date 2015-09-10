@@ -3,7 +3,7 @@ namespace :jsons do
   desc 'create JSON with followers instances'
   task :create => :environment do
 
-    candidates = %w(dupontaignan vpecresse)
+    candidates = %w(dupontaignan vpecresse claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
     candidates.each_with_index do |screen_name, index|
       @start = Time.now
       @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
@@ -65,7 +65,7 @@ namespace :jsons do
       JSON.parse(File.open(@file_path).read).first.last
     end
 
-    candidates = %w(claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
+    candidates = %w(dupontaignan vpecresse claudebartolone emmacosse wdesaintjust YannWehrling Chantal_Jouanno n_arthaud DelarueJC aurelien_veron plaurent_pcf SylvainDeSmet)
     candidates.each_with_index do |screen_name, index|
       @start = Time.now
       @file_path = "app/data/json/#{screen_name.downcase}_followers.json"
