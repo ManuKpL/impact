@@ -11,19 +11,19 @@
           <div class="col-xs-4">
             <div class="banner-data">
               <%= image_tag 'white_pie.png', height:"50", class:"banner-icon" %>
-              <p class="text hidden-xs">Analyser leurs messages</p>
+              <p class="text hidden-xs">Analysez leurs messages</p>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="banner-data">
               <%= image_tag 'white_network.png', height:"50", class:"banner-icon" %>
-              <p class="text hidden-xs">Explorer leurs communautés</p>
+              <p class="text hidden-xs">Explorez leurs communautés</p>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="banner-data">
               <%= image_tag 'white_bird.png', height:"50", class:"banner-icon"%>
-              <p class="text hidden-xs">Comparer leurs performances</p>
+              <p class="text hidden-xs">Evaluez leurs performances</p>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
       <div class="banner-form">
         <div class="banner-form-marged">
-          <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Trouvez votre candidat..." %>
+          <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Trouver votre candidat..." %>
         </div>
         <div class="banner-form-marged">
           <%= f.button :submit, "Chercher", class: "btn btn-info" %>
