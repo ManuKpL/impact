@@ -1,13 +1,14 @@
 <div class="container page-padding">
-  <div class="header">
+<!--   <div class="header">
     <h1>Compare the candidates</h1>
-  </div>
+  </div> -->
 
   <div class="row">
   <!-- A GAUCHE -->
     <div class="col-xs-6 col-sm-3">
       <div class="candidate-menu">
         <div class="candidate-flex">
+          <p class= "legend-pictures">Survolez la photo d'un candidat pour le localiser</p>
           <% @candidates.each do |candidate| %>
             <div class="candidate-button">
               <div class="candidate-avatar" id="<%=candidate.screen_name%>" data-target="#<%=candidate.id%>">
@@ -27,15 +28,18 @@
 <!-- GRAPHS -->
     <div class="col-xs-6 col-sm-9">
       <div class='chart-menu'>
-        <div id='followings-menu' data-chart='followings' class='chart-menu-item active cursor'>Followings</div>
-        <div id='favorites-menu' data-chart='favorites' class='chart-menu-item cursor'>Favorites</div>
-        <div id='followers-menu' data-chart='followers' class='chart-menu-item cursor'>Followers</div>
+        <div id='followings-menu' data-chart='followings' class='chart-menu-item active cursor'>Comptes</div>
+        <div id='followers-menu' data-chart='followers' class='chart-menu-item cursor'>Communautés</div>
+        <div id='favorites-menu' data-chart='favorites' class='chart-menu-item cursor'>Performances</div>
       </div>
       <hr id="filet">
+      <p class="legend" id="followings-legend">Comparez le nombre de personnes qui suivent et qui sont suivies par chaque candidat</p>
+      <p class="legend hidden" id="followers-legend">Comparez le nombre moyen de followers et de tweets publiés par les abonnés de chaque candidat</p>
+      <p class="legend hidden" id="favorites-legend">Comparez le nombre moyen de retweets et de favoris reçus par les tweets de chaque candidat</p>
       <div class="chart-overlay">
         <div class="chart-container" id="followings"></div>
-        <div class="chart-container hidden" id="favorites"></div>
         <div class="chart-container hidden" id="followers"></div>
+        <div class="chart-container hidden" id="favorites"></div>
       </div>
     </div>
 
