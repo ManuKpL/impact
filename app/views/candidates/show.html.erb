@@ -254,6 +254,26 @@
         </div>
       </div>
     </div>
+      <div class="row">
+        <div id="navigation">
+          <div class="col-xs-6 col-md-6">
+            <div class="candidate-nav text-center">
+              <%=link_to candidate_path(@previous_id) do %>
+                <i class="fa fa-arrow-left"></i>
+                <%= Candidate.find(@previous_id).name %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <div class="candidate-nav text-center">
+              <%=link_to candidate_path(@next_id) do %>
+                <%= Candidate.find(@next_id).name %>
+                <i class="fa fa-arrow-right"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 <!-- JS pour les charts -->
 
