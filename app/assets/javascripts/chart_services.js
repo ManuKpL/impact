@@ -6,5 +6,7 @@ $(function(){
     $(this).addClass('active')
     $('#' + chart).removeClass('hidden')
     $('#' + chart).prependTo('.chart-overlay')
+    $('.legend').addClass('hidden')
+    $('#' + chart + '-legend').removeClass('hidden')
   })
 })
