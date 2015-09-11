@@ -83,6 +83,12 @@
         color: $blue;
       }
     }
+    &-red {
+      color: $red;
+      &:hover {
+        color: $gray
+      }
+    }
   }
   &-button {
     margin-left: 10px;
