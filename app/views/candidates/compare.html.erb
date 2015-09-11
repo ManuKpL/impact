@@ -27,14 +27,15 @@
 <!-- GRAPHS -->
     <div class="col-xs-6 col-sm-9">
       <div class='chart-menu'>
-        <div id='favorites-menu' data-chart='favorites' class='chart-menu-item active'>Favorites</div>
+        <div id='followings-menu' data-chart='followings' class='chart-menu-item active'>Followings</div>
+        <div id='favorites-menu' data-chart='favorites' class='chart-menu-item'>Favorites</div>
         <div id='followers-menu' data-chart='followers' class='chart-menu-item'>Followers</div>
-        <div id='followings-menu' data-chart='followings' class='chart-menu-item'>Followings</div>
       </div>
+      <hr id="filet">
       <div class="chart-overlay">
-        <div class="chart-container" id="favorites"></div>
+        <div class="chart-container" id="followings"></div>
+        <div class="chart-container hidden" id="favorites"></div>
         <div class="chart-container hidden" id="followers"></div>
-        <div class="chart-container hidden" id="followings"></div>
       </div>
     </div>
 
@@ -48,7 +49,7 @@
 
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
       // width = window.innerWidth * 0.6,
-      width = $('.chart-container').width() - 60
+      width = $('.chart-container').width() - 60,
       height = 500 - margin.top - margin.bottom;
   /*
    * value accessor - returns the value to encode for a given data object.
@@ -147,7 +148,8 @@
   <script>
 
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
-      width = window.innerWidth * 0.6,
+      // width = window.innerWidth * 0.6,
+      width = $('.chart-container').width() - 60,
       height = 500 - margin.top - margin.bottom;
   /*
    * value accessor - returns the value to encode for a given data object.
@@ -246,7 +248,8 @@
   <script>
 
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
-      width = window.innerWidth * 0.6,
+      // width = window.innerWidth * 0.6,
+      width = $('.chart-container').width() - 60,
       height = 500 - margin.top - margin.bottom;
   /*
    * value accessor - returns the value to encode for a given data object.
