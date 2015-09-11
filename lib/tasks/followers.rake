@@ -3,13 +3,14 @@ namespace :followers do
   desc 'open JSON and create followers instances'
   task :seed => :environment do
     def open_json
+      p "opening json..."
       JSON.parse(File.open(@file_path).read).first.last
     end
 
     Candidate.all.each_with_index do |candidate, index|
       start = Time.now
       @file_path = "app/data/json/#{candidate.screen_name.downcase}_followers.json"
-      open_json.reverse.each do |follower|
+      open_json.each do |follower|
         twitterdatum = Twitterdatum.new(candidate_id: candidate.id, data_type: "follower", id_twitter: follower['id_str'])
         twitterdatum.data = twitterdatum.encode_data(follower)
         twitterdatum.save

@@ -1,3 +1,53 @@
-.page-padding {
-  padding-top: 116px;
+.header h1{
+
+  font-size: 20px;
+  font-family: Montserrat;
+
 }
+.page-padding { padding-top: 73px }
+
+.candidate-menu {
+  font-family: $base-font;
+  font-weight: 300;
+  color: white;
+  padding: 10px;
+}
+
+.candidate-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.candidate-button {
+  position: relative;
+  padding: 5px;
+  width: 100%;
+  margin: 1px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 18px;
+}
+
+.candidate-avatar {
+  order: 2;
+  margin-left: auto;
+
+  img {
+    width: 30px;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  }
+}
+.candidate-info { padding-left: 10px }
+.candidate-name {
+  font-size: 16px;
+}
+
+

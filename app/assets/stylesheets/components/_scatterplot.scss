@@ -1,12 +1,10 @@
-body {
-  font: 11px sans-serif;
-}
+
 .chart-container {
   background-color: white;
-  padding: 10px;
+  margin: 1% 0% 3% 2%;
+  padding: 0 1%;
   border-radius: 5px;
   box-shadow: 1px 1px 3px #F2F2F2;
-  margin-bottom: 50px;
 }
 
 .axis path,
@@ -28,16 +26,16 @@ body {
   pointer-events: none;
 }
 .label {
-  font-size: 15px;
+  font-size: 18px;
+  font-family: Montserrat;
   font-weight: lighter;
 }
 .tick {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
 }
 .card-candidate {
-  background: white;
-  padding: 20px;
+  padding: 15px;
   border-radius: 4px;
 }
 .card-candidate h2 {

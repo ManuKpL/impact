@@ -8,8 +8,8 @@
     letter-spacing: 1px;
     font-family: Raleway;
     font-weight: 700;
-    font-size: 45px;
-    margin-bottom: 5vh;
+    font-size: 35px;
+    margin-bottom: 2vh;
     z-index: 2;
     text-shadow: 1px 1px 1px rgb(60,60,60);
     text-transform : uppercase;
@@ -22,10 +22,10 @@
     color: white;
     letter-spacing: 1px;
     font-family: Raleway;
-    font-weight: 200;
-    font-size: 35px;
-    padding-top: 20px;
-    margin-bottom: 5vh;
+    font-weight: 100;
+    font-size: 25px;
+    padding-top: 10px;
+    margin-bottom: 4vh;
     z-index: 2;
     text-shadow: 0.5px 0.5px 0.5px rgb(60,60,60);
   }
@@ -67,6 +67,12 @@
     color: white;
     z-index: 2;
     padding: 0.7em;
+    i {
+      font-size: 40px;
+      &:hover {
+        color: #247ba0;
+      }
+    }
     &-img{
       width: 150px;
       height:150px;
@@ -74,14 +80,14 @@
     }
     .text {
       line-height: 20px;
-      font-size: 19px;
+      font-size: 17px;
     }
   }
   &-icon {
     margin-bottom: 30px;
   }
   .btn {
-    padding: 0px 30px;
+
     border-radius: 3px;
     font-weight: bold;
     border: none;
@@ -95,7 +101,8 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     select {
       height: 40px;
       width: 450px;
@@ -112,4 +119,11 @@
       }
     }
   }
+}
+.btn-marged {
+  margin-bottom: 2vh;;
+  margin-top: 2vh;
+}
+.cursor {
+  cursor:pointer;
 }
