@@ -77,7 +77,6 @@ namespace :candidates do
     candidates.each do |candidate|
       c = Candidate.find_by(screen_name: candidate[:screen_name])
       c.update({
-        name: candidate[:name],
         screen_name: candidate[:screen_name],
         description: candidate[:description],
         followers_count: candidate[:followers_count],
