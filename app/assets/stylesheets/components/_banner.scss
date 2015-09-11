@@ -8,8 +8,8 @@
     letter-spacing: 1px;
     font-family: Raleway;
     font-weight: 700;
-    font-size: 45px;
-    margin-bottom: 5vh;
+    font-size: 35px;
+    margin-bottom: 2vh;
     z-index: 2;
     text-shadow: 1px 1px 1px rgb(60,60,60);
     text-transform : uppercase;
@@ -23,9 +23,9 @@
     letter-spacing: 1px;
     font-family: Raleway;
     font-weight: 200;
-    font-size: 35px;
-    padding-top: 20px;
-    margin-bottom: 5vh;
+    font-size: 25px;
+    padding-top: 10px;
+    margin-bottom: 4vh;
     z-index: 2;
     text-shadow: 0.5px 0.5px 0.5px rgb(60,60,60);
   }
@@ -101,7 +101,8 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     select {
       height: 40px;
       width: 450px;
@@ -120,5 +121,6 @@
   }
 }
 .btn-marged {
-  margin-bottom: 20px;
+  margin-bottom: 2vh;;
+  margin-top: 2vh;
 }
