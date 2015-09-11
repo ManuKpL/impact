@@ -69,10 +69,25 @@ class ExtractTweetsListInfos
 
   def average_number
     sum = 0
-    extract_data.each do |tweet|
-      sum += tweet[@key_name] if tweet[@key_name]
+    array_length = 0
+    case @content_type
+    when'candidate tweets'
+      extract_data.each do |tweet|
+        sum += tweet[@key_name] if tweet[@key_name] && tweet['retweeted_status'].nil?
+        array_length += 1 if tweet['retweeted_status'].nil?
+      end
+    when 'candidate retweets'
+      extract_data.each do |tweet|
+        sum += tweet[@key_name] if tweet[@key_name] && tweet['retweeted_status']
+        array_length += 1 if tweet['retweeted_status']
+      end
+    when 'tweets'
+      extract_data.each do |tweet|
+        sum += tweet[@key_name] if tweet[@key_name]
+        array_length += 1
+      end
     end
-    return sum / extract_data.length
+    return sum / array_length
   end
 
   def sorted_by_occurence
