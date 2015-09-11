@@ -14,9 +14,16 @@
   z-index: -1;
 }
 
+
 #a-propos, #team {
   a {
     text-shadow: none;
+  }
+}
+
+.title {
+  h2 {
+    font-size: 20px;
   }
 }
 
@@ -45,6 +52,7 @@
       font-family: Raleway;
       color: white;
       margin-bottom: 80px;
+      font-size: 25px;
       font-weight: 200;
     }
   }
