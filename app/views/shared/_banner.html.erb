@@ -3,33 +3,31 @@
   <div class="banner-content">
     <h1>Vos candidats mis à nu</h1>
     <h2>Régionales 2015 sur Twitter en Île de France</h2>
-    <div class="text-center">
+    <div class="btn-marged text-center">
       <%= link_to "Comparer les candidats", compare_path, class: "btn btn-danger btn-marged" %>
     </div>
-    <div class="btn-marged">
       <div class="container">
         <div class="row">
           <div class="col-xs-4">
             <div class="banner-data">
-              <%= image_tag 'white_pie.png', height:"75", class:"banner-icon" %>
+              <%= image_tag 'white_pie.png', height:"50", class:"banner-icon" %>
               <p class="text hidden-xs">Analyser leurs messages</p>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="banner-data">
-              <%= image_tag 'white_network.png', height:"75", class:"banner-icon" %>
+              <%= image_tag 'white_network.png', height:"50", class:"banner-icon" %>
               <p class="text hidden-xs">Explorer leurs communautés</p>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="banner-data">
-              <%= image_tag 'white_bird.png', height:"75", class:"banner-icon"%>
+              <%= image_tag 'white_bird.png', height:"50", class:"banner-icon"%>
               <p class="text hidden-xs">Comparer leurs performances</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
     <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
       <div class="banner-form">
         <div class="banner-form-marged">
