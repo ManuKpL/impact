@@ -9,7 +9,7 @@
     font-family: Raleway;
     font-weight: 700;
     font-size: 35px;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
     z-index: 2;
     text-shadow: 1px 1px 1px rgb(60,60,60);
     text-transform : uppercase;
@@ -101,7 +101,8 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     select {
       height: 40px;
       width: 450px;
@@ -120,5 +121,6 @@
   }
 }
 .btn-marged {
-  margin-bottom: 20px;
+  margin-bottom: 2vh;;
+  margin-top: 2vh;
 }
