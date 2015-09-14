@@ -12,9 +12,11 @@ i{
 .metric-red {
   font-family: Montserrat;
   letter-spacing: 1px;
+}
 
-  li {
-    padding: 3px;
+#metrics {
+  p {
+    margin: 0;
   }
 }
 
@@ -176,7 +178,7 @@ i{
 }
 
 @media screen and (max-width: 768px) {
-  #picture-container {
+  .card-stats {
     text-align: center;
   }
 }
@@ -197,11 +199,11 @@ i{
     border-right: 26px solid grey;
     border-bottom: 13px solid transparent;
   }
-  #talkbubble {
-    p{
-    font-size: 12px;
-    }
-  }
+  // #talkbubble {
+  //   p{
+  //   font-size: 15px;
+  //   }
+  // }
 }
 
 #comparebtn{

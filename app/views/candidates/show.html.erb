@@ -9,7 +9,7 @@
           <div class="id-card">
 
             <!-- profile picture-->
-            <div class="col-xs-12 col-sm-4 col-md-2" id="picture-container">
+            <div class="col-xs-12 col-sm-4 col-md-2">
               <%= image_tag @candidate.picture, class: "profile-picture" %>
             </div>
             <!-- profile picture-->
@@ -18,7 +18,7 @@
             <div class="col-xs-12 col-sm-5 col-md-6">
               <h4><%= @candidate.name %></h4>
               <p><%= @candidate.party %></p>
-              <%=link_to  "https://twitter.com/#{@candidate.screen_name}", target: "_blank"  do %>
+              <%=link_to "https://twitter.com/#{@candidate.screen_name}", target: "_blank"  do %>
                 <p>@<%=@candidate.screen_name %></p>
               <% end %>
               <p><%= @candidate.description %></p>
@@ -27,12 +27,12 @@
 
             <!-- info metrics -->
             <div class="col-xs-12 col-sm-3 col-md-4">
-              <ul class="list-unstyled text-left">
-                <li><i class="fa fa-clock-o"></i><span class="metric-red"><%= @candidate.account_creation%></span></li>
-                <li><i class="fa fa-twitter"></i><span class="metric-red"><%= @candidate.tweets_count%></span>tweets</li>
-                <li><i class="fa fa-users"></i><span class="metric-red"><%= @candidate.followers_count %></span>abonnés</li>
-                <li><i class="fa fa-users"></i><span class="metric-red"><%= @candidate.following_count %></span>abonnements</li>
-              </ul>
+              <div id="metrics">
+                <p><i class="fa fa-clock-o"></i> <span class="metric-red"><%= @candidate.account_creation%></span></p>
+                <p><i class="fa fa-twitter"></i> <span class="metric-red"><%= @candidate.tweets_count%></span>tweets</p>
+                <p><i class="fa fa-users"></i> <span class="metric-red"><%= @candidate.followers_count %></span>followers</p>
+                <p><i class="fa fa-users"></i> <span class="metric-red"><%= @candidate.following_count %></span>followings</p>
+              </div>
             </div>
             <!-- info metrics -->
 
@@ -48,7 +48,7 @@
     <div id="navigation">
 
       <!-- Lien du candidat précédent -->
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-6 col-sm-4">
         <div class="candidate-nav text-center">
           <%=link_to candidate_path(@previous_id) do %>
             <i class="fa fa-arrow-left"></i>
@@ -59,15 +59,15 @@
       <!-- Lien du candidat précédent -->
 
       <!-- Lien page de comparaison -->
-      <div class="col-xs-6 col-md-4">
-        <div class="text-center">
+      <div class="col-xs-6 col-sm-4">
+        <div class="text-center hidden-xs">
           <%= link_to "Comparer les candidats", compare_path, class: "btn btn-danger", id:"comparebtn" %>
         </div>
       </div>
       <!-- Lien page de comparaison -->
 
       <!-- Lien du candidat suivant -->
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-6 col-sm-4">
         <div class="candidate-nav text-center">
           <%=link_to candidate_path(@next_id) do %>
             <%= Candidate.find(@next_id).name %>
@@ -89,12 +89,12 @@
         <div class="row">
 
           <!-- Cartes de data -->
-          <div class="cols-xs-12 col-sm-12 col-md-6">
+          <div class="cols-xs-12 col-md-6">
             <h2>Sa communauté</h2>
             <div class="row">
 
               <!-- Carte 1 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><i class="fa fa-comment"></i> <span class="number"><%= @followers_tweets.average %></span></p>
                   <p>nombre moyen de tweets de chaque abonné</p>
@@ -103,7 +103,7 @@
               <!-- Carte 1 -->
 
               <!-- Carte 2 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><i class="fa fa-users"></i> <span class="number"><%= @followers_followers.average %></span></p>
                   <p>nombre moyen d'abonnés de chaque abonné</p>
@@ -112,7 +112,7 @@
               <!-- Carte 2 -->
 
               <!-- Carte 3 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><span class="number"><%= @followers_tweets.percentage %>%</span></p>
                   <p>de ses abonnés ont tweeté plus de 2000 fois</p>
@@ -121,7 +121,7 @@
               <!-- Carte 3 -->
 
               <!-- Carte 4 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><span class="number"><%= 100 - @followers_followings.percentage %>%</span></p>
                   <p>de ses abonnés suivent moins de 50 personnes</p>
@@ -134,7 +134,7 @@
           <!-- Cartes de data -->
 
           <!-- Graphique -->
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-xs-12 col-md-6">
             <h2>Les termes qui apparaissent le plus dans la bio des followers du candidat :</h2>
             <% if @topwords_bio.length < 20 %>
               <div class="flexed">
@@ -162,12 +162,12 @@
         <div class="row">
 
           <!-- Cartes de data -->
-          <div class="col-xs-12 col-sm-12 col-md-6">
+          <div class="col-xs-12 col-md-6">
             <h2>Son compte</h2>
             <div class="row">
 
               <!-- Carte 1 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><i class="fa fa-retweet"></i><span class="number"> <%= @retweets_on_candidate.average %></span></p>
                   <p>retweets par tweet</p>
@@ -176,7 +176,7 @@
               <!-- Carte 1 -->
 
               <!-- Carte 2 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><i class="fa fa-star"></i><span class="number"> <%= @favorites_on_candidate.average %></span></p>
                   <p>favoris par tweet</p>
@@ -185,7 +185,7 @@
               <!-- Carte 2 -->
 
               <!-- Carte 3 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><span class="number"> <%= @retweets_on_candidate.percentage %>%</span></p>
                   <p>de tweets retweetés au moins 10 fois</p>
@@ -194,7 +194,7 @@
               <!-- Carte 3 -->
 
               <!-- Carte 4 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><span class="number"><%= @favorites_on_candidate.percentage %>% </span></p>
                   <p>de tweets favs au moins 5 fois</p>
@@ -207,7 +207,7 @@
           <!-- Cartes de data -->
 
           <!-- Graphique -->
-          <div class="col xs-12 col-sm-6">
+          <div class="col xs-12 col-md-6">
             <h2>Les hashtags que ce candidat utilise le plus :</h2>
             <% if @hashtags_in_tweets.length < 5 %>
               <div class="flexed">
@@ -235,12 +235,12 @@
         <div class="row">
 
           <!-- Cartes de data -->
-          <div class="cols-xs-12 col-sm-12 col-md-6">
+          <div class="cols-xs-12 col-md-6">
             <h2>Ses interactions</h2>
             <div class="row">
 
               <!-- Carte 1 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><i class="fa fa-retweet"></i><span class="number"> <%= @candidate_retweets.average %></span></p>
                   <p>retweets émis par le candidat</p>
@@ -249,7 +249,7 @@
               <!-- Carte 1 -->
 
               <!-- Carte 2 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p>Le plus retwetté : <span id="mention"> @<%= @users_retweeted_by_candidate.first[:content] %></span></p>
                   <p><i class="fa fa-retweet"></i><span class="number"> <%= @users_retweeted_by_candidate.first[:count] %></span> fois</p>
@@ -258,7 +258,7 @@
               <!-- Carte 2 -->
 
               <!-- Carte 3 -->
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="mini-box">
                   <p><span class="number"><%= @candidate_retweets.percentage %>%</span></p>
                   <p>de ses tweets sont des retweets</p>
@@ -280,7 +280,7 @@
           <!-- Cartes de data -->
 
           <!-- Graphique -->
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-xs-12 col-md-6">
           <h2>Les comptes que le candidat mentionne le plus :</h2>
             <% if @top_candidate_mentions.length < 5 %>
               <div class="flexed">
@@ -306,7 +306,7 @@
     <div id="navigation">
 
       <!-- Lien vers candidat précédant -->
-      <div class="col-xs-6 col-md-6">
+      <div class="col-xs-6 col-sm-4">
         <div class="candidate-nav text-center">
           <%=link_to candidate_path(@previous_id) do %>
             <i class="fa fa-arrow-left"></i>
@@ -317,7 +317,7 @@
       <!-- Lien vers candidat précédant -->
 
       <!-- Lien vers candidat suivant -->
-      <div class="col-xs-6 col-md-6">
+      <div class="col-xs-6 col-sm-4 col-sm-offset-4">
         <div class="candidate-nav text-center">
           <%=link_to candidate_path(@next_id) do %>
             <%= Candidate.find(@next_id).name %>
