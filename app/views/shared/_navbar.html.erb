@@ -18,6 +18,9 @@
           <i class="fa fa-bars" class="navbar-item navbar-link dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
             <li>
+              <%= link_to "Comparer", compare_path, class: "navbar-item navbar-link #{params['action'] == 'compare' ? 'navbar-link-red' : ''}" %>
+            </li>
+            <li>
               <%= link_to "Candidats", root_path << "#liste-candidats", class: "navbar-item navbar-link" %>
             </li>
             <li>
