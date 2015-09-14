@@ -82,7 +82,7 @@
     padding-bottom: 2vh;
     select {
       height: 40px;
-      width: 450px;
+      width: 25vw;
       text-align: center;
     }
     input {
@@ -107,9 +107,11 @@
   margin-bottom: 2vh;
 }
 .cursor {
-  cursor:pointer;
+  cursor: pointer;
 }
 
-#scroll_down {
-  color: rgb(250, 250, 250)
+@media screen and (max-width: 991px) {
+  .banner-form select {
+    width: 50vw;
+  }
 }

@@ -15,8 +15,11 @@
     padding: 0;
     color: white;
     text-shadow: 1px 1px 1px rgb(60,60,60);
-    line-height: 1.5em;
+    line-height: 1em;
     font-weight: bolder;
+  }
+  i {
+    color: white;
   }
   &-link {
     position: absolute;
