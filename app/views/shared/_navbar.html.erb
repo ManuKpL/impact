@@ -13,34 +13,28 @@
       </button>
     </form> -->
     <div class= "end-links">
-<!--       <%= link_to "Accueil", root_path << "#accueil", class: "navbar-item navbar-link" %>
-      <hr> -->
-      <%= link_to "Comparer", compare_path, class: "navbar-item navbar-link #{params['action'] == 'compare' ? 'navbar-link-red' : ''}" %>
-      <hr>
-      <%= link_to "Candidats", root_path << "#liste-candidats", class: "navbar-item navbar-link" %>
-  <!--     <div class="navbar-item navbar-link">
+      <%= link_to "Comparer", compare_path, class: "navbar-item navbar-link #{params['action'] == 'compare' ? 'navbar-link-red' : ''} hidden-xs" %>
+      <hr class="hidden-xs">
+      <%= link_to "Candidats", root_path << "#liste-candidats", class: "navbar-item navbar-link hidden-xs" %>
+      <hr class="hidden-xs">
+      <%= link_to "À propos", root_path << "#a-propos", class: "navbar-item navbar-link hidden-xs" %>
+      <hr class="hidden-xs">
+      <%= link_to "équipe", root_path << "#team", class: "navbar-item navbar-link hidden-xs" %>
+      <div class="navbar-item navbar-link hidden-sm hidden-md hidden-lg">
         <div class="dropdown">
-          <a href="" class="navbar-item navbar-link dropdown-toggle" data-toggle="dropdown">Candidats</a>
+          <i class="fa fa-bars" class="navbar-item navbar-link dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
-            <li><a href="" class="navbar-item navbar-link">Analysez</a>
+            <li>
+              <%= link_to "Candidats", root_path << "#liste-candidats", class: "navbar-item navbar-link" %>
             </li>
-            <li><a href="" class="navbar-item navbar-link">Comparez</a>
+            <li>
+              <%= link_to "À propos", root_path << "#a-propos", class: "navbar-item navbar-link" %>
+            </li>
+            <li>
+              <%= link_to "équipe", root_path << "#team", class: "navbar-item navbar-link" %>
             </li>
           </ul>
         </div>
-      </div> -->
-      <hr>
-
-      <%= link_to "À propos", root_path << "#a-propos", class: "navbar-item navbar-link" %>
-      <hr>
-      <%= link_to "équipe", root_path << "#team", class: "navbar-item navbar-link" %>
+      </div>
     </div>
-<!--
-  <div class="social-link">
-    <%= link_to "https://www.facebook.com/", target: "_blank" do %><i class="navbar-item navbar-link fa fa-facebook"></i><% end %>
-    <%= link_to "https://twitter.com/", target: "_blank" do %><i class="navbar-item navbar-link fa fa-twitter"></i><% end %>
-  </div> -->
-
 </nav>
-
-<!--  -->
