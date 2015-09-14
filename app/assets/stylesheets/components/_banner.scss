@@ -78,15 +78,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
     padding-top: 2vh;
     padding-bottom: 2vh;
     select {
       height: 40px;
       width: 450px;
       text-align: center;
-      // border-radius: 5%;
     }
     input {
       height: 40px;
@@ -96,6 +93,13 @@
       .form-group {
         margin: 0;
       }
+    }
+    &-direction {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
