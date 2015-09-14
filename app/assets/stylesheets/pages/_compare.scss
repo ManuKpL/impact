@@ -1,8 +1,6 @@
 .header h1{
-
   font-size: 20px;
   font-family: Montserrat;
-
 }
 .page-padding { padding-top: 73px }
 
@@ -10,20 +8,26 @@
   font-family: $base-font;
   font-weight: 300;
   color: white;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .candidate-flex {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
-  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 991px) {
+  .candidate-flex { flex-direction: row }
+  .candidate-button { width: auto }
+  .candidate-avatar { margin-right: auto }
+  .chart-menu { padding-left: 0px }
 }
 
 .candidate-button {
   position: relative;
   padding: 5px;
-  width: 100%;
+  width: 15vw;
   margin: 1px;
   background-color: white;
   border-radius: 4px;
@@ -38,7 +42,6 @@
 .candidate-avatar {
   order: 2;
   margin-left: auto;
-
   img {
     width: 30px;
     border-radius: 3px;
@@ -46,8 +49,6 @@
   }
 }
 .candidate-info { padding-left: 10px }
-.candidate-name {
-  font-size: 16px;
-}
+.candidate-name { font-size: 16px }
 
 
