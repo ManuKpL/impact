@@ -1,17 +1,10 @@
 <nav class="navbar">
   <div class="container navbar-container">
-      <%= link_to root_path, class: "navbar-item navbar-link" do %>
+    <%= link_to root_path, class: "navbar-item navbar-link" do %>
       <div class="navbar-header navbar-link">
         <h1>IMPACT</h1>
       </div>
-      <% end %>
-
-    <!-- <form action="" class="navbar-search">
-      <input type="text" class="navbar-search-input" placeholder="ex: Claude Bartolone...">
-      <button type="submit" class="navbar-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form> -->
+    <% end %>
     <div class= "end-links">
       <%= link_to "Comparer", compare_path, class: "navbar-item navbar-link #{params['action'] == 'compare' ? 'navbar-link-red' : ''} hidden-xs" %>
       <hr class="hidden-xs">
@@ -37,4 +30,5 @@
         </div>
       </div>
     </div>
+  </div>
 </nav>

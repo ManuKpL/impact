@@ -23,13 +23,14 @@
 
 .title {
   h2 {
-    font-size: 20px;
+    font-size: 2vh;
   }
 }
 
 .home-content{
   position: relative;
-  padding: 6em 0;
+  padding-top: 6em;
+  padding-bottom: 2em;
   &-white {
     background-color: rgb(250, 250, 250);
   }
@@ -52,7 +53,7 @@
       font-family: Raleway;
       color: white;
       margin-bottom: 80px;
-      font-size: 25px;
+      font-size: 3vh;
       font-weight: 200;
     }
   }
@@ -60,7 +61,7 @@
 
 .link-back {
   position: absolute;
-  top: 10vh;
+  top: 7vh;
   right: 5vh;
   z-index: 4;
   font-size: 40px;
@@ -70,6 +71,13 @@
   &-white {
     a {
       color: white;
+      &:hover {
+        text-decoration: none;
+        color: rgb(60,60,60);
+      }
+    }
+    i {
+      color: rgba(255,255,255,0.8);
       &:hover {
         text-decoration: none;
         color: rgb(60,60,60);
@@ -87,4 +95,17 @@
   }
 }
 
-
+.home-data {
+  color: white;
+  z-index: 2;
+  padding: 0.7em;
+  p {
+    font-size: 2.2vh;
+  }
+  h5 {
+    font-size: 2.5vh;
+  }
+  h3 {
+    font-size: 3vh;
+  }
+}
