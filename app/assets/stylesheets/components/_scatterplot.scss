@@ -1,11 +1,13 @@
 
 .chart-container {
   background-color: white;
-  margin: 1% 0% 3% 2%;
+  margin-left: 20px;
   padding: 0 1%;
   border-radius: 5px;
   box-shadow: 1px 1px 3px #F2F2F2;
 }
+
+@media screen and (max-width: 991px) { .chart-container { margin-left: 0 } }
 
 .axis path,
 .axis line {
@@ -44,8 +46,4 @@
   margin-top: 0px;
 }
 
-.candidate_avatar {
-  img {
-    width: 100px;
-  }
-}
+.candidate_avatar { img { width: 100px } }

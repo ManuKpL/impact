@@ -5,17 +5,11 @@
 
 .chart-menu-item {
   padding-right: 20px;
-
   opacity: 0.4;
-
-  &.active {
-    opacity: 1;
-  }
+  &.active { opacity: 1 }
 }
 
-#filet {
-  margin: 0 0 10px 20px;
-}
+#filet { margin: 0 0 10px 20px }
 
 .legend {
   font-size: 14px;
@@ -23,3 +17,7 @@
   padding: 0 20px;
 }
 
+@media screen and (max-width: 991px) {
+  .legend { padding-left: 0 }
+  #filet { margin-left: 0 }
+}
