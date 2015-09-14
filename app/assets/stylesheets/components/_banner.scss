@@ -8,14 +8,11 @@
     letter-spacing: 1px;
     font-family: Raleway;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 6vh;
     margin-bottom: 2vh;
     z-index: 2;
     text-shadow: 1px 1px 1px rgb(60,60,60);
     text-transform : uppercase;
-    // span {
-    //   color: $yellow;
-    // }
   }
   h2 {
     position: relative;
@@ -23,14 +20,14 @@
     letter-spacing: 1px;
     font-family: Raleway;
     font-weight: 100;
-    font-size: 25px;
+    font-size: 4vh;
     padding-top: 10px;
     margin-bottom: 4vh;
     z-index: 2;
     text-shadow: 0.5px 0.5px 0.5px rgb(60,60,60);
   }
   p {
-    font-size: 23px;
+    font-size: 3vh  ;
     line-height: 2;
     position: relative;
     padding-bottom: 20px;
@@ -44,56 +41,38 @@
     bottom: 0;
     left: 0;
     right: 0;
-    // background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
     background: -webkit-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Chrome 10+, Saf5.1+ */
     background:    -moz-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* FF3.6+ */
     background:     -ms-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* IE10 */
     background:      -o-linear-gradient(0deg, #68b0ab 10%, #247ba0 90%);
     background:         linear-gradient(0deg, #68b0ab 10%, #247ba0 90%); /* Opera 11.10+ */
-     /* W3C */
     background-color: rgba(40,60,100,0.6);
     z-index: 1;
   }
   &-content {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    padding-bottom: 15vh;
-    bottom: 0px;
     z-index: 2;
+    &-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &-data {
     color: white;
     z-index: 2;
     padding: 0.7em;
-    i {
-      font-size: 40px;
-      &:hover {
-        color: #247ba0;
-      }
-    }
-    &-img{
-      width: 150px;
-      height:150px;
-      border-radius: 50%;
-    }
-    .text {
-      line-height: 20px;
-      font-size: 17px;
+    p {
+      font-size: 2vh;
     }
   }
   &-icon {
-    margin-bottom: 30px;
-  }
-  .btn {
-
-    border-radius: 3px;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-    letter-spacing: 1px;
-    font-size: 16px;
+    margin-bottom: 3vh;
+    height: 10vh;
   }
   &-form {
     display: flex;
@@ -120,9 +99,8 @@
     }
   }
 }
-.btn-marged {
-  margin-bottom: 2vh;;
-  margin-top: 2vh;
+.btn-danger {
+  margin-bottom: 2vh;
 }
 .cursor {
   cursor:pointer;
