@@ -1,6 +1,7 @@
 .chart-menu {
   display: flex;
   padding: 20px;
+  font-size: 2vh;
 }
 
 .chart-menu-item {
@@ -20,4 +21,5 @@
 @media screen and (max-width: 991px) {
   .legend { padding-left: 0 }
   #filet { margin-left: 0 }
+  .chart-menu { padding-left: 0px }
 }
