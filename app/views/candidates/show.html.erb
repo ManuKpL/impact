@@ -50,9 +50,9 @@
       <!-- Lien du candidat précédent -->
       <div class="col-xs-12 col-sm-4">
         <div class="candidate-nav text-center">
-          <%=link_to candidate_path(@previous_id) do %>
+          <%=link_to candidate_path(@previous_candidate) do %>
             <i class="fa fa-arrow-left"></i>
-            <%= Candidate.find(@previous_id).name %>
+            <%= @previous_candidate.name %>
           <% end %>
         </div>
       </div>
@@ -69,8 +69,8 @@
       <!-- Lien du candidat suivant -->
       <div class="col-xs-12 col-sm-4">
         <div class="candidate-nav text-center">
-          <%=link_to candidate_path(@next_id) do %>
-            <%= Candidate.find(@next_id).name %>
+          <%=link_to candidate_path(@next_candidate) do %>
+            <%= @next_candidate.name %>
             <i class="fa fa-arrow-right"></i>
           <% end %>
         </div>
@@ -308,9 +308,9 @@
       <!-- Lien vers candidat précédant -->
       <div class="col-xs-6 col-sm-4">
         <div class="candidate-nav text-center">
-          <%=link_to candidate_path(@previous_id) do %>
+          <%=link_to candidate_path(@previous_candidate) do %>
             <i class="fa fa-arrow-left"></i>
-            <%= Candidate.find(@previous_id).name %>
+            <%= @previous_candidate.name %>
           <% end %>
         </div>
       </div>
@@ -319,8 +319,8 @@
       <!-- Lien vers candidat suivant -->
       <div class="col-xs-6 col-sm-4 col-sm-offset-4">
         <div class="candidate-nav text-center">
-          <%=link_to candidate_path(@next_id) do %>
-            <%= Candidate.find(@next_id).name %>
+          <%=link_to candidate_path(@next_candidate) do %>
+            <%= @next_candidate.name %>
             <i class="fa fa-arrow-right"></i>
           <% end %>
         </div>
