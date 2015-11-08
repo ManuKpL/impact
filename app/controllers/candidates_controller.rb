@@ -10,9 +10,9 @@ class CandidatesController < ApplicationController
     # NAVIGATION ARROWS
     results = []
     Candidate.order(:screen_name).each do |candidate|
-      results << candidate.id
+      results << candidate.screen_name
     end
-    index = results.find_index(@candidate.id)
+    index = results.find_index(@candidate.screen_name)
     results[index + 1].nil? ? @next_candidate = Candidate.find(results.first) : @next_candidate = Candidate.find(results[index + 1])
     @previous_candidate = Candidate.find(results[index - 1])
 
