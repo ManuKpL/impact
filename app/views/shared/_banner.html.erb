@@ -33,7 +33,7 @@
         <%= simple_form_for :search, url: candidates_path, method: :get do |f| %>
           <div class="banner-form-direction">
             <div class="banner-form-marged">
-              <%= f.input :name, as: :select, collection: Candidate.order(:name), label: false, prompt: "Trouver votre candidat..." %>
+              <%= f.input :name, as: :select, collection: Candidate.order(:screen_name), label: false, prompt: "Trouver votre candidat..." %>
             </div>
             <div class="banner-form-marged">
               <%= f.button :submit, "Chercher", class: "btn btn-info" %>

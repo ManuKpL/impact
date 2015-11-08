@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show]
 
   def index
-    redirect_to candidate_path(search_candidate_params['name'].to_i)
+    redirect_to candidate_path(Candidate.find(search_candidate_params['name']))
   end
 
   def show
@@ -11,9 +11,9 @@ class CandidatesController < ApplicationController
     Candidate.all.each do |candidate|
       results << candidate.id
     end
-    index = results.find_index(params[:id].to_i)
-    results[index + 1].nil? ? @next_id = results.first : @next_id = results[index + 1]
-    @previous_id = results[index - 1]
+    index = results.find_index(@candidate.id)
+    results[index + 1].nil? ? @next_candidate = Candidate.find(results.first) : @next_candidate = Candidate.find(results[index + 1])
+    @previous_candidate = Candidate.find(results[index - 1])
 
     # TOPWORDS
     # top words in candidates bios
@@ -78,7 +78,7 @@ class CandidatesController < ApplicationController
   private
   # find candidate ID before each method
   def set_candidate
-    @candidate = Candidate.find(params[:id])
+    @candidate = Candidate.find_by_screen_name(params[:id])
   end
 
   def search_candidate_params
