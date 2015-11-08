@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :candidates, only: [:show, :index]
   root to: 'pages#home'
   get 'compare' => 'candidates#compare', as: 'compare'
