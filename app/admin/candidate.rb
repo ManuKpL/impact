@@ -6,8 +6,17 @@ ActiveAdmin.register Candidate do
     column :name
     column :party
     column :screen_name
-    column :description
-    column :picture
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  form do |f|
+    inputs 'Details' do
+      input :name
+      input :screen_name
+      input :party
+    end
     actions
   end
 end
