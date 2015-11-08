@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show]
 
   def index
-    redirect_to candidate_path(Candidate.find(search_candidate_params['name']))
+    search_candidate_params['name'].length > 0 ? (redirect_to candidate_path(Candidate.find(search_candidate_params['name']))) : (redirect_to root_path)
   end
 
   def show
