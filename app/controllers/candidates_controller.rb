@@ -6,9 +6,9 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    # navigation arrows
+    # NAVIGATION ARROWS
     results = []
-    Candidate.all.each do |candidate|
+    Candidate.order(:screen_name).each do |candidate|
       results << candidate.id
     end
     index = results.find_index(@candidate.id)
