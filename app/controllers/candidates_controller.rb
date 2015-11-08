@@ -3,16 +3,16 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: :show
 
   def index
-    search_candidate_params['name'].length > 0 ? (redirect_to candidate_path(Candidate.find(search_candidate_params['name']))) : (redirect_to root_path)
+    search_candidate_params['name'].length > 0 ? (redirect_to candidate_path(Candidate.find_by_id(search_candidate_params['name']))) : (redirect_to root_path)
   end
 
   def show
     # NAVIGATION ARROWS
     results = []
     Candidate.order(:screen_name).each do |candidate|
-      results << candidate.id
+      results << candidate.screen_name
     end
-    index = results.find_index(@candidate.id)
+    index = results.find_index(@candidate.screen_name)
     results[index + 1].nil? ? @next_candidate = Candidate.find(results.first) : @next_candidate = Candidate.find(results[index + 1])
     @previous_candidate = Candidate.find(results[index - 1])
 
