@@ -3,4 +3,4 @@
 //= require bootstrap-sprockets
 //= require d3
 //= require scrollReveal.js.js
-//= require_tree .
+//= require_tree ./app-js
